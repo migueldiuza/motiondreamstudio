@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalles del Proyecto - Motion Dreams</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.svg" />
+  <link rel="stylesheet" href="../assets/libs/owl.carousel/dist/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="../assets/libs/aos-master/dist/aos.css">
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <style>
+    .gallery-item-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item-wrapper:hover {
+      transform: translateY(-10px);
+    }
+
+    .gallery-img {
+      width: 100%;
+      aspect-ratio: 1080 / 1920;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Square aspect ratio for Social Media and Brand Design */
+    .square-img .gallery-img {
+      aspect-ratio: 1 / 1;
+    }
+
+    /* Owl Carousel Overrides */
+    .owl-carousel .owl-stage-outer {
+      padding-top: 10px;
+      padding-bottom: 30px;
+    }
+
+    /* Mobile: 2 items per row */
+    @media (max-width: 767.98px) {
+      .gallery-item-wrapper {
+        margin-bottom: 12px;
+      }
+    }
+
+    .project-hero {
+      min-height: 60vh;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .project-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .project-header-title {
+      z-index: 1;
+      font-size: 5rem;
+      font-weight: 800;
+      color: white;
+      text-transform: uppercase;
+    }
+
+    .gallery-row-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      border-left: 5px solid #FF0055;
+      padding-left: 1.5rem;
+    }
+
+    /* Pricing specific styles from index.html */
+    .pricing-category.d-none {
+      display: none !important;
+    }
+
+    .pricing-category.d-flex {
+      display: flex !important;
+    }
+
+    #productTypeDropdown {
+      border: 2px solid #dee2e6;
+      transition: all 0.3s ease;
+    }
+
+    #productTypeDropdown:hover {
+      border-color: #FF0055;
+    }
+
+    .product-type-option.active {
+      background-color: #FF0055 !important;
+      color: white !important;
+    }
+
+    .pricing-dark-pattern {
+      background-color: #1f2a2e;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-dark-pattern::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='38' height='29' viewBox='0 0 38 29' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25.0551 0.536149L19.0182 12.0522L12.9062 0.581667C12.6659 0.141661 12.1553 -0.0707559 11.6898 0.096143L0.682179 3.91964C0.111525 4.11689 -0.158785 4.78448 0.0965076 5.3307L6.43377 18.3943C6.56892 18.6674 6.95937 18.5764 6.97439 18.2881L7.53002 8.51695L19.0782 29L30.4763 8.42592L31.107 18.1971C31.122 18.5005 31.5275 18.5764 31.6476 18.3033L37.8948 5.19415C38.1651 4.63276 37.8948 3.98034 37.3091 3.78309L26.2715 0.0506251C25.806 -0.101101 25.2804 0.096143 25.0551 0.536149Z' stroke='%23ffffff' stroke-opacity='0.08' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
+      background-size: 80px 60px;
+      opacity: 0.5;
+      z-index: 0;
+    }
+
+    /* shadow from bottom to top */
+    .pricing-dark-pattern::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(31, 42, 46, 0) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .pricing-dark-pattern .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .pricing-dark-pattern h2,
+    .pricing-dark-pattern p {
+      color: white !important;
+    }
+
+    .white-spin {
+      filter: brightness(0) invert(1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header border-4 border-primary border-top position-fixed start-0 top-0 w-100" style="z-index: 1050;">
+    <div class="container">
+      <div class="header-wrapper d-flex align-items-center justify-content-between">
+        <div class="logo">
+          <a href="index.html" class="logo-white">
+            <img src="../assets/images/logos/logo-white.svg" alt="logo" class="img-fluid">
+          </a>
+          <a href="index.html" class="logo-dark">
+            <img src="../assets/images/logos/logo-dark.svg" alt="logo" class="img-fluid">
+          </a>
+        </div>
+        <div class="d-flex align-items-center gap-4">
+
+          <div class="btn-group">
+            <button
+              class="btn btn-secondary toggle-menu round-45 p-2 d-flex align-items-center justify-content-center bg-white rounded-circle"
+              type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+              <iconify-icon icon="solar:hamburger-menu-line-duotone" class="menu-icon fs-8 text-dark"></iconify-icon>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end p-4">
+              <div class="d-flex flex-column gap-6">
+                <div class="hstack justify-content-between border-bottom pb-6">
+                  <p class="mb-0 fs-5 text-dark">Menu</p>
+                  <button type="button" class="btn-close opacity-75" aria-label="Close"></button>
+                </div>
+                <div class="d-flex flex-column gap-3">
+                  <ul class="header-menu list-unstyled mb-0 d-flex flex-column gap-2">
+                    <li class="header-item">
+                      <a href="index.html" class="header-link hstack gap-2 fs-7 fw-bold text-dark"><img
+                          src="../assets/images/svgs/secondary-leaf.svg" alt="" width="20" height="20"
+                          class="img-fluid  animate-spin">Inicio</a>
+                    </li>
+                    <li class="header-item">
+                      <a href="about-us.html" class="header-link hstack gap-2 fs-7 fw-bold text-dark"><img
+                          src="../assets/images/svgs/secondary-leaf.svg" alt="" width="20" height="20"
+                          class="img-fluid  animate-spin">Nosotros</a>
+                    </li>
+                    <li class="header-item">
+                      <a href="projects.html" class="header-link active hstack gap-2 fs-7 fw-bold text-dark"><img
+                          src="../assets/images/svgs/secondary-leaf.svg" alt="" width="20" height="20"
+                          class="img-fluid  animate-spin">Proyectos</a>
+                    </li>
+                    <li class="header-item">
+                      <a href="index.html#services" class="header-link hstack gap-2 fs-7 fw-bold text-dark"><img
+                          src="../assets/images/svgs/secondary-leaf.svg" alt="" width="20" height="20"
+                          class="img-fluid  animate-spin">Servicios</a>
+                    </li>
+                    <li class="header-item">
+                      <a href="contact.html" class="header-link hstack gap-2 fs-7 fw-bold text-dark"><img
+                          src="../assets/images/svgs/secondary-leaf.svg" alt="" width="20" height="20"
+                          class="img-fluid  animate-spin white-spin">Contacto</a>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <a class="fs-8 text-dark fw-bold" href="mailto:hola@motiondreams.com">hola@motiondreams.com</a>
+                </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-wrapper overflow-hidden">
+    <!-- Hero Section -->
+    <section id="projectHero"
+      class="banner-section banner-inner-section position-relative overflow-hidden d-flex align-items-end"
+      style="background-image: url('../assets/images/backgrounds/projects-detail-banner.jpg');">
+      <div class="container">
+        <div class="d-flex flex-column gap-4 pb-5 pb-xl-10 position-relative z-1">
+          <div class="row align-items-center">
+            <div class="col-xl-6">
+              <div class="d-flex align-items-center gap-4" data-aos="fade-up" data-aos-delay="100"
+                data-aos-duration="1000">
+                <img src="../assets/images/svgs/primary-leaf.svg" alt="" width="30" height="30"
+                  class="img-fluid animate-spin white-spin">
+                <p id="projectSubtitle" class="mb-0 text-white fs-5 text-opacity-70">
+                  Explora la creatividad que define nuestro trabajo.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-end gap-3" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+            <h1 id="projectTitle" class="mb-0 fs-16 text-white lh-1">Proyecto</h1>
+            <a href="javascript:void(0)" class="p-1 ps-7 bg-primary rounded-pill">
+              <span class="bg-white round-52 rounded-circle d-flex align-items-center justify-content-center">
+                <iconify-icon icon="lucide:arrow-up-right" class="fs-8 text-dark"></iconify-icon>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Description Section -->
+    <section class="py-5 py-lg-11">
+      <div class="container">
+        <div class="d-flex flex-column gap-8">
+          <a href="projects.html" class="btn py-2 ps-3 pe-5" data-aos="fade-up" data-aos-delay="100"
+            data-aos-duration="1000">
+            <span class="btn-text pe-1">Back</span>
+            <iconify-icon icon="lucide:arrow-up-right"
+              class="btn-icon bg-white text-dark round-36 rounded-circle hstack justify-content-center fs-5 shadow-sm"></iconify-icon>
+          </a>
+          <div class="row justify-content-center">
+            <div class="col-lg-8 text-center" data-aos="fade-up">
+              <h2 class="mb-4">Descripción del Trabajo</h2>
+              <p id="projectDescription" class="fs-5 text-opacity-75">
+                Cargando información...
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallerySection" class="py-5 bg-light-gray">
+      <div class="container">
+        <!-- Rows will be injected here by JS -->
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section pricing-dark-pattern py-12" id="pricing">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center" data-aos="fade-up">
+            <h2 class="mb-3">Planes a tu medida</h2>
+            <p class="fs-5 text-opacity-70">Encuentra el plan perfecto para tu proyecto.</p>
+          </div>
+        </div>
+
+        <!-- Individual Pricing Categories (Simplified for Detail Page) -->
+        <div id="pricing-container" class="row">
+          <!-- Pricing content injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark py-5 py-lg-11">
+      <div class="container text-center">
+        <h2 class="text-white mb-5">¿Listos para trabajar juntos?</h2>
+        <a href="contact.html" class="btn btn-primary btn-lg">Contactar ahora</a>
+        <div class="mt-5 pt-5 border-top border-secondary">
+          <p class="text-white text-opacity-50">© Motion Dreams 2025</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
+  <script src="../assets/libs/aos-master/dist/aos.js"></script>
+  <script src="../assets/js/custom.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+
+  <script>
+    const projectsData = {
+      'flyer-eventos': {
+        title: 'Flyer para Eventos',
+        subtitle: 'Diseño profesional para fiestas, conciertos y momentos memorables.',
+        description: 'Diseños impactantes para todo tipo de eventos: corporativos, sociales, conciertos y más. Nos enfocamos en captar la atención de tu audiencia desde el primer segundo.',
+        banner: '../assets/images/flyers/flyerconcierto.jpg',
+        gallery: [
+          { title: 'Conciertos y Festivales', items: ['../assets/images/flyers/flyerconcierto.jpg', '../assets/images/flyers/flyerconcierto2.jpg', '../assets/images/flyers/flyerconcierto3.jpeg', '../assets/images/flyers/flyer concierto4.jpeg', '../assets/images/flyers/flyer concierto5.jpeg'] },
+          { title: 'Flyers Urbanos', items: ['../assets/images/flyers/flyerUrbano.jpeg', '../assets/images/flyers/flyerUrbano2.jpeg', '../assets/images/flyers/flyerUrbano3.jpeg', '../assets/images/flyers/flyerUrbano4.jpeg', '../assets/images/flyers/flyerUrbano5.jpg'] },
+          { title: 'Flyers Night clubs', items: ['../assets/images/flyers/nigth1.jpeg', '../assets/images/flyers/nigth2.jpeg', '../assets/images/flyers/night3.jpeg', '../assets/images/flyers/nigth4.jpeg', '../assets/images/flyers/night5.jpeg'] },
+          { title: 'Flyer de Cantina', items: ['../assets/images/flyers/cantina1.jpeg', '../assets/images/flyers/cantina2.jpeg', '../assets/images/flyers/cantina3.jpeg', '../assets/images/flyers/cantina4.jpeg', '../assets/images/flyers/cantina5.jpeg'] }
+        ],
+        pricing: `
+          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100 shadow-sm border-0">
+              <div class="card-body p-5 d-flex flex-column gap-6">
+                <div><h5 class="mb-2 fw-medium">Individual</h5><h3 class="mb-0 text-primary">$60k</h3><p class="mb-0">1 flyer personalizado</p></div>
+                <div class="pt-4 border-top">
+                  <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">Diseño de alta calidad</h6></li>
+                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">2 Rondas de cambios</h6></li>
+                  </ul>
+                </div>
+                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100 shadow-sm border-0">
+              <div class="card-body p-5 d-flex flex-column gap-6">
+                <div><h5 class="mb-2 fw-medium">Pack x 4</h5><h3 class="mb-0 text-primary">$200k</h3><p class="mb-0">Ideal para promoción continua</p></div>
+                <div class="pt-4 border-top">
+                  <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">4 Flyers distintos</h6></li>
+                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">Ahorro de $40k</h6></li>
+                  </ul>
+                </div>
+                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100 shadow-sm border-0 bg-primary-light">
+              <div class="card-body p-5 d-flex flex-column gap-6">
+                <div><h5 class="mb-2 fw-medium">Pack Conciertos</h5><h3 class="mb-0 text-primary">$400k</h3><p class="mb-0">Kit completo para festivales</p></div>
+                <div class="pt-4 border-top">
+                  <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">1 Flyer Animado con cuña</h6></li>
+                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">1 Flyer Animado estándar</h6></li>
+                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">Flyers: Precios, Mapa, Oficial, Invitados e Informativo</h6></li>
+                  </ul>
+                </div>
+                <a href="contact.html" class="btn btn-primary w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      'flyers': {
+        title: 'Flyers',
+        subtitle: 'Creatividad visual que potencia el mensaje de tu marca.',
+        description: 'Diseño de flyers profesionales para cualquier necesidad comercial o personal. Calidad premium asegurada para impresión o plataformas digitales.',
+        banner: '../assets/images/flyers/flyerParty.png',
+        gallery: [
+          { title: 'Flyer Party', items: ['../assets/images/flyers/flyerParty.png', '../assets/images/flyers/flyerParty2.jpeg', '../assets/images/flyers/flyerParty3.jpeg', '../assets/images/flyers/flyerParty4.jpeg'] },
+          { title: 'Flyer Deportivo', items: ['../assets/images/flyers/flyerDeportivo.jpeg', '../assets/images/flyers/flyerDeportivo2.jpeg', '../assets/images/flyers/flyerDeportivo3.jpeg', '../assets/images/flyers/flyerDeportivo4.jpeg'] },
+          { title: 'Flyer Personalizado', items: ['../assets/images/flyers/flyerpersonalizado1.jpeg', '../assets/images/flyers/flyerpersonalizado2.jpeg', '../assets/images/flyers/flyerParty.png', '../assets/images/flyers/flyerParty2.jpeg'] }
+        ],
+        pricing: `
+          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100 shadow-sm border-0">
+              <div class="card-body p-5 d-flex flex-column gap-6">
+                <div><h5 class="mb-2 fw-medium">Individual</h5><h3 class="mb-0 text-primary">$60k</h3><p class="mb-0">1 diseño premium</p></div>
+                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100 shadow-sm border-0 bg-primary-light">
+              <div class="card-body p-5 d-flex flex-column gap-6">
+                <div><h5 class="mb-2 fw-medium">Pack x 4</h5><h3 class="mb-0 text-primary">$200k</h3><p class="mb-0">Ahorro garantizado</p></div>
+                <a href="contact.html" class="btn btn-primary w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100 shadow-sm border-0">
+              <div class="card-body p-5 d-flex flex-column gap-6">
+                <div><h5 class="mb-2 fw-medium">Prioritario</h5><h3 class="mb-0 text-primary">$80k</h3><p class="mb-0">Entrega en menos de 6 horas</p></div>
+                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      'flyers-animados': {
+        title: 'Flyers Animados',
+        subtitle: 'Da vida a tus promociones con animaciones dinámicas e impactantes.',
+        description: 'Lleva tus promociones al siguiente nivel con movimiento. Ideal para Instagram Stories, TikTok y publicidad digital.',
+        banner: '../assets/images/flyers/flyerParty2.jpeg',
+        gallery: [
+          { title: 'Motion Eventos', items: ['../assets/images/flyers/flyerconcierto.jpg', '../assets/images/flyers/flyerconcierto2.jpg', '../assets/images/flyers/flyerconcierto3.jpeg', '../assets/images/flyers/flyer concierto4.jpeg'] },
+          { title: 'Motion Comercial', items: ['../assets/images/flyers/flyerUrbano.jpeg', '../assets/images/flyers/flyerUrbano2.jpeg', '../assets/images/flyers/flyerUrbano3.jpeg', '../assets/images/flyers/flyerUrbano4.jpeg'] },
+          { title: 'Motion Animación', items: ['../assets/images/flyers/nigth1.jpeg', '../assets/images/flyers/nigth2.jpeg', '../assets/images/flyers/night3.jpeg', '../assets/images/flyers/nigth4.jpeg'] }
+        ],
+        pricing: `
+          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100 shadow-sm border-0">
+              <div class="card-body p-5 d-flex flex-column gap-6">
+                <div><h5 class="mb-2 fw-medium">Sencillo</h5><h3 class="mb-0 text-primary">$100k</h3><p class="mb-0">Animación básica efectiva</p></div>
+                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100 shadow-sm border-0 bg-primary-light">
+              <div class="card-body p-5 d-flex flex-column gap-6">
+                <div><h5 class="mb-2 fw-medium">Especial</h5><h3 class="mb-0 text-primary">$150k</h3><p class="mb-0">Animación avanzada y detallada</p></div>
+                <a href="contact.html" class="btn btn-primary w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100 shadow-sm border-0">
+              <div class="card-body p-5 d-flex flex-column gap-6">
+                <div><h5 class="mb-2 fw-medium">Con Cuña</h5><h3 class="mb-0 text-primary">$200k</h3><p class="mb-0">Incluye locución profesional (cuña)</p></div>
+                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      'social-media': {
+        title: 'Social Media',
+        subtitle: 'Contenido estratégico diseñado para conectar en todas tus redes.',
+        description: 'Gestión visual estratégica para tus redes sociales. Posteos, historias y carruseles profesionales diseñados para impactar.',
+        banner: '../assets/images/flyers/social1.jpg',
+        gallery: [
+          { title: 'Identidad Visual', items: ['../assets/images/flyers/social1.jpg', '../assets/images/flyers/social2.jpg', '../assets/images/flyers/social3.jpg', '../assets/images/flyers/social4.jpg', '../assets/images/flyers/social5.jpg'] },
+          { title: 'Contenido Diario', items: ['../assets/images/flyers/social2.jpg', '../assets/images/flyers/social3.jpg', '../assets/images/flyers/social4.jpg', '../assets/images/flyers/social5.jpg', '../assets/images/flyers/social1.jpg'] },
+          { title: 'Campañas Ads', items: ['../assets/images/flyers/social3.jpg', '../assets/images/flyers/social4.jpg', '../assets/images/flyers/social5.jpg', '../assets/images/flyers/social1.jpg', '../assets/images/flyers/social2.jpg'] }
+        ],
+        pricing: `
+          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100 shadow-sm border-0">
+              <div class="card-body p-5 d-flex flex-column gap-6">
+                <div><h5 class="mb-2 fw-medium">Paquete 1</h5><h3 class="mb-0 text-primary">$60k</h3><p class="mb-0">Carrusel de 3 imágenes</p></div>
+                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100 shadow-sm border-0 bg-primary-light">
+              <div class="card-body p-5 d-flex flex-column gap-6">
+                <div><h5 class="mb-2 fw-medium">Paquete 2</h5><h3 class="mb-0 text-primary">$100k</h3><p class="mb-0">Carrusel 3 img + 2 Piezas gráficas</p></div>
+                <a href="contact.html" class="btn btn-primary w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100 shadow-sm border-0">
+              <div class="card-body p-5 d-flex flex-column gap-6">
+                <div><h5 class="mb-2 fw-medium">Paquete 3</h5><h3 class="mb-0 text-primary">$200k</h3><p class="mb-0">2 Carruseles 3 img + 4 Piezas gráficas</p></div>
+                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      'diseno-marca': {
+        title: 'Diseño de Marca',
+        subtitle: 'Creamos identidades sólidas que proyectan la esencia de tu negocio.',
+        description: 'Creamos la identidad visual que tu negocio merece. Desde el logo hasta el manual de marca completo, proyectamos confianza.',
+        banner: '../assets/images/flyers/logo1.png',
+        gallery: [
+          { title: 'Logotipos', items: ['../assets/images/flyers/logo1.png', '../assets/images/flyers/logo2.png', '../assets/images/flyers/logo3.png', '../assets/images/flyers/logo4.png', '../assets/images/flyers/agroLogo.png'] },
+          { title: 'Identidad Corporativa', items: ['../assets/images/flyers/logo2.png', '../assets/images/flyers/logo3.png', '../assets/images/flyers/logo4.png', '../assets/images/flyers/agroLogo.png', '../assets/images/flyers/logo1.png'] },
+          { title: 'Papelería Comercial', items: ['../assets/images/flyers/logo3.png', '../assets/images/flyers/logo4.png', '../assets/images/flyers/agroLogo.png', '../assets/images/flyers/logo1.png', '../assets/images/flyers/logo2.png'] }
+        ],
+        pricing: `
+          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100 shadow-sm border-0">
+              <div class="card-body p-5 d-flex flex-column gap-6">
+                <div><h5 class="mb-2 fw-medium">Básico</h5><h3 class="mb-0 text-primary">$450k</h3><p class="mb-0">Kit esencia de marca</p></div>
+                <div class="pt-4 border-top">
+                  <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">Logo y Manual básico</h6></li>
+                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">Diseño gráfico de 1 producto</h6></li>
+                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">Banners para redes sociales</h6></li>
+                  </ul>
+                </div>
+                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100 shadow-sm border-0 bg-primary-light">
+              <div class="card-body p-5 d-flex flex-column gap-6">
+                <div><h5 class="mb-2 fw-medium">Premium</h5><h3 class="mb-0 text-primary">$850k</h3><p class="mb-0">Identidad corporativa profunda</p></div>
+                <div class="pt-4 border-top">
+                  <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">Kit completo de Branding</h6></li>
+                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">Estrategia de marca básica</h6></li>
+                  </ul>
+                </div>
+                <a href="contact.html" class="btn btn-primary w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100 shadow-sm border-0">
+              <div class="card-body p-5 d-flex flex-column gap-6">
+                <div><h5 class="mb-2 fw-medium">Enterprise</h5><h3 class="mb-0 text-primary">$1.5M</h3><p class="mb-0">Presencia global y estratégica</p></div>
+                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+              </div>
+            </div>
+          </div>
+        `
+      }
+    };
+
+    function loadProject() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const projectId = urlParams.get('project') || 'flyers';
+      const data = projectsData[projectId];
+
+      if (!data) {
+        window.location.href = 'projects.html';
+        return;
+      }
+
+      // Update Hero
+      document.getElementById('projectTitle').innerText = data.title;
+      document.getElementById('projectSubtitle').innerText = data.subtitle;
+      document.getElementById('projectHero').style.backgroundImage = `url('${data.banner}')`;
+
+      // Update Description
+      document.getElementById('projectDescription').innerText = data.description;
+
+      // Update Gallery
+      const galleryContainer = document.querySelector('#gallerySection .container');
+      galleryContainer.innerHTML = '';
+
+      data.gallery.forEach((row, rowIndex) => {
+        const rowDiv = document.createElement('div');
+        rowDiv.classList.add('mb-5', 'gallery-row');
+        rowDiv.setAttribute('data-aos', 'fade-up');
+        rowDiv.setAttribute('data-aos-delay', rowIndex * 100);
+
+        const title = document.createElement('h3');
+        title.classList.add('gallery-row-title');
+        title.innerText = row.title;
+
+        const carouselDiv = document.createElement('div');
+        carouselDiv.classList.add('owl-carousel', 'owl-theme');
+
+        // Add square class if necessary
+        if (projectId === 'social-media' || projectId === 'diseno-marca') {
+          carouselDiv.classList.add('square-img');
+        }
+
+        row.items.forEach(item => {
+          const itemWrapper = document.createElement('div');
+          itemWrapper.classList.add('item');
+          itemWrapper.innerHTML = `
+            <div class="gallery-item-wrapper px-2">
+              <img src="${item}" class="gallery-img" alt="Proyecto">
+            </div>
+          `;
+          carouselDiv.appendChild(itemWrapper);
+        });
+
+        rowDiv.appendChild(title);
+        rowDiv.appendChild(carouselDiv);
+        galleryContainer.appendChild(rowDiv);
+
+        // Initialize carousel for this row
+        $(carouselDiv).owlCarousel({
+          loop: true,
+          margin: 0,
+          nav: false,
+          dots: true,
+          autoplay: true,
+          autoplayTimeout: 3000,
+          autoplayHoverPause: true,
+          responsive: {
+            0: {
+              items: 2
+            },
+            768: {
+              items: 3
+            },
+            1200: {
+              items: 4
+            }
+          }
+        });
+      });
+
+      // Update Pricing
+      document.getElementById('pricing-container').innerHTML = data.pricing;
+
+      // Re-init AOS
+      AOS.init({
+        duration: 1000,
+        once: true
+      });
+    }
+
+    $(document).ready(function () {
+      loadProject();
+    });
+  </script>
+</body>
+
+</html>

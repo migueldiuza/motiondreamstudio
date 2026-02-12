@@ -1,0 +1,34 @@
+# INFORMACIÓN DEL PROYECTO: STUDIOVA
+
+Este proyecto es una plantilla de sitio web profesional, moderna y responsiva. Aquí tienes una guía sencilla de cómo funciona y cómo empezar a trabajar en él.
+
+## 1. ¿Cómo funciona el proyecto? (Resumen sencillo)
+El proyecto es una aplicación web estática que utiliza:
+- **HTML**: Para la estructura de las páginas (ubicadas en `src/html`).
+- **SCSS (SASS)**: Para los estilos visuales (colores, fuentes, diseño). Los archivos fuente están en `src/assets/scss`.
+- **JavaScript**: Para la interactividad (menús, animaciones, sliders).
+- **Bootstrap 5**: El framework base que facilita el diseño responsivo.
+
+## 2. Estructura de carpetas clave
+- `src/html/`: Aquí están todos los archivos .html (index.html es la página principal).
+- `src/assets/scss/`: Aquí es donde debes hacer cambios de diseño (colores, tamaños, etc.).
+- `src/assets/css/`: Aquí se guarda el CSS que lee el navegador (se genera automáticamente desde el SCSS).
+- `src/assets/libs/`: Contiene librerías externas como Bootstrap, AOS (animaciones) y Owl Carousel.
+
+## 3. Scripts Principales (Herramientas de desarrollo)
+Hemos instalado herramientas para que editar el proyecto sea muy fácil. Usa estos comandos en tu terminal:
+
+- `npm install`: Se usa la primera vez para instalar todo lo necesario.
+- `npm start`: **El comando más importante.** Hace dos cosas a la vez:
+    1. Abre tu navegador con una vista previa del proyecto.
+    2. Vigila tus cambios en los archivos de diseño (SCSS) y actualiza la web automáticamente sin que tengas que refrescar.
+- `npm run build:css`: Convierte tus archivos de diseño SCSS en archivos CSS finales.
+
+## 4. ¿Cómo se relacionan las piezas?
+1. Tú editas el código en `src/html` o `src/assets/scss`.
+2. El script `npm start` detecta ese cambio.
+3. Si cambiaste un estilo (SCSS), lo convierte a CSS automáticamente.
+4. El navegador se actualiza solo para mostrarte el resultado al instante.
+
+---
+¡Listo! Ahora solo tienes que ejecutar `npm start` en la terminal para comenzar a ver y editar el proyecto en tiempo real.
