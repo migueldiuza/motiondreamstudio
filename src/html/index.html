@@ -13,13 +13,13 @@
 
   <style>
     .btn-hero-custom {
-      background-color: #FF0055 !important;
-      color: #000000 !important;
+      background-color: #F20F0F !important;
+      color: #ffffff !important;
       /* Black text */
       transition: all 0.3s ease;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 5px;
     }
 
     .btn-hero-custom .btn-text {
@@ -29,19 +29,19 @@
 
     .btn-hero-custom .btn-icon {
       background-color: #ffffff !important;
-      color: #000000 !important;
+      color: #F20F0F !important;
     }
 
     /* Hover State */
     .btn-hero-custom:hover {
       background-color: #1F2A2E !important;
       /* Dark bg */
-      color: #FF0055 !important;
-      /* Magenta text */
+      color: #ffffff !important;
+      /* White text */
     }
 
     .btn-hero-custom:hover .btn-text {
-      color: #FF0055 !important;
+      color: #ffffff !important;
     }
 
     .portfolio-img::before {
@@ -70,15 +70,16 @@
 
     @media (max-width: 596px) {
       .btn-hero-custom {
-        padding: 8px 16px !important;
-        font-size: 13px !important;
+        padding: 12px 50px 12px 25px !important;
+        /* Increased padding to make it longer */
+        font-size: 11px !important;
         gap: 6px;
         white-space: nowrap;
         max-width: 100%;
       }
 
       .btn-hero-custom .btn-text {
-        font-size: 13px !important;
+        font-size: 11px !important;
       }
 
       .btn-hero-custom .btn-icon {
@@ -99,7 +100,7 @@
     }
 
     .product-type-option.active {
-      background-color: #FF0055 !important;
+      background-color: #F20F0F !important;
     }
 
     .product-type-option.active span {
@@ -116,8 +117,8 @@
     }
 
     #productTypeDropdown:hover {
-      border-color: #FF0055;
-      box-shadow: 0 0 0 0.2rem rgba(255, 0, 85, 0.1);
+      border-color: #F20F0F;
+      box-shadow: 0 0 0 0.2rem rgba(242, 15, 15, 0.1);
     }
 
     .dropdown-menu {
@@ -126,18 +127,40 @@
     }
 
     .gray-logo {
-      filter: grayscale(100%) brightness(0.8);
-      opacity: 0.7;
+      filter: grayscale(100%) brightness(0.1);
+      opacity: 0.8;
       transition: all 0.3s ease;
-      height: 60px;
-      width: 160px;
+      height: 140px;
+      width: 400px;
       object-fit: contain;
-      padding: 5px;
+      padding: 12px;
+      margin: 0 10px;
     }
 
-    .gray-logo:hover {
-      filter: grayscale(0%) brightness(1);
+    .gray-logo:hover,
+    .gray-logo:active {
+      filter: brightness(0) saturate(100%) invert(13%) sepia(91%) saturate(7401%) hue-rotate(359deg) brightness(97%) contrast(114%);
       opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .gray-logo {
+        height: 100px;
+        /* Increased from 60px */
+        width: 180px;
+        /* Increased from 120px */
+        margin: 0 10px;
+        padding: 4px;
+      }
+
+      .marquee-content {
+        gap: 15px !important;
+      }
+
+      .marquee-tag {
+        width: 200px !important;
+        /* Increased to fit larger logos */
+      }
     }
   </style>
 
@@ -203,7 +226,7 @@
                   </ul>
                 </div>
                 <div>
-                  <a class="fs-8 text-dark fw-bold" href="mailto:hola@motiondreams.com">hola@motiondreams.com</a>
+                  <a class="fs-8 text-dark fw-bold" href="mailto:creatik.motion@gmail.com">creatik.motion@gmail.com</a>
                 </div>
               </div>
             </ul>
@@ -241,7 +264,7 @@
               Diseño gráfico y motion para eventos, marcas y experiencias digitales.
             </p>
             <div class="d-flex align-items-center gap-3 mt-3">
-              <a href="#projects" class="btn btn-hero-custom">
+              <a href="projects.html" class="btn btn-hero-custom">
                 <span class="btn-text">Ver proyectos</span>
                 <iconify-icon icon="lucide:arrow-up-right"
                   class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
@@ -276,7 +299,7 @@
                 <div class="col-xxl-8">
                   <div class="d-flex flex-column gap-6" data-aos="fade-up" data-aos-delay="100"
                     data-aos-duration="1000">
-                    <h2 class="mb-0">Proyectos Destacados</h2>
+                    <h2 class="mb-0">Productos Destacados</h2>
                     <p class="fs-5 mb-0">Nuestro trabajo es nuestro mejor argumento.</p>
                   </div>
                 </div>
@@ -289,7 +312,7 @@
             <div class="item">
               <div class="portfolio d-flex flex-column gap-6">
                 <div class="portfolio-img position-relative overflow-hidden">
-                  <img src="../assets/images/portfolio/im1.jpeg" alt="Flyer para eventos" class="img-fluid">
+                  <img src="../assets/images/flyers/flyerEventoPortada.jpg" alt="Flyer para eventos" class="img-fluid">
                   <div class="portfolio-overlay">
                     <a href="projects-detail.html?project=flyer-eventos"
                       class="position-absolute top-50 start-50 translate-middle bg-primary round-64 rounded-circle hstack justify-content-center">
@@ -495,7 +518,7 @@
               <div class="col-xl-4">
                 <div class="tab-content" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1000">
                   <div class="tab-pane active" id="one" role="tabpanel" aria-labelledby="one-tab" tabindex="0">
-                    <img src="../assets/images/services/ser1.png" alt="services" class="img-fluid mb-4">
+                    <img src="../assets/images/flyers/bannerEventos.jpg" alt="services" class="img-fluid mb-4">
                     <a href="projects.html" class="btn btn-primary w-100">
                       <span class="btn-text text-white">Ver proyectos relacionados</span>
                       <iconify-icon icon="lucide:arrow-up-right"
@@ -503,7 +526,7 @@
                     </a>
                   </div>
                   <div class="tab-pane" id="two" role="tabpanel" aria-labelledby="two-tab" tabindex="0">
-                    <img src="../assets/images/services/ser2.png" alt="services" class="img-fluid mb-4">
+                    <img src="../assets/images/flyers/bannerSocialMedia.jpg" alt="services" class="img-fluid mb-4">
                     <a href="projects.html" class="btn btn-primary w-100">
                       <span class="btn-text text-white">Ver proyectos relacionados</span>
                       <iconify-icon icon="lucide:arrow-up-right"
@@ -511,7 +534,7 @@
                     </a>
                   </div>
                   <div class="tab-pane" id="three" role="tabpanel" aria-labelledby="three-tab" tabindex="0">
-                    <img src="../assets/images/services/ser3.png" alt="services" class="img-fluid mb-4">
+                    <img src="../assets/images/flyers/bannerFlyerAnim.jpg" alt="services" class="img-fluid mb-4">
                     <a href="projects.html" class="btn btn-primary w-100">
                       <span class="btn-text text-white">Ver proyectos relacionados</span>
                       <iconify-icon icon="lucide:arrow-up-right"
@@ -519,7 +542,7 @@
                     </a>
                   </div>
                   <div class="tab-pane" id="four" role="tabpanel" aria-labelledby="four-tab" tabindex="0">
-                    <img src="../assets/images/services/ser4.png" alt="services" class="img-fluid mb-4">
+                    <img src="../assets/images/flyers/bannersocialMarca.jpg" alt="services" class="img-fluid mb-4">
                     <a href="projects.html" class="btn btn-primary w-100">
                       <span class="btn-text text-white">Ver proyectos relacionados</span>
                       <iconify-icon icon="lucide:arrow-up-right"
@@ -612,7 +635,7 @@
         <div class="d-flex flex-column gap-5" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
           <h5 class="text-center mb-0 text-dark">Marcas y proyectos que confiaron en nosotros</h5>
           <div class="marquee w-100 d-flex align-items-center overflow-hidden">
-            <div class="marquee-content d-flex align-items-center gap-8">
+            <div class="marquee-content d-flex align-items-center gap-4">
               <!-- Set 1 -->
               <div class="marquee-tag hstack justify-content-center">
                 <img src="../assets/images/logosBaner/Astro logo sin fondo.png" alt="partners"
@@ -642,9 +665,7 @@
               <div class="marquee-tag hstack justify-content-center">
                 <img src="../assets/images/logosBaner/fit.png" alt="partners" class="img-fluid gray-logo">
               </div>
-              <div class="marquee-tag hstack justify-content-center">
-                <img src="../assets/images/logosBaner/fuga.svg" alt="partners" class="img-fluid gray-logo">
-              </div>
+
               <div class="marquee-tag hstack justify-content-center">
                 <img src="../assets/images/logosBaner/hause.png" alt="partners" class="img-fluid gray-logo">
               </div>
@@ -692,9 +713,7 @@
               <div class="marquee-tag hstack justify-content-center">
                 <img src="../assets/images/logosBaner/fit.png" alt="partners" class="img-fluid gray-logo">
               </div>
-              <div class="marquee-tag hstack justify-content-center">
-                <img src="../assets/images/logosBaner/fuga.svg" alt="partners" class="img-fluid gray-logo">
-              </div>
+
               <div class="marquee-tag hstack justify-content-center">
                 <img src="../assets/images/logosBaner/hause.png" alt="partners" class="img-fluid gray-logo">
               </div>
@@ -722,7 +741,7 @@
 
 
     <!--  Pricing Section -->
-    <section class="pricing-section py-12 bg-light-gray" id="pricing" style="overflow: visible;">
+    <section class="pricing-section pt-12 pb-11 bg-light-gray" id="pricing" style="overflow: visible;">
       <div class="container">
         <div class="d-flex flex-column gap-3">
           <div class="d-flex flex-column gap-3">
@@ -845,6 +864,11 @@
                       <iconify-icon icon="lucide:arrow-up-right"
                         class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
                     </a>
+                    <button class="btn btn-view-examples w-100 justify-content-center" data-plan="flyer-individual">
+                      <span class="btn-text">Ver ejemplos</span>
+                      <iconify-icon icon="lucide:eye"
+                        class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -862,7 +886,7 @@
                         <h3 class="mb-0">$200k</h3>
                         <p class="mb-0">/paquete</p>
                       </div>
-                      <p class="mb-0">Ideal para campañas mensuales o series de eventos.</p>
+                      <p class="mb-0">Gestión estratégica para series de eventos o lanzamientos.</p>
                     </div>
                     <div class="pt-8 border-top d-flex flex-column gap-6">
                       <h6 class="mb-0 fw-normal">Qué incluye:</h6>
@@ -877,25 +901,19 @@
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Hasta 3 revisiones por diseño</h6>
+                          <h6 class="mb-0 fw-normal">Hasta 2 revisiones por diseño</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Formatos digital e impresión</h6>
+                          <h6 class="mb-0 fw-normal">Exportación en formato digital de alta resolución</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Plantilla editable incluida</h6>
-                        </li>
-                        <li class="hstack gap-3">
-                          <span
-                            class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
-                              icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Entrega en 7 días</h6>
+                          <h6 class="mb-0 fw-normal">Prioridad de entrega preferencial</h6>
                         </li>
                       </ul>
                     </div>
@@ -904,6 +922,11 @@
                       <iconify-icon icon="lucide:arrow-up-right"
                         class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
                     </a>
+                    <button class="btn btn-view-examples w-100 justify-content-center" data-plan="flyer-paquete-4">
+                      <span class="btn-text">Ver ejemplos</span>
+                      <iconify-icon icon="lucide:eye"
+                        class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -916,10 +939,10 @@
                         <h5 class="mb-0 fw-medium">Paquete Concierto</h5>
                       </div>
                       <div class="hstack gap-2">
-                        <h3 class="mb-0">$400k</h3>
+                        <h3 class="mb-0">$480k</h3>
                         <p class="mb-0">/evento</p>
                       </div>
-                      <p class="mb-0">Solución completa para eventos musicales y conciertos.</p>
+                      <p class="mb-0">Impacto visual total para grandes producciones y eventos masivos.</p>
                     </div>
                     <div class="pt-8 border-top d-flex flex-column gap-6">
                       <h6 class="mb-0 fw-normal">Qué incluye:</h6>
@@ -928,31 +951,55 @@
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Diseño de flyer principal</h6>
+                          <h6 class="mb-0 fw-normal">Flyer principal (Feed + Stories)</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Variaciones para redes sociales</h6>
+                          <h6 class="mb-0 fw-normal">Flyer animado tipo Reel/Story</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Stories y posts animados</h6>
+                          <h6 class="mb-0 fw-normal">Video Reel dinámico con cuña profesional</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Banner para web</h6>
+                          <h6 class="mb-0 fw-normal">Diseño de mapa y ubicación del evento</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Soporte prioritario</h6>
+                          <h6 class="mb-0 fw-normal">Flyer de lista de precios y boletería</h6>
+                        </li>
+                        <li class="hstack gap-3">
+                          <span
+                            class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
+                              icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                          <h6 class="mb-0 fw-normal">Flyer informativo de cuentas y métodos de pago</h6>
+                        </li>
+                        <li class="hstack gap-3">
+                          <span
+                            class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
+                              icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                          <h6 class="mb-0 fw-normal">Flyer de prohibiciones y normas de seguridad</h6>
+                        </li>
+                        <li class="hstack gap-3">
+                          <span
+                            class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
+                              icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                          <h6 class="mb-0 fw-normal">Diseños informativos (Temáticas/Sponsors)</h6>
+                        </li>
+                        <li class="hstack gap-3">
+                          <span
+                            class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
+                              icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                          <h6 class="mb-0 fw-normal">Soporte y gestión de cambios prioritaria</h6>
                         </li>
                       </ul>
                     </div>
@@ -961,6 +1008,11 @@
                       <iconify-icon icon="lucide:arrow-up-right"
                         class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
                     </a>
+                    <button class="btn btn-view-examples w-100 justify-content-center" data-plan="flyer-concierto">
+                      <span class="btn-text">Ver ejemplos</span>
+                      <iconify-icon icon="lucide:eye"
+                        class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -978,7 +1030,7 @@
                       </div>
                       <div class="hstack gap-2">
                         <h3 class="mb-0">$100k</h3>
-                        <p class="mb-0">/animación</p>
+                        <p class="mb-0">/proyecto</p>
                       </div>
                       <p class="mb-0">Animación básica efectiva para destacar.</p>
                     </div>
@@ -1001,7 +1053,7 @@
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Formato MP4 y GIF</h6>
+                          <h6 class="mb-0 fw-normal">Formato MP4</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
@@ -1016,6 +1068,11 @@
                       <iconify-icon icon="lucide:arrow-up-right"
                         class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
                     </a>
+                    <button class="btn btn-view-examples w-100 justify-content-center" data-plan="animado-basico">
+                      <span class="btn-text">Ver ejemplos</span>
+                      <iconify-icon icon="lucide:eye"
+                        class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1031,9 +1088,9 @@
                       </div>
                       <div class="hstack gap-2">
                         <h3 class="mb-0">$150k</h3>
-                        <p class="mb-0">/paquete</p>
+                        <p class="mb-0">/proyecto</p>
                       </div>
-                      <p class="mb-0">Animaciones avanzadas con efectos detallados.</p>
+                      <p class="mb-0">Producción audiovisual de alto nivel con efectos cinemáticos.</p>
                     </div>
                     <div class="pt-8 border-top d-flex flex-column gap-6">
                       <h6 class="mb-0 fw-normal">Qué incluye:</h6>
@@ -1042,25 +1099,31 @@
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">3 flyers animados</h6>
+                          <h6 class="mb-0 fw-normal">1 flyer animado (hasta 30 seg)</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Efectos de motion graphics</h6>
+                          <h6 class="mb-0 fw-normal">Efectos de motion graphics avanzados</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Música de fondo incluida</h6>
+                          <h6 class="mb-0 fw-normal">Música de fondo sincronizada</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Versiones para Stories e IG</h6>
+                          <h6 class="mb-0 fw-normal">Versiones optimizadas para Stories</h6>
+                        </li>
+                        <li class="hstack gap-3">
+                          <span
+                            class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
+                              icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                          <h6 class="mb-0 fw-normal">Formato MP4 de alta calidad</h6>
                         </li>
                       </ul>
                     </div>
@@ -1069,6 +1132,11 @@
                       <iconify-icon icon="lucide:arrow-up-right"
                         class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
                     </a>
+                    <button class="btn btn-view-examples w-100 justify-content-center" data-plan="animado-profesional">
+                      <span class="btn-text">Ver ejemplos</span>
+                      <iconify-icon icon="lucide:eye"
+                        class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1082,9 +1150,9 @@
                       </div>
                       <div class="hstack gap-2">
                         <h3 class="mb-0">$200k</h3>
-                        <p class="mb-0">/campaña</p>
+                        <p class="mb-0">/proyecto</p>
                       </div>
-                      <p class="mb-0">Incluye locución profesional (cuña) y motion graphics.</p>
+                      <p class="mb-0">Experiencia audiovisual inmersiva con locución profesional.</p>
                     </div>
                     <div class="pt-8 border-top d-flex flex-column gap-6">
                       <h6 class="mb-0 fw-normal">Qué incluye:</h6>
@@ -1093,25 +1161,31 @@
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">5+ flyers animados</h6>
+                          <h6 class="mb-0 fw-normal">Video Reel profesional (15 seg)</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Motion graphics avanzado</h6>
+                          <h6 class="mb-0 fw-normal">Cuña profesional (Voz en off) MP3</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Diseño de sonido personalizado</h6>
+                          <h6 class="mb-0 fw-normal">Efectos de motion graphics de alta gama</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Adaptación a todas las plataformas</h6>
+                          <h6 class="mb-0 fw-normal">Música y efectos de sonido incluidos</h6>
+                        </li>
+                        <li class="hstack gap-3">
+                          <span
+                            class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
+                              icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                          <h6 class="mb-0 fw-normal">Optimizado para Instagram/TikTok Stories</h6>
                         </li>
                       </ul>
                     </div>
@@ -1120,6 +1194,11 @@
                       <iconify-icon icon="lucide:arrow-up-right"
                         class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
                     </a>
+                    <button class="btn btn-view-examples w-100 justify-content-center" data-plan="animado-premium">
+                      <span class="btn-text">Ver ejemplos</span>
+                      <iconify-icon icon="lucide:eye"
+                        class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1175,6 +1254,11 @@
                       <iconify-icon icon="lucide:arrow-up-right"
                         class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
                     </a>
+                    <button class="btn btn-view-examples w-100 justify-content-center" data-plan="diseno-marca-bronce">
+                      <span class="btn-text">Ver ejemplos</span>
+                      <iconify-icon icon="lucide:eye"
+                        class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1228,6 +1312,11 @@
                       <iconify-icon icon="lucide:arrow-up-right"
                         class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
                     </a>
+                    <button class="btn btn-view-examples w-100 justify-content-center" data-plan="diseno-marca-plata">
+                      <span class="btn-text">Ver ejemplos</span>
+                      <iconify-icon icon="lucide:eye"
+                        class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1279,6 +1368,11 @@
                       <iconify-icon icon="lucide:arrow-up-right"
                         class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
                     </a>
+                    <button class="btn btn-view-examples w-100 justify-content-center" data-plan="diseno-marca-oro">
+                      <span class="btn-text">Ver ejemplos</span>
+                      <iconify-icon icon="lucide:eye"
+                        class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1292,13 +1386,13 @@
                   <div class="card-body p-7 p-xxl-5 d-flex flex-column gap-8">
                     <div class="d-flex flex-column gap-6">
                       <div class="hstack gap-3">
-                        <h5 class="mb-0 fw-medium">Starter</h5>
+                        <h5 class="mb-0 fw-medium">Iniciante</h5>
                       </div>
                       <div class="hstack gap-2">
                         <h3 class="mb-0">$60k</h3>
-                        <p class="mb-0">/mes</p>
+                        <p class="mb-0">/paquete</p>
                       </div>
-                      <p class="mb-0">Carrusel de 3 imágenes para tu feed.</p>
+                      <p class="mb-0">Presencia profesional básica para tu marca personal o negocio.</p>
                     </div>
                     <div class="pt-8 border-top d-flex flex-column gap-6">
                       <h6 class="mb-0 fw-normal">Qué incluye:</h6>
@@ -1307,25 +1401,25 @@
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">8 posts diseñados</h6>
+                          <h6 class="mb-0 fw-normal">1 carrusel estratégico</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">4 stories</h6>
+                          <h6 class="mb-0 fw-normal">2 diseños de Historias activas</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Plantillas editables</h6>
+                          <h6 class="mb-0 fw-normal">Diseño optimizado para feed</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Entrega semanal</h6>
+                          <h6 class="mb-0 fw-normal">Entrega de archivos en alta calidad</h6>
                         </li>
                       </ul>
                     </div>
@@ -1334,6 +1428,12 @@
                       <iconify-icon icon="lucide:arrow-up-right"
                         class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
                     </a>
+                    <button class="btn btn-view-examples w-100 justify-content-center"
+                      data-plan="social-media-iniciante">
+                      <span class="btn-text">Ver ejemplos</span>
+                      <iconify-icon icon="lucide:eye"
+                        class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1343,15 +1443,13 @@
                   <div class="card-body p-7 p-xxl-5 d-flex flex-column gap-8">
                     <div class="d-flex flex-column gap-6">
                       <div class="hstack gap-3">
-                        <h5 class="mb-0 fw-medium">Growth</h5>
-                        <span class="badge text-bg-dark hstack gap-2"><iconify-icon icon="lucide:flame"
-                            class="fs-5"></iconify-icon>Popular</span>
+                        <h5 class="mb-0 fw-medium">Intermedio</h5>
                       </div>
                       <div class="hstack gap-2">
-                        <h3 class="mb-0">$100k</h3>
-                        <p class="mb-0">/mes</p>
+                        <h3 class="mb-0">$200k</h3>
+                        <p class="mb-0">/paquete</p>
                       </div>
-                      <p class="mb-0">Carrusel 3 img + 2 piezas gráficas adicionales.</p>
+                      <p class="mb-0">Aumenta tu impacto visual con contenido variado y profesional.</p>
                     </div>
                     <div class="pt-8 border-top d-flex flex-column gap-6">
                       <h6 class="mb-0 fw-normal">Qué incluye:</h6>
@@ -1360,25 +1458,31 @@
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">16 posts diseñados</h6>
+                          <h6 class="mb-0 fw-normal">2 carruseles estratégicos (3 img c/u)</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">8 stories</h6>
+                          <h6 class="mb-0 fw-normal">2 piezas gráficas adicionales</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">4 reels/videos cortos</h6>
+                          <h6 class="mb-0 fw-normal">3 diseños para Historias</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Calendario de contenido</h6>
+                          <h6 class="mb-0 fw-normal">Flujo de trabajo con prioridad media</h6>
+                        </li>
+                        <li class="hstack gap-3">
+                          <span
+                            class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
+                              icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                          <h6 class="mb-0 fw-normal">Entrega de archivos editables (PSD)</h6>
                         </li>
                       </ul>
                     </div>
@@ -1387,6 +1491,12 @@
                       <iconify-icon icon="lucide:arrow-up-right"
                         class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
                     </a>
+                    <button class="btn btn-view-examples w-100 justify-content-center"
+                      data-plan="social-media-intermedio">
+                      <span class="btn-text">Ver ejemplos</span>
+                      <iconify-icon icon="lucide:eye"
+                        class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1396,40 +1506,42 @@
                   <div class="card-body p-7 p-xxl-5 d-flex flex-column gap-8">
                     <div class="d-flex flex-column gap-6">
                       <div class="hstack gap-3">
-                        <h5 class="mb-0 fw-medium">Pro</h5>
+                        <h5 class="mb-0 fw-medium">Recurrente Mensual</h5>
+                        <span class="badge text-bg-dark hstack gap-2"><iconify-icon icon="lucide:briefcase"
+                            class="fs-5"></iconify-icon>Socio Estratégico</span>
                       </div>
                       <div class="hstack gap-2">
-                        <h3 class="mb-0">$200k</h3>
+                        <h3 class="mb-0">$350k</h3>
                         <p class="mb-0">/mes</p>
                       </div>
-                      <p class="mb-0">2 carruseles + 4 piezas gráficas profesionales.</p>
+                      <p class="mb-0">Tu equipo de diseño dedicado para un crecimiento constante.</p>
                     </div>
                     <div class="pt-8 border-top d-flex flex-column gap-6">
-                      <h6 class="mb-0 fw-normal">Qué incluye:</h6>
+                      <h6 class="mb-0 fw-normal">Frecuencia Semanal:</h6>
                       <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">24 posts diseñados</h6>
+                          <h6 class="mb-0 fw-normal text-primary fw-bold">2 carruseles estratégicos semanales</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">12 stories</h6>
+                          <h6 class="mb-0 fw-normal">2 piezas gráficas adicionales semanales</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
                               icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">8 reels/videos</h6>
+                          <h6 class="mb-0 fw-normal">1 historia estratégica semanal</h6>
                         </li>
                         <li class="hstack gap-3">
                           <span
                             class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon
-                              icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
-                          <h6 class="mb-0 fw-normal">Estrategia de contenido</h6>
+                              icon="lucide:star" class="fs-6 text-dark"></iconify-icon></span>
+                          <h6 class="mb-0 fw-normal">Máxima prioridad en agenda</h6>
                         </li>
                       </ul>
                     </div>
@@ -1438,6 +1550,12 @@
                       <iconify-icon icon="lucide:arrow-up-right"
                         class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
                     </a>
+                    <button class="btn btn-view-examples w-100 justify-content-center"
+                      data-plan="social-media-recurrente">
+                      <span class="btn-text">Ver ejemplos</span>
+                      <iconify-icon icon="lucide:eye"
+                        class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1449,7 +1567,7 @@
 
     <!--  Recent news Section -->
     <!--  Recent Work Section -->
-    <section class="Recent-news bg-light-gray py-5 py-lg-11 py-xl-12">
+    <section class="Recent-news bg-light-gray pt-0 pb-5 pb-lg-11 pb-xl-12">
       <div class="container">
         <div class="d-flex flex-column gap-5 gap-xl-11">
           <div class="row gap-7 gap-xl-0">
@@ -1478,47 +1596,45 @@
             <div class="col-xl-6 mb-7 mb-xl-0">
               <div class="resources d-flex flex-column gap-6" data-aos="fade-up" data-aos-delay="100"
                 data-aos-duration="1000">
-                <a href="projects-detail.html"
+                <a href="projects-detail.html?project=diseno-marca"
                   class="resources-img resources-img-first position-relative overflow-hidden d-block">
-                  <img src="../assets/images/resources/resources-1.jpg" alt="resources" class="img-fluid">
+                  <img src="../assets/images/flyers/identidaad2.jpg" alt="resources" class="img-fluid">
                 </a>
                 <div class="resources-details">
-                  <p class="mb-0">Motion Graphics</p>
-                  <h4 class="mb-0">Campaña de Verano X</h4>
+                  <p class="mb-0">Identidad Visual</p>
+                  <h4 class="mb-0">Diseño de marca deportiva</h4>
                 </div>
               </div>
             </div>
             <div class="col-md-6 col-xl-3 mb-7 mb-xl-0">
               <div class="resources d-flex flex-column gap-6" data-aos="fade-up" data-aos-delay="200"
                 data-aos-duration="1000">
-                <a href="projects-detail.html" class="resources-img position-relative overflow-hidden d-block">
-                  <img src="../assets/images/resources/resources-2.jpg" alt="resources" class="img-fluid">
+                <a href="projects-detail.html?project=flyer-eventos"
+                  class="resources-img position-relative overflow-hidden d-block">
+                  <img src="../assets/images/flyers/flyerUrbano.jpeg" alt="resources" class="img-fluid">
                 </a>
                 <div class="resources-details">
-                  <p class="mb-0">Social Media</p>
-                  <h4 class="mb-0">Rediseño Brand Y</h4>
+                  <p class="mb-0">Event Flyer</p>
+                  <h4 class="mb-0">Concierto de la getto</h4>
                 </div>
               </div>
             </div>
             <div class="col-md-6 col-xl-3 mb-7 mb-xl-0">
               <div class="resources d-flex flex-column gap-6" data-aos="fade-up" data-aos-delay="300"
                 data-aos-duration="1000">
-                <a href="projects-detail.html" class="resources-img position-relative overflow-hidden d-block">
-                  <img src="../assets/images/resources/resources-3.jpg" alt="resources" class="img-fluid">
+                <a href="projects-detail.html?project=flyer-eventos"
+                  class="resources-img position-relative overflow-hidden d-block">
+                  <img src="../assets/images/flyers/conciertoLanzamiento.png" alt="resources" class="img-fluid">
                 </a>
                 <div class="resources-details">
-                  <p class="mb-0">Event Design</p>
-                  <h4 class="mb-0">Flyer Festival Z</h4>
+                  <p class="mb-0">Event Flyer</p>
+                  <h4 class="mb-0">Concierto de aniversario</h4>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="row justify-content-center pt-8">
-          <a href="projects.html" class="btn btn-outline-dark w-fit">
-            <span class="btn-text">Ver más trabajos</span>
-          </a>
-        </div>
+
       </div>
     </section>
 
@@ -1554,8 +1670,8 @@
                   creemos algo increíble! Cuéntame sobre tu proyecto, soy todo oídos.</p>
                 <div class="d-flex flex-column gap-4" data-aos="fade-right" data-aos-delay="200"
                   data-aos-duration="1000">
-                  <a href="https://www.instagram.com/" target="_blank"
-                    class="btn btn-social w-100 justify-content-start p-4">
+                  <a href="https://www.instagram.com/motion_dreams.co/" target="_blank"
+                    class="btn btn-social w-100 justify-content-start">
                     <span class="btn-text d-flex align-items-center gap-3 w-100">
                       <iconify-icon icon="lucide:instagram" class="fs-4 text-white"></iconify-icon>
                       <span class="fs-5 text-white">Instagram</span>
@@ -1563,7 +1679,8 @@
                     <iconify-icon icon="lucide:arrow-up-right"
                       class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
                   </a>
-                  <a href="https://wa.me/" target="_blank" class="btn btn-social w-100 justify-content-start p-4">
+                  <a href="https://wa.me/573128555441" target="_blank"
+                    class="btn btn-social w-100 justify-content-start">
                     <span class="btn-text d-flex align-items-center gap-3 w-100">
                       <iconify-icon icon="lucide:message-circle" class="fs-4 text-white"></iconify-icon>
                       <span class="fs-5 text-white">WhatsApp</span>
@@ -1571,7 +1688,7 @@
                     <iconify-icon icon="lucide:arrow-up-right"
                       class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
                   </a>
-                  <a href="mailto:hola@motiondreams.com" class="btn btn-social w-100 justify-content-start p-4">
+                  <a href="mailto:creatik.motion@gmail.com" class="btn btn-social w-100 justify-content-start">
                     <span class="btn-text d-flex align-items-center gap-3 w-100">
                       <iconify-icon icon="lucide:mail" class="fs-4 text-white"></iconify-icon>
                       <span class="fs-5 text-white">Email</span>
@@ -1620,9 +1737,9 @@
           <div class="d-flex flex-column gap-8 pe-xl-5">
             <h2 class="mb-0 text-white">Motion Dreams</h2>
             <div class="d-flex flex-column gap-2">
-              <a href="mailto:hola@motiondreams.com" class="link-hover hstack gap-3 text-white fs-5">
+              <a href="mailto:creatik.motion@gmail.com" class="link-hover hstack gap-3 text-white fs-5">
                 <iconify-icon icon="lucide:mail" class="fs-7 text-primary"></iconify-icon>
-                hola@motiondreams.com
+                creatik.motion@gmail.com
               </a>
             </div>
           </div>
@@ -1637,8 +1754,10 @@
         </div>
         <div class="col-md-4 col-xl-2 mb-8 mb-xl-0">
           <ul class="footer-menu list-unstyled mb-0 d-flex flex-column gap-2">
-            <li><a class="link-hover fs-5 text-white" href="https://www.instagram.com/">Instagram</a></li>
-            <li><a class="link-hover fs-5 text-white" href="#">Behance</a></li>
+            <li><a class="link-hover fs-5 text-white" href="https://www.instagram.com/motion_dreams.co/">Instagram</a>
+            </li>
+            <li><a class="link-hover fs-5 text-white"
+                href="https://www.behance.net/gallery/168997485/Diseno-de-Flyers">Behance</a></li>
           </ul>
         </div>
         <div class="col-md-4 col-xl-3 mb-8 mb-xl-0">
@@ -1656,6 +1775,14 @@
     </button>
   </div>
 
+
+  <!-- Lightbox / Examples Modal -->
+  <div id="custom-modal" class="custom-modal-overlay">
+    <span class="modal-close"><iconify-icon icon="lucide:x"></iconify-icon></span>
+    <div class="modal-content-wrapper">
+      <!-- Content will be injected via JS -->
+    </div>
+  </div>
 
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Detalles del Proyecto - Motion Dreams</title>
+  <title>Motion Dreams</title>
   <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.svg" />
   <link rel="stylesheet" href="../assets/libs/owl.carousel/dist/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="../assets/libs/aos-master/dist/aos.css">
@@ -14,9 +14,12 @@
       position: relative;
       overflow: hidden;
       border-radius: 12px;
-      margin-bottom: 24px;
+      margin-bottom: 10px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
+      cursor: pointer;
+      aspect-ratio: 1080 / 1920;
+      background-color: #000;
     }
 
     .gallery-item-wrapper:hover {
@@ -25,14 +28,18 @@
 
     .gallery-img {
       width: 100%;
-      aspect-ratio: 1080 / 1920;
+      height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    /* Square aspect ratio for Social Media and Brand Design */
-    .square-img .gallery-img {
+    /* Ratio overrides on the wrapper */
+    .square-img .gallery-item-wrapper {
       aspect-ratio: 1 / 1;
+    }
+
+    .four-three-img .gallery-item-wrapper {
+      aspect-ratio: 1785 / 1400;
     }
 
     /* Owl Carousel Overrides */
@@ -79,7 +86,7 @@
       font-size: 2rem;
       font-weight: 700;
       margin-bottom: 2rem;
-      border-left: 5px solid #FF0055;
+      border-left: 5px solid #F20F0F;
       padding-left: 1.5rem;
     }
 
@@ -92,17 +99,25 @@
       display: flex !important;
     }
 
+    .toggle-details.active iconify-icon {
+      transform: rotate(180deg);
+    }
+
+    .pricing-buttons-container {
+      margin-top: auto;
+    }
+
     #productTypeDropdown {
       border: 2px solid #dee2e6;
       transition: all 0.3s ease;
     }
 
     #productTypeDropdown:hover {
-      border-color: #FF0055;
+      border-color: #F20F0F;
     }
 
     .product-type-option.active {
-      background-color: #FF0055 !important;
+      background-color: #F20F0F !important;
       color: white !important;
     }
 
@@ -143,13 +158,49 @@
       z-index: 2;
     }
 
-    .pricing-dark-pattern h2,
-    .pricing-dark-pattern p {
+    .pricing-dark-pattern .text-center h2,
+    .pricing-dark-pattern .text-center p {
       color: white !important;
     }
 
     .white-spin {
       filter: brightness(0) invert(1);
+    }
+
+    /* Video Gallery Styles */
+    .video-wrapper {
+      position: relative;
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      z-index: 2;
+    }
+
+    .gallery-item-wrapper:hover .video-overlay {
+      background: rgba(242, 15, 15, 0.8);
+      transform: translate(-50%, -50%) scale(1.1);
+      border-color: white;
+    }
+
+    .lightbox-video {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 8px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     }
   </style>
 </head>
@@ -212,7 +263,7 @@
                   </ul>
                 </div>
                 <div>
-                  <a class="fs-8 text-dark fw-bold" href="mailto:hola@motiondreams.com">hola@motiondreams.com</a>
+                  <a class="fs-8 text-dark fw-bold" href="mailto:creatik.motion@gmail.com">creatik.motion@gmail.com</a>
                 </div>
               </div>
             </ul>
@@ -226,7 +277,7 @@
     <!-- Hero Section -->
     <section id="projectHero"
       class="banner-section banner-inner-section position-relative overflow-hidden d-flex align-items-end"
-      style="background-image: url('../assets/images/backgrounds/projects-detail-banner.jpg');">
+      style="background-image: url('../assets/images/flyers/bannerProyectos.jpg');">
       <div class="container">
         <div class="d-flex flex-column gap-4 pb-5 pb-xl-10 position-relative z-1">
           <div class="row align-items-center">
@@ -304,11 +355,24 @@
       <div class="container text-center">
         <h2 class="text-white mb-5">¿Listos para trabajar juntos?</h2>
         <a href="contact.html" class="btn btn-primary btn-lg">Contactar ahora</a>
+        <div class="d-flex justify-content-center gap-4 mt-5">
+          <a class="link-hover fs-5 text-white" href="https://www.instagram.com/motion_dreams.co/">Instagram</a>
+          <a class="link-hover fs-5 text-white"
+            href="https://www.behance.net/gallery/168997485/Diseno-de-Flyers">Behance</a>
+        </div>
         <div class="mt-5 pt-5 border-top border-secondary">
           <p class="text-white text-opacity-50">© Motion Dreams 2025</p>
         </div>
       </div>
     </footer>
+  </div>
+
+  <!-- Lightbox / Examples Modal -->
+  <div id="custom-modal" class="custom-modal-overlay">
+    <span class="modal-close"><iconify-icon icon="lucide:x"></iconify-icon></span>
+    <div class="modal-content-wrapper masonry-grid-container">
+      <!-- Content will be injected via JS -->
+    </div>
   </div>
 
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
@@ -324,54 +388,158 @@
         title: 'Flyer para Eventos',
         subtitle: 'Diseño profesional para fiestas, conciertos y momentos memorables.',
         description: 'Diseños impactantes para todo tipo de eventos: corporativos, sociales, conciertos y más. Nos enfocamos en captar la atención de tu audiencia desde el primer segundo.',
-        banner: '../assets/images/flyers/flyerconcierto.jpg',
+        banner: '../assets/images/flyers/bannerEventos.jpg',
         gallery: [
-          { title: 'Conciertos y Festivales', items: ['../assets/images/flyers/flyerconcierto.jpg', '../assets/images/flyers/flyerconcierto2.jpg', '../assets/images/flyers/flyerconcierto3.jpeg', '../assets/images/flyers/flyer concierto4.jpeg', '../assets/images/flyers/flyer concierto5.jpeg'] },
+          { title: 'Conciertos y Festivales', items: ['../assets/images/flyers/flyerconcierto.jpg', '../assets/images/flyers/flyerconcierto2.jpg', '../assets/images/flyers/flyerconcierto3.jpeg', '../assets/images/flyers/flyer concierto4.jpeg', '../assets/images/flyers/flyer concierto5.jpeg', '../assets/images/flyers/conciertoLanzamiento.png'] },
           { title: 'Flyers Urbanos', items: ['../assets/images/flyers/flyerUrbano.jpeg', '../assets/images/flyers/flyerUrbano2.jpeg', '../assets/images/flyers/flyerUrbano3.jpeg', '../assets/images/flyers/flyerUrbano4.jpeg', '../assets/images/flyers/flyerUrbano5.jpg'] },
           { title: 'Flyers Night clubs', items: ['../assets/images/flyers/nigth1.jpeg', '../assets/images/flyers/nigth2.jpeg', '../assets/images/flyers/night3.jpeg', '../assets/images/flyers/nigth4.jpeg', '../assets/images/flyers/night5.jpeg'] },
           { title: 'Flyer de Cantina', items: ['../assets/images/flyers/cantina1.jpeg', '../assets/images/flyers/cantina2.jpeg', '../assets/images/flyers/cantina3.jpeg', '../assets/images/flyers/cantina4.jpeg', '../assets/images/flyers/cantina5.jpeg'] }
         ],
         pricing: `
-          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
-            <div class="card w-100 shadow-sm border-0">
-              <div class="card-body p-5 d-flex flex-column gap-6">
-                <div><h5 class="mb-2 fw-medium">Individual</h5><h3 class="mb-0 text-primary">$60k</h3><p class="mb-0">1 flyer personalizado</p></div>
-                <div class="pt-4 border-top">
+          <!-- Individual -->
+          <div class="col-lg-6 col-xl-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+              <div class="card-body p-7 p-xxl-5 d-flex flex-column gap-8">
+                <div class="d-flex flex-column gap-6">
+                  <div class="hstack gap-3">
+                    <h5 class="mb-0 fw-medium">Individual</h5>
+                  </div>
+                  <div class="hstack gap-2">
+                    <h3 class="mb-0">$60k</h3>
+                    <p class="mb-0">/flyer</p>
+                  </div>
+                  <p class="mb-0">Perfecto para eventos únicos o promociones específicas.</p>
+                </div>
+                <div class="pt-8 border-top d-flex flex-column gap-6">
+                  <h6 class="mb-0 fw-normal">Qué incluye:</h6>
                   <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
-                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">Diseño de alta calidad</h6></li>
-                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">2 Rondas de cambios</h6></li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">1 diseño de flyer personalizado</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Hasta 2 revisiones</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Formato digital optimizado</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Entrega en 48 horas</h6>
+                    </li>
                   </ul>
                 </div>
-                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+                <a href="contact.html" class="btn w-100 justify-content-center">
+                  <span class="btn-text">Elegir plan</span>
+                  <iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                </a>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
-            <div class="card w-100 shadow-sm border-0">
-              <div class="card-body p-5 d-flex flex-column gap-6">
-                <div><h5 class="mb-2 fw-medium">Pack x 4</h5><h3 class="mb-0 text-primary">$200k</h3><p class="mb-0">Ideal para promoción continua</p></div>
-                <div class="pt-4 border-top">
+          <!-- Paquete de 4 -->
+          <div class="col-lg-6 col-xl-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+              <div class="card-body p-7 p-xxl-5 d-flex flex-column gap-8">
+                <div class="d-flex flex-column gap-6">
+                  <div class="hstack gap-3">
+                    <h5 class="mb-0 fw-medium">Paquete de 4</h5>
+                    <span class="badge text-bg-dark hstack gap-2"><iconify-icon icon="lucide:flame" class="fs-5"></iconify-icon>Popular</span>
+                  </div>
+                  <div class="hstack gap-2">
+                    <h3 class="mb-0">$200k</h3>
+                    <p class="mb-0">/paquete</p>
+                  </div>
+                  <p class="mb-0">Gestión estratégica para series de eventos o lanzamientos.</p>
+                </div>
+                <div class="pt-8 border-top d-flex flex-column gap-6">
+                  <h6 class="mb-0 fw-normal">Qué incluye:</h6>
                   <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
-                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">4 Flyers distintos</h6></li>
-                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">Ahorro de $40k</h6></li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">4 diseños de flyers personalizados</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Hasta 2 revisiones por diseño</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Exportación en formato digital de alta resolución</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Prioridad de entrega preferencial</h6>
+                    </li>
                   </ul>
                 </div>
-                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+                <a href="contact.html" class="btn w-100 justify-content-center">
+                  <span class="btn-text">Elegir plan</span>
+                  <iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                </a>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
-            <div class="card w-100 shadow-sm border-0 bg-primary-light">
-              <div class="card-body p-5 d-flex flex-column gap-6">
-                <div><h5 class="mb-2 fw-medium">Pack Conciertos</h5><h3 class="mb-0 text-primary">$400k</h3><p class="mb-0">Kit completo para festivales</p></div>
-                <div class="pt-4 border-top">
+          <!-- Paquete Concierto -->
+          <div class="col-lg-6 col-xl-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+              <div class="card-body p-7 p-xxl-5 d-flex flex-column gap-8">
+                <div class="d-flex flex-column gap-6">
+                  <div class="hstack gap-3">
+                    <h5 class="mb-0 fw-medium">Paquete Concierto</h5>
+                  </div>
+                  <div class="hstack gap-2">
+                    <h3 class="mb-0">$480k</h3>
+                    <p class="mb-0">/evento</p>
+                  </div>
+                  <p class="mb-0">Impacto visual total para grandes producciones y eventos masivos.</p>
+                </div>
+                <div class="pt-8 border-top d-flex flex-column gap-6">
+                  <h6 class="mb-0 fw-normal">Qué incluye:</h6>
                   <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
-                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">1 Flyer Animado con cuña</h6></li>
-                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">1 Flyer Animado estándar</h6></li>
-                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">Flyers: Precios, Mapa, Oficial, Invitados e Informativo</h6></li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Flyer principal (Feed + Stories)</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Flyer animado tipo Reel/Story</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Video Reel dinámico con cuña profesional</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Diseño de mapa y ubicación del evento</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Flyer de lista de precios y boletería</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Flyer informativo de cuentas y métodos de pago</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Flyer de prohibiciones y normas de seguridad</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Diseños informativos (Temáticas/Sponsors)</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Soporte y gestión de cambios prioritaria</h6>
+                    </li>
                   </ul>
                 </div>
-                <a href="contact.html" class="btn btn-primary w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+                <a href="contact.html" class="btn w-100 justify-content-center">
+                  <span class="btn-text">Elegir plan</span>
+                  <iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                </a>
               </div>
             </div>
           </div>
@@ -381,34 +549,157 @@
         title: 'Flyers',
         subtitle: 'Creatividad visual que potencia el mensaje de tu marca.',
         description: 'Diseño de flyers profesionales para cualquier necesidad comercial o personal. Calidad premium asegurada para impresión o plataformas digitales.',
-        banner: '../assets/images/flyers/flyerParty.png',
+        banner: '../assets/images/flyers/bannerFlyer2.jpg',
         gallery: [
           { title: 'Flyer Party', items: ['../assets/images/flyers/flyerParty.png', '../assets/images/flyers/flyerParty2.jpeg', '../assets/images/flyers/flyerParty3.jpeg', '../assets/images/flyers/flyerParty4.jpeg'] },
           { title: 'Flyer Deportivo', items: ['../assets/images/flyers/flyerDeportivo.jpeg', '../assets/images/flyers/flyerDeportivo2.jpeg', '../assets/images/flyers/flyerDeportivo3.jpeg', '../assets/images/flyers/flyerDeportivo4.jpeg'] },
-          { title: 'Flyer Personalizado', items: ['../assets/images/flyers/flyerpersonalizado1.jpeg', '../assets/images/flyers/flyerpersonalizado2.jpeg', '../assets/images/flyers/flyerParty.png', '../assets/images/flyers/flyerParty2.jpeg'] }
+          { title: 'Flyer Personalizado', items: ['../assets/images/flyers/flyerpersonalizado1.jpeg', '../assets/images/flyers/flyerpersonalizado2.jpeg', '../assets/images/flyers/empresa.jpg', '../assets/images/flyers/empresa2.jpg'] }
         ],
         pricing: `
-          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
-            <div class="card w-100 shadow-sm border-0">
-              <div class="card-body p-5 d-flex flex-column gap-6">
-                <div><h5 class="mb-2 fw-medium">Individual</h5><h3 class="mb-0 text-primary">$60k</h3><p class="mb-0">1 diseño premium</p></div>
-                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+          <!-- Individual -->
+          <div class="col-lg-6 col-xl-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+              <div class="card-body p-7 p-xxl-5 d-flex flex-column gap-8">
+                <div class="d-flex flex-column gap-6">
+                  <div class="hstack gap-3">
+                    <h5 class="mb-0 fw-medium">Individual</h5>
+                  </div>
+                  <div class="hstack gap-2">
+                    <h3 class="mb-0">$60k</h3>
+                    <p class="mb-0">/flyer</p>
+                  </div>
+                  <p class="mb-0">Perfecto para eventos únicos o promociones específicas.</p>
+                </div>
+                <div class="pt-8 border-top d-flex flex-column gap-6">
+                  <h6 class="mb-0 fw-normal">Qué incluye:</h6>
+                  <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">1 diseño de flyer personalizado</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Hasta 2 revisiones</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Formato digital optimizado</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Entrega en 48 horas</h6>
+                    </li>
+                  </ul>
+                </div>
+                <a href="contact.html" class="btn w-100 justify-content-center">
+                  <span class="btn-text">Elegir plan</span>
+                  <iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                </a>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
-            <div class="card w-100 shadow-sm border-0 bg-primary-light">
-              <div class="card-body p-5 d-flex flex-column gap-6">
-                <div><h5 class="mb-2 fw-medium">Pack x 4</h5><h3 class="mb-0 text-primary">$200k</h3><p class="mb-0">Ahorro garantizado</p></div>
-                <a href="contact.html" class="btn btn-primary w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+          <!-- Paquete de 4 -->
+          <div class="col-lg-6 col-xl-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+              <div class="card-body p-7 p-xxl-5 d-flex flex-column gap-8">
+                <div class="d-flex flex-column gap-6">
+                  <div class="hstack gap-3">
+                    <h5 class="mb-0 fw-medium">Paquete de 4</h5>
+                    <span class="badge text-bg-dark hstack gap-2"><iconify-icon icon="lucide:flame" class="fs-5"></iconify-icon>Popular</span>
+                  </div>
+                  <div class="hstack gap-2">
+                    <h3 class="mb-0">$200k</h3>
+                    <p class="mb-0">/paquete</p>
+                  </div>
+                  <p class="mb-0">Gestión estratégica para series de eventos o lanzamientos.</p>
+                </div>
+                <div class="pt-8 border-top d-flex flex-column gap-6">
+                  <h6 class="mb-0 fw-normal">Qué incluye:</h6>
+                  <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">4 diseños de flyers personalizados</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Hasta 2 revisiones por diseño</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Exportación en formato digital de alta resolución</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Prioridad de entrega preferencial</h6>
+                    </li>
+                  </ul>
+                </div>
+                <a href="contact.html" class="btn w-100 justify-content-center">
+                  <span class="btn-text">Elegir plan</span>
+                  <iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                </a>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
-            <div class="card w-100 shadow-sm border-0">
-              <div class="card-body p-5 d-flex flex-column gap-6">
-                <div><h5 class="mb-2 fw-medium">Prioritario</h5><h3 class="mb-0 text-primary">$80k</h3><p class="mb-0">Entrega en menos de 6 horas</p></div>
-                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+          <!-- Paquete Concierto -->
+          <div class="col-lg-6 col-xl-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+              <div class="card-body p-7 p-xxl-5 d-flex flex-column gap-8">
+                <div class="d-flex flex-column gap-6">
+                  <div class="hstack gap-3">
+                    <h5 class="mb-0 fw-medium">Paquete Concierto</h5>
+                  </div>
+                  <div class="hstack gap-2">
+                    <h3 class="mb-0">$480k</h3>
+                    <p class="mb-0">/evento</p>
+                  </div>
+                  <p class="mb-0">Impacto visual total para grandes producciones y eventos masivos.</p>
+                </div>
+                <div class="pt-8 border-top d-flex flex-column gap-6">
+                  <h6 class="mb-0 fw-normal">Qué incluye:</h6>
+                  <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Flyer principal (Feed + Stories)</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Flyer animado tipo Reel/Story</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Video Reel dinámico con cuña profesional</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Diseño de mapa y ubicación del evento</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Flyer de lista de precios y boletería</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Flyer informativo de cuentas y métodos de pago</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Flyer de prohibiciones y normas de seguridad</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Diseños informativos (Temáticas/Sponsors)</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Soporte y gestión de cambios prioritaria</h6>
+                    </li>
+                  </ul>
+                </div>
+                <a href="contact.html" class="btn w-100 justify-content-center">
+                  <span class="btn-text">Elegir plan</span>
+                  <iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                </a>
               </div>
             </div>
           </div>
@@ -418,34 +709,145 @@
         title: 'Flyers Animados',
         subtitle: 'Da vida a tus promociones con animaciones dinámicas e impactantes.',
         description: 'Lleva tus promociones al siguiente nivel con movimiento. Ideal para Instagram Stories, TikTok y publicidad digital.',
-        banner: '../assets/images/flyers/flyerParty2.jpeg',
+        banner: '../assets/images/flyers/bannerFlyerAnim.jpg',
         gallery: [
-          { title: 'Motion Eventos', items: ['../assets/images/flyers/flyerconcierto.jpg', '../assets/images/flyers/flyerconcierto2.jpg', '../assets/images/flyers/flyerconcierto3.jpeg', '../assets/images/flyers/flyer concierto4.jpeg'] },
-          { title: 'Motion Comercial', items: ['../assets/images/flyers/flyerUrbano.jpeg', '../assets/images/flyers/flyerUrbano2.jpeg', '../assets/images/flyers/flyerUrbano3.jpeg', '../assets/images/flyers/flyerUrbano4.jpeg'] },
-          { title: 'Motion Animación', items: ['../assets/images/flyers/nigth1.jpeg', '../assets/images/flyers/nigth2.jpeg', '../assets/images/flyers/night3.jpeg', '../assets/images/flyers/nigth4.jpeg'] }
+          { title: 'Motion Básico', items: ['../assets/images/flyers/motionBasic1.mp4', '../assets/images/flyers/motionBasic2.mp4', '../assets/images/flyers/motionBasic3.mp4', '../assets/images/flyers/motionBasic4.mp4'] },
+          { title: 'Motion Profesional', items: ['../assets/images/flyers/motionProfesional1.mp4', '../assets/images/flyers/motionProfesional2.mp4', '../assets/images/flyers/motionProfesional3.mp4', '../assets/images/flyers/motionProfesional4.mp4'] },
+          { title: 'Motion Premium+Cuña', items: ['../assets/images/flyers/motionPremium1.mp4', '../assets/images/flyers/motionPremium2.mp4', '../assets/images/flyers/motiomPremium3.mp4', '../assets/images/flyers/motionPremiun4.mp4', '../assets/images/flyers/motionPremiun5.mp4'] }
         ],
         pricing: `
-          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
-            <div class="card w-100 shadow-sm border-0">
-              <div class="card-body p-5 d-flex flex-column gap-6">
-                <div><h5 class="mb-2 fw-medium">Sencillo</h5><h3 class="mb-0 text-primary">$100k</h3><p class="mb-0">Animación básica efectiva</p></div>
-                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+          <!-- Básico -->
+          <div class="col-lg-6 col-xl-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body p-7 p-xxl-5 d-flex flex-column gap-8">
+                <div class="d-flex flex-column gap-6">
+                  <div class="hstack gap-3">
+                    <h5 class="mb-0 fw-medium">Básico</h5>
+                  </div>
+                  <div class="hstack gap-2">
+                    <h3 class="mb-0">$100k</h3>
+                    <p class="mb-0">/proyecto</p>
+                  </div>
+                  <p class="mb-0">Animación básica efectiva para destacar.</p>
+                </div>
+                <div class="pt-8 border-top d-flex flex-column gap-6">
+                  <h6 class="mb-0 fw-normal">Qué incluye:</h6>
+                  <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">1 flyer animado (5-10 seg)</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Animación básica de elementos</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Formato MP4</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Entrega en 3 días</h6>
+                    </li>
+                  </ul>
+                </div>
+                <a href="contact.html" class="btn w-100 justify-content-center">
+                  <span class="btn-text">Elegir plan</span>
+                  <iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                </a>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
-            <div class="card w-100 shadow-sm border-0 bg-primary-light">
-              <div class="card-body p-5 d-flex flex-column gap-6">
-                <div><h5 class="mb-2 fw-medium">Especial</h5><h3 class="mb-0 text-primary">$150k</h3><p class="mb-0">Animación avanzada y detallada</p></div>
-                <a href="contact.html" class="btn btn-primary w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+          <!-- Profesional -->
+          <div class="col-lg-6 col-xl-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body p-7 p-xxl-5 d-flex flex-column gap-8">
+                <div class="d-flex flex-column gap-6">
+                  <div class="hstack gap-3">
+                    <h5 class="mb-0 fw-medium">Profesional</h5>
+                    <span class="badge text-bg-dark hstack gap-2"><iconify-icon icon="lucide:flame" class="fs-5"></iconify-icon>Popular</span>
+                  </div>
+                  <div class="hstack gap-2">
+                    <h3 class="mb-0">$150k</h3>
+                    <p class="mb-0">/proyecto</p>
+                  </div>
+                  <p class="mb-0">Producción audiovisual de alto nivel con efectos cinemáticos.</p>
+                </div>
+                <div class="pt-8 border-top d-flex flex-column gap-6">
+                  <h6 class="mb-0 fw-normal">Qué incluye:</h6>
+                  <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">1 flyer animado (hasta 30 seg)</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Efectos de motion graphics avanzados</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Música de fondo sincronizada</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Versiones optimizadas para Stories</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Formato MP4 de alta calidad</h6>
+                    </li>
+                  </ul>
+                </div>
+                <a href="contact.html" class="btn w-100 justify-content-center">
+                  <span class="btn-text">Elegir plan</span>
+                  <iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                </a>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
-            <div class="card w-100 shadow-sm border-0">
-              <div class="card-body p-5 d-flex flex-column gap-6">
-                <div><h5 class="mb-2 fw-medium">Con Cuña</h5><h3 class="mb-0 text-primary">$200k</h3><p class="mb-0">Incluye locución profesional (cuña)</p></div>
-                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+          <!-- Premium -->
+          <div class="col-lg-6 col-xl-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body p-7 p-xxl-5 d-flex flex-column gap-8">
+                <div class="d-flex flex-column gap-6">
+                  <div class="hstack gap-3">
+                    <h5 class="mb-0 fw-medium">Premium</h5>
+                  </div>
+                  <div class="hstack gap-2">
+                    <h3 class="mb-0">$200k</h3>
+                    <p class="mb-0">/proyecto</p>
+                  </div>
+                  <p class="mb-0">Experiencia audiovisual inmersiva con locución profesional.</p>
+                </div>
+                <div class="pt-8 border-top d-flex flex-column gap-6">
+                  <h6 class="mb-0 fw-normal">Qué incluye:</h6>
+                  <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Video Reel profesional (15 seg)</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Cuña profesional (Voz en off) MP3</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Efectos de motion graphics de alta gama</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Música y efectos de sonido incluidos</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Optimizado para Instagram/TikTok Stories</h6>
+                    </li>
+                  </ul>
+                </div>
+                <a href="contact.html" class="btn w-100 justify-content-center">
+                  <span class="btn-text">Elegir plan</span>
+                  <iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                </a>
               </div>
             </div>
           </div>
@@ -455,34 +857,141 @@
         title: 'Social Media',
         subtitle: 'Contenido estratégico diseñado para conectar en todas tus redes.',
         description: 'Gestión visual estratégica para tus redes sociales. Posteos, historias y carruseles profesionales diseñados para impactar.',
-        banner: '../assets/images/flyers/social1.jpg',
+        banner: '../assets/images/flyers/bannerSocialMedia.jpg',
         gallery: [
           { title: 'Identidad Visual', items: ['../assets/images/flyers/social1.jpg', '../assets/images/flyers/social2.jpg', '../assets/images/flyers/social3.jpg', '../assets/images/flyers/social4.jpg', '../assets/images/flyers/social5.jpg'] },
-          { title: 'Contenido Diario', items: ['../assets/images/flyers/social2.jpg', '../assets/images/flyers/social3.jpg', '../assets/images/flyers/social4.jpg', '../assets/images/flyers/social5.jpg', '../assets/images/flyers/social1.jpg'] },
-          { title: 'Campañas Ads', items: ['../assets/images/flyers/social3.jpg', '../assets/images/flyers/social4.jpg', '../assets/images/flyers/social5.jpg', '../assets/images/flyers/social1.jpg', '../assets/images/flyers/social2.jpg'] }
+          { title: 'Carruseles', items: ['../assets/images/flyers/carrusel1.jpg', '../assets/images/flyers/carrusel2.jpg', '../assets/images/flyers/carrusel3.jpg', '../assets/images/flyers/carrusel4.jpg'] },
+          { title: 'Diseños individuales', items: ['../assets/images/flyers/individualSocial.png', '../assets/images/flyers/individualSocial2.png', '../assets/images/flyers/individualSocial3.jpg', '../assets/images/flyers/individualSocial4.jpg', '../assets/images/flyers/individualSocial5.jpg'] }
         ],
         pricing: `
-          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
-            <div class="card w-100 shadow-sm border-0">
-              <div class="card-body p-5 d-flex flex-column gap-6">
-                <div><h5 class="mb-2 fw-medium">Paquete 1</h5><h3 class="mb-0 text-primary">$60k</h3><p class="mb-0">Carrusel de 3 imágenes</p></div>
-                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+          <!-- Starter -->
+          <div class="col-lg-6 col-xl-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body p-7 p-xxl-5 d-flex flex-column gap-8">
+                <div class="d-flex flex-column gap-6">
+                  <div class="hstack gap-3">
+                    <h5 class="mb-0 fw-medium">Iniciante</h5>
+                  </div>
+                  <div class="hstack gap-2">
+                    <h3 class="mb-0">$60k</h3>
+                    <p class="mb-0">/paquete</p>
+                  </div>
+                  <p class="mb-0">Presencia profesional básica para tu marca personal o negocio.</p>
+                </div>
+                <div class="pt-8 border-top d-flex flex-column gap-6">
+                  <h6 class="mb-0 fw-normal">Qué incluye:</h6>
+                  <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">1 carrusel estratégico</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">2 diseños de Historias activas</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Diseño optimizado para feed</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Entrega de archivos en alta calidad</h6>
+                    </li>
+                  </ul>
+                </div>
+                <a href="contact.html" class="btn w-100 justify-content-center">
+                  <span class="btn-text">Elegir plan</span>
+                  <iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                </a>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
-            <div class="card w-100 shadow-sm border-0 bg-primary-light">
-              <div class="card-body p-5 d-flex flex-column gap-6">
-                <div><h5 class="mb-2 fw-medium">Paquete 2</h5><h3 class="mb-0 text-primary">$100k</h3><p class="mb-0">Carrusel 3 img + 2 Piezas gráficas</p></div>
-                <a href="contact.html" class="btn btn-primary w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+          <!-- Growth -->
+          <div class="col-lg-6 col-xl-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body p-7 p-xxl-5 d-flex flex-column gap-8">
+                <div class="d-flex flex-column gap-6">
+                  <div class="hstack gap-3">
+                    <h5 class="mb-0 fw-medium">Intermedio</h5>
+                  </div>
+                  <div class="hstack gap-2">
+                    <h3 class="mb-0">$200k</h3>
+                    <p class="mb-0">/paquete</p>
+                  </div>
+                  <p class="mb-0">Aumenta tu impacto visual con contenido variado y profesional.</p>
+                </div>
+                <div class="pt-8 border-top d-flex flex-column gap-6">
+                  <h6 class="mb-0 fw-normal">Qué incluye:</h6>
+                  <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">2 carruseles estratégicos (3 img c/u)</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">2 piezas gráficas adicionales</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">3 diseños para Historias</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Flujo de trabajo con prioridad media</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Entrega de archivos editables (PSD)</h6>
+                    </li>
+                  </ul>
+                </div>
+                <a href="contact.html" class="btn w-100 justify-content-center">
+                  <span class="btn-text">Elegir plan</span>
+                  <iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                </a>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
-            <div class="card w-100 shadow-sm border-0">
-              <div class="card-body p-5 d-flex flex-column gap-6">
-                <div><h5 class="mb-2 fw-medium">Paquete 3</h5><h3 class="mb-0 text-primary">$200k</h3><p class="mb-0">2 Carruseles 3 img + 4 Piezas gráficas</p></div>
-                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+          <!-- Pro -->
+          <div class="col-lg-6 col-xl-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body p-7 p-xxl-5 d-flex flex-column gap-8">
+                <div class="d-flex flex-column gap-6">
+                  <div class="hstack gap-3">
+                    <h5 class="mb-0 fw-medium">Recurrente Mensual</h5>
+                    <span class="badge text-bg-dark hstack gap-2"><iconify-icon icon="lucide:briefcase" class="fs-5"></iconify-icon>Socio Estratégico</span>
+                  </div>
+                  <div class="hstack gap-2">
+                    <h3 class="mb-0">$350k</h3>
+                    <p class="mb-0">/mes</p>
+                  </div>
+                  <p class="mb-0">Tu equipo de diseño dedicado para un crecimiento constante.</p>
+                </div>
+                <div class="pt-8 border-top d-flex flex-column gap-6">
+                  <h6 class="mb-0 fw-normal">Frecuencia Semanal:</h6>
+                  <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal text-primary fw-bold">2 carruseles estratégicos semanales</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">2 piezas gráficas adicionales semanales</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">1 historia estratégica semanal</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:star" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Máxima prioridad en agenda</h6>
+                    </li>
+                  </ul>
+                </div>
+                <a href="contact.html" class="btn w-100 justify-content-center">
+                  <span class="btn-text">Elegir plan</span>
+                  <iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                </a>
               </div>
             </div>
           </div>
@@ -492,47 +1001,137 @@
         title: 'Diseño de Marca',
         subtitle: 'Creamos identidades sólidas que proyectan la esencia de tu negocio.',
         description: 'Creamos la identidad visual que tu negocio merece. Desde el logo hasta el manual de marca completo, proyectamos confianza.',
-        banner: '../assets/images/flyers/logo1.png',
+        banner: '../assets/images/flyers/bannersocialMarca.jpg',
         gallery: [
           { title: 'Logotipos', items: ['../assets/images/flyers/logo1.png', '../assets/images/flyers/logo2.png', '../assets/images/flyers/logo3.png', '../assets/images/flyers/logo4.png', '../assets/images/flyers/agroLogo.png'] },
-          { title: 'Identidad Corporativa', items: ['../assets/images/flyers/logo2.png', '../assets/images/flyers/logo3.png', '../assets/images/flyers/logo4.png', '../assets/images/flyers/agroLogo.png', '../assets/images/flyers/logo1.png'] },
-          { title: 'Papelería Comercial', items: ['../assets/images/flyers/logo3.png', '../assets/images/flyers/logo4.png', '../assets/images/flyers/agroLogo.png', '../assets/images/flyers/logo1.png', '../assets/images/flyers/logo2.png'] }
+          { title: 'Identidad Corporativa', items: ['../assets/images/flyers/identidad.webp', '../assets/images/flyers/identidaad2.jpg', '../assets/images/flyers/identidad3.jpg', '../assets/images/flyers/identidad4.jpg'] },
+          { title: 'Papelería Comercial', items: ['../assets/images/flyers/papeleria1.jpg', '../assets/images/flyers/papeleria2.jpg', '../assets/images/flyers/papeleria3.jpg'] }
         ],
         pricing: `
-          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
-            <div class="card w-100 shadow-sm border-0">
-              <div class="card-body p-5 d-flex flex-column gap-6">
-                <div><h5 class="mb-2 fw-medium">Básico</h5><h3 class="mb-0 text-primary">$450k</h3><p class="mb-0">Kit esencia de marca</p></div>
-                <div class="pt-4 border-top">
+          <!-- Bronce -->
+          <div class="col-lg-6 col-xl-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body p-7 p-xxl-5 d-flex flex-column gap-8">
+                <div class="d-flex flex-column gap-6">
+                  <div class="hstack gap-3">
+                    <h5 class="mb-0 fw-medium">Bronce</h5>
+                  </div>
+                  <div class="hstack gap-2">
+                    <h3 class="mb-0">$450k</h3>
+                    <p class="mb-0">/proyecto</p>
+                  </div>
+                  <p class="mb-0">Logo, manual base, 1 producto y banner social.</p>
+                </div>
+                <div class="pt-8 border-top d-flex flex-column gap-6">
+                  <h6 class="mb-0 fw-normal">Qué incluye:</h6>
                   <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
-                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">Logo y Manual básico</h6></li>
-                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">Diseño gráfico de 1 producto</h6></li>
-                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">Banners para redes sociales</h6></li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Diseño de logotipo</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Paleta de colores</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Tipografías corporativas</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Manual de marca básico</h6>
+                    </li>
                   </ul>
                 </div>
-                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+                <a href="contact.html" class="btn w-100 justify-content-center">
+                  <span class="btn-text">Elegir plan</span>
+                  <iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                </a>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
-            <div class="card w-100 shadow-sm border-0 bg-primary-light">
-              <div class="card-body p-5 d-flex flex-column gap-6">
-                <div><h5 class="mb-2 fw-medium">Premium</h5><h3 class="mb-0 text-primary">$850k</h3><p class="mb-0">Identidad corporativa profunda</p></div>
-                <div class="pt-4 border-top">
+          <!-- Plata -->
+          <div class="col-lg-6 col-xl-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body p-7 p-xxl-5 d-flex flex-column gap-8">
+                <div class="d-flex flex-column gap-6">
+                  <div class="hstack gap-3">
+                    <h5 class="mb-0 fw-medium">Plata</h5>
+                    <span class="badge text-bg-dark hstack gap-2"><iconify-icon icon="lucide:flame" class="fs-5"></iconify-icon>Popular</span>
+                  </div>
+                  <div class="hstack gap-2">
+                    <h3 class="mb-0">$850k</h3>
+                    <p class="mb-0">/proyecto</p>
+                  </div>
+                  <p class="mb-0">Identidad completa para marcas en crecimiento.</p>
+                </div>
+                <div class="pt-8 border-top d-flex flex-column gap-6">
+                  <h6 class="mb-0 fw-normal">Qué incluye:</h6>
                   <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
-                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">Kit completo de Branding</h6></li>
-                    <li class="hstack gap-3"><span class="round-32 rounded-circle bg-primary hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span><h6 class="mb-0 fw-normal">Estrategia de marca básica</h6></li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Todo lo del paquete Bronce</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Papelería corporativa</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Plantillas para redes sociales</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Manual de marca completo</h6>
+                    </li>
                   </ul>
                 </div>
-                <a href="contact.html" class="btn btn-primary w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+                <a href="contact.html" class="btn w-100 justify-content-center">
+                  <span class="btn-text">Elegir plan</span>
+                  <iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                </a>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 mb-7 mb-xl-0 d-flex align-items-stretch">
-            <div class="card w-100 shadow-sm border-0">
-              <div class="card-body p-5 d-flex flex-column gap-6">
-                <div><h5 class="mb-2 fw-medium">Enterprise</h5><h3 class="mb-0 text-primary">$1.5M</h3><p class="mb-0">Presencia global y estratégica</p></div>
-                <a href="contact.html" class="btn btn-dark w-100 justify-content-center mt-auto"><span class="btn-text text-white">Elegir plan</span><iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon></a>
+          <!-- Oro -->
+          <div class="col-lg-6 col-xl-4 mb-7 mb-xl-0 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body p-7 p-xxl-5 d-flex flex-column gap-8">
+                <div class="d-flex flex-column gap-6">
+                  <div class="hstack gap-3">
+                    <h5 class="mb-0 fw-medium">Oro</h5>
+                  </div>
+                  <div class="hstack gap-2">
+                    <h3 class="mb-0">$1.5M</h3>
+                    <p class="mb-0">/proyecto</p>
+                  </div>
+                  <p class="mb-0">Solución integral de branding para empresas.</p>
+                </div>
+                <div class="pt-8 border-top d-flex flex-column gap-6">
+                  <h6 class="mb-0 fw-normal">Qué incluye:</h6>
+                  <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Todo lo del paquete Plata</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Estrategia de marca</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Video de presentación de marca</h6>
+                    </li>
+                    <li class="hstack gap-3">
+                      <span class="round-32 rounded-circle bg-primary flex-shrink-0 hstack justify-content-center"><iconify-icon icon="lucide:check" class="fs-6 text-dark"></iconify-icon></span>
+                      <h6 class="mb-0 fw-normal">Consultoría 1 a 1</h6>
+                    </li>
+                  </ul>
+                </div>
+                <a href="contact.html" class="btn w-100 justify-content-center">
+                  <span class="btn-text">Elegir plan</span>
+                  <iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                </a>
               </div>
             </div>
           </div>
@@ -575,19 +1174,36 @@
         const carouselDiv = document.createElement('div');
         carouselDiv.classList.add('owl-carousel', 'owl-theme');
 
-        // Add square class if necessary
-        if (projectId === 'social-media' || projectId === 'diseno-marca') {
+        // Aspect ratio handling based on project type
+        if (projectId === 'social-media') {
           carouselDiv.classList.add('square-img');
+        } else if (projectId === 'diseno-marca') {
+          carouselDiv.classList.add('four-three-img');
+        } else {
+          carouselDiv.classList.add('default-img');
         }
 
         row.items.forEach(item => {
           const itemWrapper = document.createElement('div');
           itemWrapper.classList.add('item');
-          itemWrapper.innerHTML = `
-            <div class="gallery-item-wrapper px-2">
-              <img src="${item}" class="gallery-img" alt="Proyecto">
-            </div>
-          `;
+          const isVideo = item.toLowerCase().endsWith('.mp4');
+
+          if (isVideo) {
+            itemWrapper.innerHTML = `
+              <div class="gallery-item-wrapper video-wrapper" onclick="openLightbox('${item}')">
+                <video src="${item}" class="gallery-img" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;"></video>
+                <div class="video-overlay">
+                  <iconify-icon icon="lucide:play" class="fs-9 text-white"></iconify-icon>
+                </div>
+              </div>
+            `;
+          } else {
+            itemWrapper.innerHTML = `
+              <div class="gallery-item-wrapper" onclick="openLightbox('${item}')">
+                <img src="${item}" class="gallery-img" alt="Proyecto">
+              </div>
+            `;
+          }
           carouselDiv.appendChild(itemWrapper);
         });
 
@@ -598,21 +1214,31 @@
         // Initialize carousel for this row
         $(carouselDiv).owlCarousel({
           loop: true,
-          margin: 0,
-          nav: false,
+          margin: 20,
+          nav: true,
+          navText: [
+            '<iconify-icon icon="lucide:chevron-left" class="fs-7"></iconify-icon>',
+            '<iconify-icon icon="lucide:chevron-right" class="fs-7"></iconify-icon>'
+          ],
           dots: true,
           autoplay: true,
           autoplayTimeout: 3000,
           autoplayHoverPause: true,
+          mouseDrag: true,
+          touchDrag: true,
+          pullDrag: true,
           responsive: {
             0: {
-              items: 2
+              items: 2,
+              margin: 10
             },
             768: {
-              items: 3
+              items: 3,
+              margin: 15
             },
             1200: {
-              items: 4
+              items: 4,
+              margin: 20
             }
           }
         });
@@ -628,8 +1254,59 @@
       });
     }
 
+
+
+    // Helper function for Lightbox (Direct Implementation)
+    window.openLightbox = function (src) {
+      console.log('Opening lightbox for:', src);
+      const modal = $('#custom-modal');
+      const modalContent = modal.find('.modal-content-wrapper');
+      const isVideo = src.toLowerCase().endsWith('.mp4');
+
+      let content;
+      if (isVideo) {
+        content = `<video src="${src}" class="lightbox-video" controls autoplay loop playsinline></video>`;
+      } else {
+        content = `<img src="${src}" class="lightbox-img">`;
+      }
+      modalContent.html(content);
+
+      modal.addClass('active');
+      $('body').addClass('modal-open-blur');
+
+      // Ensure z-index is high enough
+      modal.css('z-index', '10000');
+    };
+
+    // Close Modal Logic (Direct Implementation)
+    function closeLightbox() {
+      const modal = $('#custom-modal');
+      modal.removeClass('active');
+      $('body').removeClass('modal-open-blur');
+      setTimeout(() => {
+        modal.find('.modal-content-wrapper').empty();
+        modal.css('z-index', ''); // Reset z-index
+      }, 300);
+    }
+
+    // Event Listeners for Closing and Pricing Toggle
     $(document).ready(function () {
       loadProject();
+
+      const modal = $('#custom-modal');
+
+      // Click on close button or overlay
+      modal.on('click', function (e) {
+        if ($(e.target).hasClass('custom-modal-overlay') || $(e.target).closest('.modal-close').length) {
+          closeLightbox();
+        }
+      });
+
+      // Escape key
+      $(document).on('keydown', function (e) {
+        if (e.key === "Escape") closeLightbox();
+      });
+
     });
   </script>
 </body>
