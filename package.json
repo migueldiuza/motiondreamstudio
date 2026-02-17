@@ -8,7 +8,11 @@
         "dev": "npm start",
         "serve": "browser-sync start --server src --files \"src/**/*\" --startPath html/index.html",
         "build:css": "sass src/assets/scss/styles.scss src/assets/css/styles.css",
-        "watch:css": "sass --watch src/assets/scss/styles.scss src/assets/css/styles.css"
+        "watch:css": "sass --watch src/assets/scss/styles.scss src/assets/css/styles.css",
+        "build": "npm run build:css && npm run copy:docs",
+        "copy:docs": "xcopy /E /I /Y src docs",
+        "clean:docs": "if exist docs rmdir /S /Q docs",
+        "deploy": "npm run clean:docs && npm run build"
     },
     "devDependencies": {
         "browser-sync": "^3.0.0",
