@@ -343,4 +343,46 @@ $(function () {
             });
     });
 
+    // Handle Preloader Hiding
+    function hidePreloader() {
+        const preloader = $('#preloader');
+        if (preloader.length && !preloader.hasClass('fade-out')) {
+            preloader.addClass('fade-out');
+            // Refresh AOS animations after the preloader is gone
+            if (typeof AOS !== 'undefined') {
+                setTimeout(() => AOS.refresh(), 100);
+            }
+        }
+    }
+
+    // Wait for hero video or window load
+    const heroVideo = $('.banner-section video')[0];
+    if (heroVideo) {
+        // Force play for mobile devices (iOS/Android)
+        const startVideo = () => {
+            heroVideo.play().catch(error => {
+                console.log("Autoplay prevented:", error);
+                // On some mobiles, we might need a tap, but muted should work
+            });
+        };
+
+        // If already ready or cached
+        if (heroVideo.readyState >= 3) {
+            startVideo();
+            setTimeout(hidePreloader, 800);
+        } else {
+            heroVideo.oncanplaythrough = function () {
+                startVideo();
+                setTimeout(hidePreloader, 500);
+            };
+            // Fallback: 5 seconds max wait
+            setTimeout(hidePreloader, 5000);
+        }
+    } else {
+        // If not on index.html or no video
+        $(window).on('load', function () {
+            setTimeout(hidePreloader, 500);
+        });
+    }
+
 });

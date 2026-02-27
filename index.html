@@ -179,6 +179,15 @@
 
 
 <body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader-content">
+      <img src="assets/images/logos/logo-white.svg" alt="Motion Dreams" class="loader-logo">
+      <div class="loader-bar">
+        <div class="loader-progress"></div>
+      </div>
+    </div>
+  </div>
 
   <!-- Header -->
   <header class="header border-4 border-primary border-top position-fixed start-0 top-0 w-100" style="z-index: 1050;">
@@ -252,7 +261,8 @@
 
     <!--  Banner Section -->
     <section class="banner-section position-relative d-flex align-items-end min-vh-100">
-      <video class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" autoplay muted loop playsinline>
+      <video class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" autoplay muted loop playsinline
+        webkit-playsinline preload="auto">
         <source src="assets/images/backgrounds/banner-video.mp4" type="video/mp4" />
       </video>
       <div class="container">
