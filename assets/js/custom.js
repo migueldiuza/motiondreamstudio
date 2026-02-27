@@ -358,25 +358,31 @@ $(function () {
     // Wait for hero video or window load
     const heroVideo = $('.banner-section video')[0];
     if (heroVideo) {
-        // Force play for mobile devices (iOS/Android)
+        // Safe play function handles mobile autoplay policies which could reject the promise
         const startVideo = () => {
-            heroVideo.play().catch(error => {
-                console.log("Autoplay prevented:", error);
-                // On some mobiles, we might need a tap, but muted should work
-            });
+            const playPromise = heroVideo.play();
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // Autoplay started successfully
+                }).catch(error => {
+                    // Autoplay prevented by browser (e.g. iOS Low Power Mode)
+                    console.log("Autoplay prevented:", error);
+                });
+            }
+            setTimeout(hidePreloader, 500);
         };
 
         // If already ready or cached
         if (heroVideo.readyState >= 3) {
             startVideo();
-            setTimeout(hidePreloader, 800);
         } else {
             heroVideo.oncanplaythrough = function () {
                 startVideo();
-                setTimeout(hidePreloader, 500);
             };
-            // Fallback: 5 seconds max wait
-            setTimeout(hidePreloader, 5000);
+            // Fallback: 3 seconds max wait to avoid "stuck loading" symptom
+            setTimeout(() => {
+                startVideo();
+            }, 3000);
         }
     } else {
         // If not on index.html or no video
