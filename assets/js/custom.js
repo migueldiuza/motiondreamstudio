@@ -302,4 +302,45 @@ $(function () {
         if (e.key === "Escape") closeModal();
     });
 
+
+    // EmailJS Configuration
+    (function () {
+        emailjs.init("f8tqC3UKNx_OrJjed"); // Public Key
+    })();
+
+    // Handle Contact Form Submission
+    $('form').on('submit', function (e) {
+        e.preventDefault();
+
+        const btn = $(this).find('button[type="submit"]');
+        const originalText = btn.find('.btn-text').text();
+
+        btn.prop('disabled', true);
+        btn.find('.btn-text').text('Enviando...');
+
+        const name = $(this).find('#name').val();
+        const email = $(this).find('#email').val();
+        const message = $(this).find('#message').val();
+        const time = new Date().toLocaleString();
+
+        const templateParams = {
+            name: name,
+            correo: email,
+            mensaje: message,
+            time: time
+        };
+
+        emailjs.send('service_tt2o7fl', 'template_amljm5k', templateParams)
+            .then(function () {
+                alert('¡Mensaje enviado con éxito!');
+                $('form')[0].reset();
+                btn.prop('disabled', false);
+                btn.find('.btn-text').text(originalText);
+            }, function (error) {
+                alert('Error al enviar el mensaje: ' + JSON.stringify(error));
+                btn.prop('disabled', false);
+                btn.find('.btn-text').text(originalText);
+            });
+    });
+
 });

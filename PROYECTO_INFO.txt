@@ -1,4 +1,4 @@
-# INFORMACIÓN DEL PROYECTO: STUDIOVA
+# INFORMACIÓN DEL PROYECTO: MOTION DREAMS
 
 Este proyecto es una plantilla de sitio web profesional, moderna y responsiva. Aquí tienes una guía sencilla de cómo funciona y cómo empezar a trabajar en él.
 
