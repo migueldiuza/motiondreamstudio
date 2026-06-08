@@ -20594,6 +20594,13 @@ body {
 .md-gal-item.hide { display: none; }
 .md-gal-soon { break-inside: avoid; margin-bottom: 14px; }
 
+/* Secciones de la galería "Ver todos" con título + línea separadora */
+.md-gal-section { margin-bottom: 2.75rem; }
+.md-gal-section.hide { display: none; }
+.md-gal-sec-head { display: flex; align-items: center; gap: 16px; margin-bottom: 1.1rem; }
+.md-gal-sec-head h3 { font-size: clamp(1.05rem, 2.4vw, 1.5rem); white-space: nowrap; color: var(--md-text); }
+.md-gal-sec-line { flex: 1 1 auto; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,.28), rgba(255,255,255,0)); }
+
 /* Enlace "Ver todos" por sección (texto subrayado, no botón) */
 .gallery-row-head { margin-bottom: 1rem; }
 .md-vertodos-link {

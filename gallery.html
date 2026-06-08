@@ -121,7 +121,7 @@
       <div class="container">
         <div class="md-gallery-filters mb-6" id="galFilters" data-aos="fade-up"></div>
         <div class="mt-5">
-          <div class="md-gallery-grid" id="galGrid"></div>
+          <div id="galGrid"></div>
         </div>
       </div>
     </section>
@@ -203,21 +203,26 @@
       var chipsHtml = '<button class="md-chip on" data-filter="all">Todos</button>';
       var gridHtml = '';
 
-      data.groups.forEach(function (g, i) {
+      data.groups.forEach(function (g) {
         var gid = slug(g.title);
         chipsHtml += '<button class="md-chip" data-filter="' + gid + '">' + g.title + '</button>';
+        var sec = '<section class="md-gal-section" data-group="' + gid + '">'
+          + '<div class="md-gal-sec-head"><h3 class="mb-0">' + g.title + '</h3><span class="md-gal-sec-line"></span></div>';
         if (g.soon || !g.items || !g.items.length) {
-          gridHtml += '<div class="md-gal-soon md-gal-item-wrap" data-group="' + gid + '">'
-            + '<div class="md-soon" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)">Próximamente · ' + g.title + '</div></div>';
-          return;
+          sec += '<div class="md-soon" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)">Próximamente</div>';
+        } else {
+          sec += '<div class="md-gallery-grid">';
+          g.items.forEach(function (src) {
+            var isVideo = src.toLowerCase().endsWith('.mp4');
+            var media = isVideo
+              ? '<video src="' + src + '" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;"></video><div class="vov"><iconify-icon icon="lucide:play"></iconify-icon></div>'
+              : '<img src="' + src + '" alt="' + g.title + '" loading="lazy"><div class="vov"><iconify-icon icon="lucide:maximize-2"></iconify-icon></div>';
+            sec += '<div class="md-gal-item" onclick="openLightbox(\'' + src + '\')">' + media + '</div>';
+          });
+          sec += '</div>';
         }
-        g.items.forEach(function (src) {
-          var isVideo = src.toLowerCase().endsWith('.mp4');
-          var media = isVideo
-            ? '<video src="' + src + '" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;"></video><div class="vov"><iconify-icon icon="lucide:play"></iconify-icon></div>'
-            : '<img src="' + src + '" alt="' + g.title + '" loading="lazy"><div class="vov"><iconify-icon icon="lucide:maximize-2"></iconify-icon></div>';
-          gridHtml += '<div class="md-gal-item md-gal-item-wrap" data-group="' + gid + '" onclick="openLightbox(\'' + src + '\')">' + media + '</div>';
-        });
+        sec += '</section>';
+        gridHtml += sec;
       });
 
       filters.innerHTML = chipsHtml;
@@ -229,8 +234,8 @@
         filters.querySelectorAll('.md-chip').forEach(function (c) { c.classList.remove('on'); });
         btn.classList.add('on');
         var f = btn.getAttribute('data-filter');
-        grid.querySelectorAll('.md-gal-item-wrap').forEach(function (it) {
-          it.classList.toggle('hide', f !== 'all' && it.getAttribute('data-group') !== f);
+        grid.querySelectorAll('.md-gal-section').forEach(function (s) {
+          s.classList.toggle('hide', f !== 'all' && s.getAttribute('data-group') !== f);
         });
       });
 
