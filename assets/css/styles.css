@@ -20537,24 +20537,24 @@ body {
 
 /* Precios en mobile: tarjetas anchas y bajas (estilo referencia) */
 @media (max-width: 575px){
-  .pricing-category { row-gap: 14px; }
-  .pricing-category > [class*="col-"] { margin-bottom: 0 !important; }
-  .pricing-category .card-body { padding: 18px 20px !important; gap: 14px !important; }
+  .pricing-section .pricing-category, .pricing-section #pricing-container { row-gap: 14px; }
+  .pricing-section [class*="col-"] { margin-bottom: 0 !important; }
+  .pricing-section .card-body { padding: 18px 20px !important; gap: 14px !important; }
   /* Nombre + precio en una fila */
-  .pricing-category .card-body > .d-flex.flex-column.gap-6 {
+  .pricing-section .card-body > .d-flex.flex-column.gap-6 {
     flex-direction: row !important; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px !important;
   }
-  .pricing-category .card-body > .d-flex.flex-column.gap-6 > p { flex-basis: 100%; font-size: .8rem; margin-top: 4px; }
-  .pricing-category .card-body .hstack.gap-2 h3 { font-size: 1.5rem; }
+  .pricing-section .card-body > .d-flex.flex-column.gap-6 > p { flex-basis: 100%; font-size: .8rem; margin-top: 4px; }
+  .pricing-section .card-body .hstack.gap-2 h3 { font-size: 1.5rem; }
   /* Features en 2 columnas compactas */
-  .pricing-category .card .border-top { padding-top: 14px !important; }
-  .pricing-category .card .border-top > .d-flex { gap: 12px !important; }
-  .pricing-category .card ul.list-unstyled { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px !important; }
-  .pricing-category .card ul.list-unstyled li { gap: 8px !important; }
-  .pricing-category .card ul.list-unstyled li h6 { font-size: .72rem; line-height: 1.25; }
-  .pricing-category .card ul.list-unstyled li .round-32 { width: 20px; height: 20px; }
-  .pricing-category .card ul.list-unstyled li .round-32 iconify-icon { font-size: .7rem; }
-  .pricing-category .card .btn { min-height: 44px; }
+  .pricing-section .card .border-top { padding-top: 14px !important; }
+  .pricing-section .card .border-top > .d-flex { gap: 12px !important; }
+  .pricing-section .card ul.list-unstyled { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px !important; }
+  .pricing-section .card ul.list-unstyled li { gap: 8px !important; }
+  .pricing-section .card ul.list-unstyled li h6 { font-size: .72rem; line-height: 1.25; }
+  .pricing-section .card ul.list-unstyled li .round-32 { width: 20px; height: 20px; }
+  .pricing-section .card ul.list-unstyled li .round-32 iconify-icon { font-size: .7rem; }
+  .pricing-section .card .btn { min-height: 44px; }
 }
 
 /* ===================================================================
@@ -20595,6 +20595,20 @@ body {
   transition: color .2s ease;
 }
 .md-vertodos-link:hover { color: #fff; text-decoration: underline; }
+
+/* Menos espacio vertical entre secciones de galería en mobile */
+@media (max-width: 767px){
+  .gallery-row { margin-bottom: 1.5rem !important; }
+  .gallery-row-head { margin-bottom: .6rem; }
+  #gallerySection { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+}
+
+/* Texto de la sección de logos (inicio) en blanco */
+.page-wrapper .client-logos h5 { color: var(--md-text) !important; }
+
+/* Menos espacio entre la sección de logos y "Planes a tu medida" (inicio) */
+.md-home .client-logos { padding-top: 2rem; padding-bottom: 1rem; }
+.md-home .pricing-section { padding-top: 2.5rem !important; }
 
 /* Preloader desactivado por completo (evita bloqueos al cambiar de página) */
 #preloader { display: none !important; }
