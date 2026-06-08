@@ -20158,3 +20158,126 @@ ul {
 }
 
 /*# sourceMappingURL=styles.css.map */
+
+/* ===================================================================
+   === MD REDESIGN — Glass oscuro Apple, tokens, botones, tema ===
+   =================================================================== */
+:root {
+  --md-red: #F20F0F;
+  --md-red-d: #c40c0c;
+  --md-dark: #1F2A2E;
+  --md-ink: #07090a;
+  --md-surface: #0d1316;
+  --md-surface-2: #111a1e;
+  --md-text: #ffffff;
+  --md-text-dim: rgba(255, 255, 255, .7);
+  --md-hairline: rgba(255, 255, 255, .10);
+  --r-card: 12px;
+  --r-btn: 9px;
+  --r-ctrl: 8px;
+  --r-img: 8px;
+  --md-glow: 0 0 60px rgba(242, 15, 15, .35);
+  --md-shadow: 0 12px 30px rgba(0, 0, 0, .45);
+}
+
+/* ---- Cristal Apple: contenedor + sub-capas ---- */
+.md-glass {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: var(--r-card);
+  box-shadow: var(--md-shadow);
+}
+.md-glass > .mg-distort {
+  position: absolute; inset: 0; z-index: 0;
+  backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+  filter: url(#md-glass-distortion);
+}
+.md-glass > .mg-tint {
+  position: absolute; inset: 0; z-index: 1;
+  background: rgba(255, 255, 255, .10);
+}
+.md-glass > .mg-edge {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, .12),
+              inset 0 1px 0 rgba(255, 255, 255, .22);
+}
+.md-glass > .mg-content { position: relative; z-index: 3; }
+.md-glass--red > .mg-tint { background: rgba(242, 15, 15, .16); }
+.md-glass--solid-red > .mg-tint { background: rgba(242, 15, 15, .55); }
+.md-glass--btn { border-radius: var(--r-btn); }
+.md-glass--ctrl { border-radius: var(--r-ctrl); }
+
+/* Fallback sin backdrop-filter (Safari antiguo / no soporte) */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .md-glass > .mg-distort { background: rgba(255, 255, 255, .06); filter: none; }
+  .md-glass--red > .mg-distort,
+  .md-glass--red > .mg-tint { background: rgba(242, 15, 15, .14); }
+}
+
+/* ---- Tema oscuro base ---- */
+body { background: var(--md-ink); color: var(--md-text); }
+.md-dark, .md-section-dark { background: var(--md-ink); color: var(--md-text); }
+.md-surface { background: var(--md-surface); }
+
+/* Tipografía fluida */
+.md-fluid-h1 { font-size: clamp(2.4rem, 8vw, 6rem); line-height: 1.02; }
+.md-fluid-h2 { font-size: clamp(1.7rem, 4.5vw, 3rem); }
+
+/* Glow rojo utilitario */
+.md-glow-red { position: relative; }
+.md-glow-red::after { content: ""; position: absolute; inset: 0; z-index: -1; box-shadow: var(--md-glow); }
+
+/* ---- Botón estandarizado (sobre la primitiva de cristal) ---- */
+.md-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 46px; padding: 12px 22px; border: none; cursor: pointer;
+  border-radius: var(--r-btn); font-weight: 700;
+  font-size: clamp(.85rem, 1.4vw, 1rem); color: #fff; text-decoration: none;
+  transition: transform .15s cubic-bezier(.34, 1.56, .64, 1), filter .2s ease;
+}
+.md-btn:hover { transform: translateY(-2px); color: #fff; }
+.md-btn:active { transform: translateY(1px) scale(.99); }
+.md-btn:focus-visible { outline: 2px solid var(--md-red); outline-offset: 3px; }
+.md-btn .mg-content { display: inline-flex; align-items: center; gap: 10px; }
+.md-btn-ico { display: inline-flex; }
+@media (max-width: 576px) {
+  .md-btn { width: 100%; }
+  .md-btn.md-btn--auto { width: auto; }
+}
+
+/* ---- Segmented control (toggle de monedas) ---- */
+.md-seg { width: fit-content; padding: 4px; }
+.md-seg .md-cur-btn {
+  position: relative; z-index: 3; border: none; background: transparent;
+  color: var(--md-text-dim); font-weight: 700; font-size: .85rem;
+  padding: 8px 18px; border-radius: 6px; cursor: pointer; transition: .2s;
+}
+.md-seg .md-cur-btn.on { color: #fff; background: var(--md-red); box-shadow: 0 5px 14px rgba(242, 15, 15, .45); }
+
+/* ---- Acordeón de servicios (mobile) ---- */
+.md-acc { display: flex; flex-direction: column; gap: 12px; }
+.md-acc-head {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  background: transparent; border: none; color: #fff; font-weight: 700;
+  padding: 16px; cursor: pointer; font-size: 1.05rem; text-align: left;
+}
+.md-acc-head small { color: var(--md-red); font-weight: 800; margin-right: 8px; }
+.md-acc-body { max-height: 0; overflow: hidden; transition: max-height .35s ease; padding: 0 16px; }
+.md-acc-body > * + * { margin-top: 12px; }
+.md-acc-body img { border-radius: var(--r-img); width: 100%; }
+.md-acc-item.open .md-acc-body { max-height: 700px; padding-bottom: 16px; }
+.md-acc-ico { transition: transform .3s; font-size: 1.4rem; line-height: 1; color: var(--md-text-dim); }
+.md-acc-item.open .md-acc-ico { transform: rotate(45deg); color: var(--md-red); }
+
+/* ---- "Próximamente" placeholder (galerías sin assets) ---- */
+.md-soon {
+  display: flex; align-items: center; justify-content: center; min-height: 180px;
+  color: var(--md-text-dim); font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  border-radius: var(--r-card);
+}
+
+/* ---- Ayudas de superficie oscura para overrides de Bootstrap ---- */
+.md-dark .text-dark { color: #fff !important; }
+.md-dark .border, .md-dark .border-top, .md-dark .border-bottom { border-color: rgba(255,255,255,.12) !important; }
