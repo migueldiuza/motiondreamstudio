@@ -20587,3 +20587,10 @@ body {
 .md-gal-item:hover .vov { opacity: 1; }
 .md-gal-item.hide { display: none; }
 .md-gal-soon { break-inside: avoid; margin-bottom: 14px; }
+
+/* "Sobre Motion Dreams": 3 stats en una fila en mobile */
+@media (max-width: 575px) {
+  .about-section .col-4 > .d-flex { gap: .45rem !important; padding-top: .9rem !important; }
+  .about-section .col-4 h2.fs-14 { font-size: 1.35rem; letter-spacing: -.02em; }
+  .about-section .col-4 p { font-size: .68rem; line-height: 1.2; }
+}
