@@ -20618,7 +20618,10 @@ body {
   #gallerySection { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
 }
 
-/* Texto de la sección de logos (inicio) en blanco */
+/* Texto de la sección de logos (inicio) en blanco
+   (gana a .bg-white .text-dark porque la sección tiene clase bg-white) */
+.page-wrapper .client-logos.bg-white h5,
+.page-wrapper .client-logos .text-dark,
 .page-wrapper .client-logos h5 { color: var(--md-text) !important; }
 
 /* Menos espacio entre la sección de logos y "Planes a tu medida" (inicio) */
@@ -20650,11 +20653,22 @@ body {
    === MD REDESIGN — Táctil: un solo toque (sin doble tap por :hover) ===
    =================================================================== */
 @media (hover: none) {
-  /* Overlays de proyectos: visibles por defecto (su enlace funciona al primer toque) */
+  /* Tarjetas de proyectos: TODA la imagen es el botón (un solo toque), no se abre la imagen */
   .portfolio-img .portfolio-overlay {
     visibility: visible !important;
     transform: translateY(0) !important;
     background-color: transparent !important;
+  }
+  .portfolio-img .portfolio-overlay a {
+    position: absolute !important; inset: 0 !important; top: 0 !important; left: 0 !important;
+    width: 100% !important; height: 100% !important; transform: none !important;
+    border-radius: 0 !important; background: transparent !important;
+    display: flex !important; align-items: center; justify-content: center;
+  }
+  .portfolio-img .portfolio-overlay a iconify-icon {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--md-red); color: #fff !important;
+    display: flex; align-items: center; justify-content: center;
   }
   /* Evitar estados hover "pegados" que desplazan elementos en táctil */
   .page-wrapper .btn:hover,
