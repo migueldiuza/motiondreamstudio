@@ -386,3 +386,69 @@ $(function () {
     }
 
 });
+
+/* ===================================================================
+   === MD REDESIGN — filtro SVG glass + toggle monedas + acordeón ===
+   =================================================================== */
+
+// 1) Inyectar el filtro SVG de refracción una sola vez
+(function injectGlassFilter() {
+    function inject() {
+        if (document.getElementById('md-glass-svg')) return;
+        var ns = 'http://www.w3.org/2000/svg';
+        var svg = document.createElementNS(ns, 'svg');
+        svg.id = 'md-glass-svg';
+        svg.setAttribute('aria-hidden', 'true');
+        svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden';
+        svg.innerHTML =
+            '<filter id="md-glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">' +
+            '<feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="17" result="t"/>' +
+            '<feGaussianBlur in="t" stdDeviation="2.2" result="m"/>' +
+            '<feDisplacementMap in="SourceGraphic" in2="m" scale="48" xChannelSelector="R" yChannelSelector="G"/>' +
+            '</filter>';
+        document.body.appendChild(svg);
+    }
+    if (document.body) inject();
+    else document.addEventListener('DOMContentLoaded', inject);
+})();
+
+// 2) Toggle de monedas (default USD, recordado en localStorage)
+(function currencyToggle() {
+    var KEY = 'md-currency';
+    function apply(cur) {
+        document.querySelectorAll('[data-usd]').forEach(function (n) {
+            var v = n.getAttribute('data-' + cur);
+            if (v) n.textContent = v;
+        });
+        document.querySelectorAll('.md-cur-btn').forEach(function (b) {
+            b.classList.toggle('on', b.getAttribute('data-cur') === cur);
+        });
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        if (!document.querySelector('.md-cur-btn')) return;
+        var saved = localStorage.getItem(KEY) || 'usd';
+        apply(saved);
+        document.querySelectorAll('.md-cur-btn').forEach(function (b) {
+            b.addEventListener('click', function () {
+                var cur = b.getAttribute('data-cur');
+                localStorage.setItem(KEY, cur);
+                apply(cur);
+            });
+        });
+    });
+})();
+
+// 3) Acordeón de servicios (mobile)
+(function servicesAccordion() {
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.md-acc-item .md-acc-head').forEach(function (h) {
+            h.addEventListener('click', function () {
+                var item = h.closest('.md-acc-item');
+                var acc = item.closest('.md-acc');
+                var isOpen = item.classList.contains('open');
+                if (acc) acc.querySelectorAll('.md-acc-item.open').forEach(function (i) { i.classList.remove('open'); });
+                if (!isOpen) item.classList.add('open');
+            });
+        });
+    });
+})();
