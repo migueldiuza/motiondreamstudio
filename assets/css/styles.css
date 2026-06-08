@@ -20419,13 +20419,11 @@ body { background: var(--md-ink); color: var(--md-text); }
    === MD REDESIGN v2 — tipografía display, títulos claros, luz, capas ===
    =================================================================== */
 
-/* Tipografía display (Space Grotesk inyectada por custom.js) en titulares */
-h1, h2, h3, .md-fluid-h1, .md-fluid-h2,
-.banner-section h1, .pricing-section h2, .services h2, .about-section h2,
-.nav-tabs .nav-link, .md-acc-head, .price .num, .num {
-  font-family: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+/* Tipografía (Inter inyectada por custom.js) — neutra, cercana a la original */
+body, .page-wrapper, h1, h2, h3, h4, h5, h6, .btn, .md-fluid-h1, .md-fluid-h2 {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
 }
-.md-fluid-h1 { font-weight: 700; letter-spacing: -.03em; }
+.md-fluid-h1 { font-weight: 800; letter-spacing: -.03em; }
 
 /* Títulos SIEMPRE claros sobre fondo oscuro (mata los grises sobre negro) */
 .page-wrapper h1, .page-wrapper h2, .page-wrapper h3,
@@ -20468,10 +20466,79 @@ body {
   border-radius: 34px 34px 0 0;
   background: var(--md-surface);
 }
-/* Las secciones grandes oscuras adoptan esquinas suaves arriba (nada recto) */
-.page-wrapper .pricing-section,
-.page-wrapper .services { border-radius: 34px 34px 0 0; }
-
 /* Tarjetas: hover lift y esquina coherente */
 .page-wrapper .card { transition: transform .25s ease, box-shadow .25s ease; }
 .page-wrapper .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,.5); }
+
+/* ===================================================================
+   === MD REDESIGN v3 — reorden, glow rojo+neón magenta, pricing mobile ===
+   =================================================================== */
+
+/* Acento neón magenta */
+:root { --md-magenta: #ff2bd6; }
+
+/* Reorden de secciones del inicio sin mover HTML:
+   hero · productos · quiénes somos · logos · precios · lo que hacemos · contacto */
+.page-wrapper { display: flex; flex-direction: column; }
+.page-wrapper > .banner-section   { order: 1; }
+.page-wrapper > .featured-projects{ order: 2; }
+.page-wrapper > .about-section    { order: 3; }
+.page-wrapper > .client-logos     { order: 4; }
+.page-wrapper > .pricing-section  { order: 5; }
+.page-wrapper > .services         { order: 6; }
+.page-wrapper > .get-in-touch     { order: 7; }
+
+/* Hero: subir contenido (más aire abajo) */
+.banner-section .pb-8 { padding-bottom: 5.5rem !important; }
+@media (min-width: 992px){ .banner-section .pb-8 { padding-bottom: 8rem !important; } }
+
+/* Iluminación roja + toque neón magenta en secciones oscuras */
+.page-wrapper .services,
+.page-wrapper .pricing-section,
+.page-wrapper .featured-projects,
+.page-wrapper .get-in-touch { position: relative; overflow: hidden; }
+.page-wrapper .services::before,
+.page-wrapper .pricing-section::before,
+.page-wrapper .featured-projects::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(40% 50% at 8% 0%, rgba(242,15,15,.20), transparent 60%),
+    radial-gradient(35% 45% at 100% 100%, rgba(255,43,214,.10), transparent 60%);
+}
+.page-wrapper .services > .container,
+.page-wrapper .pricing-section > .container,
+.page-wrapper .featured-projects > * { position: relative; z-index: 1; }
+
+/* Detalles neón magenta */
+.page-wrapper .badge.text-bg-dark { box-shadow: 0 0 0 1px rgba(255,43,214,.35), 0 0 14px rgba(255,43,214,.25); }
+.page-wrapper .nav-tabs .nav-link.active { text-shadow: 0 0 18px rgba(255,43,214,.5); }
+.md-seg .md-cur-btn.on { box-shadow: 0 5px 14px rgba(242,15,15,.45), 0 0 18px rgba(255,43,214,.3); }
+.page-wrapper .featured-projects { box-shadow: 0 -1px 0 rgba(255,43,214,.25); }
+
+/* Productos destacados: 2 por fila completos en mobile (sin cortes) */
+@media (max-width: 991px){
+  .featured-projects-slider.md-no-carousel { overflow: visible !important; padding: 0; }
+  .featured-projects-slider.md-no-carousel .owl-carousel { padding: 0 16px; }
+}
+
+/* Precios en mobile: tarjetas anchas y bajas (estilo referencia) */
+@media (max-width: 575px){
+  .pricing-category { row-gap: 14px; }
+  .pricing-category > [class*="col-"] { margin-bottom: 0 !important; }
+  .pricing-category .card-body { padding: 18px 20px !important; gap: 14px !important; }
+  /* Nombre + precio en una fila */
+  .pricing-category .card-body > .d-flex.flex-column.gap-6 {
+    flex-direction: row !important; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px !important;
+  }
+  .pricing-category .card-body > .d-flex.flex-column.gap-6 > p { flex-basis: 100%; font-size: .8rem; margin-top: 4px; }
+  .pricing-category .card-body .hstack.gap-2 h3 { font-size: 1.5rem; }
+  /* Features en 2 columnas compactas */
+  .pricing-category .card .border-top { padding-top: 14px !important; }
+  .pricing-category .card .border-top > .d-flex { gap: 12px !important; }
+  .pricing-category .card ul.list-unstyled { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px !important; }
+  .pricing-category .card ul.list-unstyled li { gap: 8px !important; }
+  .pricing-category .card ul.list-unstyled li h6 { font-size: .72rem; line-height: 1.25; }
+  .pricing-category .card ul.list-unstyled li .round-32 { width: 20px; height: 20px; }
+  .pricing-category .card ul.list-unstyled li .round-32 iconify-icon { font-size: .7rem; }
+  .pricing-category .card .btn { min-height: 44px; }
+}
