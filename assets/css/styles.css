@@ -20479,15 +20479,15 @@ body {
 
 /* Reorden de secciones del inicio sin mover HTML:
    hero · productos · quiénes somos · logos · precios · lo que hacemos · contacto */
-.page-wrapper { display: flex; flex-direction: column; }
-.page-wrapper > .banner-section   { order: 1; }
-.page-wrapper > .featured-projects{ order: 2; }
-.page-wrapper > .about-section    { order: 3; }
-.page-wrapper > .client-logos     { order: 4; }
-.page-wrapper > .pricing-section  { order: 5; }
-.page-wrapper > .services         { order: 6; }
-.page-wrapper > .Recent-news      { order: 7; }
-.page-wrapper > .get-in-touch     { order: 8; }
+.page-wrapper.md-home { display: flex; flex-direction: column; }
+.page-wrapper.md-home > .banner-section   { order: 1; }
+.page-wrapper.md-home > .featured-projects{ order: 2; }
+.page-wrapper.md-home > .about-section    { order: 3; }
+.page-wrapper.md-home > .client-logos     { order: 4; }
+.page-wrapper.md-home > .pricing-section  { order: 5; }
+.page-wrapper.md-home > .services         { order: 6; }
+.page-wrapper.md-home > .Recent-news      { order: 7; }
+.page-wrapper.md-home > .get-in-touch     { order: 8; }
 
 /* Hero: subir contenido (más aire abajo) */
 .banner-section .pb-8 { padding-bottom: 5.5rem !important; }
