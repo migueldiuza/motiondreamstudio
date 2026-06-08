@@ -357,6 +357,20 @@
           </div>
         </div>
 
+        <!-- Currency toggle -->
+        <div class="row justify-content-center mb-4">
+          <div class="col-auto">
+            <div class="md-seg md-glass md-glass--ctrl mx-auto">
+              <span class="mg-distort"></span><span class="mg-tint"></span><span class="mg-edge"></span>
+              <div class="mg-content d-flex gap-1">
+                <button type="button" class="md-cur-btn on" data-cur="usd">USD&nbsp;$</button>
+                <button type="button" class="md-cur-btn" data-cur="cop">COP&nbsp;$</button>
+                <button type="button" class="md-cur-btn" data-cur="eur">EUR&nbsp;€</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Individual Pricing Categories (Simplified for Detail Page) -->
         <div id="pricing-container" class="row">
           <!-- Pricing content injected by JS -->
@@ -1153,9 +1167,42 @@
       }
     };
 
+    // --- MD: reorganización de categorías (sin reescribir el objeto base) ---
+    (function reorganizeProjects() {
+      var pd = projectsData;
+      // Animaciones (renombre + ampliación de "flyers-animados")
+      if (pd['flyers-animados']) {
+        var anim = Object.assign({}, pd['flyers-animados']);
+        anim.title = 'Animaciones';
+        anim.subtitle = 'Motion design, flyers animados y visuales que cobran vida.';
+        anim.gallery = [
+          { title: 'Flyers Animados', items: ['assets/images/flyers/motionProfesional1.mp4', 'assets/images/flyers/motionProfesional2.mp4', 'assets/images/flyers/motionProfesional3.mp4', 'assets/images/flyers/motionProfesional4.mp4'] },
+          { title: 'Spots con Locución', items: ['assets/images/flyers/motionPremium1.mp4', 'assets/images/flyers/motionPremium2.mp4', 'assets/images/flyers/motiomPremium3.mp4', 'assets/images/flyers/motionPremiun4.mp4', 'assets/images/flyers/motionPremiun5.mp4'] },
+          { title: 'Motion Esencial', items: ['assets/images/flyers/motionBasic1.mp4', 'assets/images/flyers/motionBasic2.mp4', 'assets/images/flyers/motionBasic3.mp4', 'assets/images/flyers/motionBasic4.mp4'] },
+          { title: 'Branding en Movimiento', items: [], soon: true },
+          { title: 'Comerciales / Ads', items: [], soon: true },
+          { title: 'Motion Corporativo', items: [], soon: true },
+          { title: 'Visuales para Eventos (VJ)', items: [], soon: true }
+        ];
+        pd['animaciones'] = anim;
+      }
+      // Flyers = eventos + flyers + grupo "Flyers Animados"
+      if (pd['flyers'] && pd['flyer-eventos']) {
+        pd['flyers'].gallery = [].concat(
+          pd['flyer-eventos'].gallery,
+          pd['flyers'].gallery,
+          [{ title: 'Flyers Animados', items: ['assets/images/flyers/motionBasic1.mp4', 'assets/images/flyers/motionProfesional1.mp4', 'assets/images/flyers/motionProfesional2.mp4', 'assets/images/flyers/motionPremium1.mp4'] }]
+        );
+        pd['flyers'].subtitle = 'Flyers para eventos, conciertos, urbanos, corporativos y más.';
+      }
+    })();
+
+    var PROJECT_ALIASES = { 'flyer-eventos': 'flyers', 'flyers-animados': 'animaciones' };
+
     function loadProject() {
       const urlParams = new URLSearchParams(window.location.search);
-      const projectId = urlParams.get('project') || 'flyers';
+      let projectId = urlParams.get('project') || 'flyers';
+      if (PROJECT_ALIASES[projectId]) projectId = PROJECT_ALIASES[projectId];
       const data = projectsData[projectId];
 
       if (!data) {
@@ -1184,6 +1231,18 @@
         const title = document.createElement('h3');
         title.classList.add('gallery-row-title');
         title.innerText = row.title;
+
+        // Grupos "Próximamente" (categorías sin material aún)
+        if (row.soon || !row.items || !row.items.length) {
+          rowDiv.appendChild(title);
+          const soon = document.createElement('div');
+          soon.className = 'md-soon';
+          soon.style.cssText = 'background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)';
+          soon.innerText = 'Próximamente';
+          rowDiv.appendChild(soon);
+          galleryContainer.appendChild(rowDiv);
+          return;
+        }
 
         const carouselDiv = document.createElement('div');
         carouselDiv.classList.add('owl-carousel', 'owl-theme');
@@ -1258,8 +1317,18 @@
         });
       });
 
+      // Botón "Ver todos" → galería completa de la categoría
+      const verTodos = document.createElement('div');
+      verTodos.className = 'text-center pt-3';
+      verTodos.innerHTML = `<a href="gallery.html?cat=${projectId}" class="btn btn-primary">
+        <span class="btn-text">Ver todos</span>
+        <iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+      </a>`;
+      galleryContainer.appendChild(verTodos);
+
       // Update Pricing
       document.getElementById('pricing-container').innerHTML = data.pricing;
+      if (window.mdCurrency) window.mdCurrency.refresh();
 
       // Re-init AOS
       AOS.init({
