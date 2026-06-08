@@ -1,0 +1,124 @@
+<h2>Vanilla real — Cristal con refracción + botones Liquid Metal</h2>
+<p class="subtitle">Sin React. Cristal = filtro SVG (feDisplacementMap). Botones = CSS metálico animado en negro y rojo. Aprueba el look o ajusta.</p>
+
+<!-- Real SVG glass-distortion filter (ported from the liquid-glass component, vanilla) -->
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <filter id="md-glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="17" result="turb"/>
+    <feGaussianBlur in="turb" stdDeviation="2.2" result="softMap"/>
+    <feDisplacementMap in="SourceGraphic" in2="softMap" scale="55" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<style>
+  :root{ --red:#F20F0F; }
+  .lr-wrap{ display:flex; gap:34px; flex-wrap:wrap; justify-content:center; align-items:flex-start; margin-top:6px; }
+
+  /* phone with colorful backdrop so refraction is visible */
+  .phone{ width:288px; border-radius:34px; padding:16px 14px 22px; position:relative; overflow:hidden; background:#07090a;
+          box-shadow:0 30px 70px rgba(0,0,0,.55); }
+  .phone::before{ content:""; position:absolute; inset:0; z-index:0;
+    background:
+      radial-gradient(38% 26% at 18% 10%, rgba(242,15,15,.9), transparent 60%),
+      radial-gradient(40% 30% at 88% 22%, rgba(255,140,40,.6), transparent 60%),
+      radial-gradient(46% 36% at 72% 92%, rgba(40,110,255,.55), transparent 60%),
+      radial-gradient(40% 38% at 8% 88%, rgba(170,40,255,.5), transparent 60%),
+      linear-gradient(160deg,#16202a,#06080a); }
+  .stack{ position:relative; z-index:1; display:flex; flex-direction:column; gap:12px; }
+  .hd{ position:relative; z-index:1; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#fff; font-weight:800; margin:4px 4px 14px; opacity:.85;}
+  .lbl{ font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#fff; font-weight:800; opacity:.55; }
+  .tt{ color:#fff; font-weight:700; font-size:15px; margin:3px 0 0; }
+  .ds{ color:rgba(255,255,255,.8); font-size:11px; margin:6px 0 0; line-height:1.45; }
+  .thumb{ height:84px; border-radius:12px; margin:11px 0; background:linear-gradient(135deg,#3a4a52,#10171a); }
+  .plus{ position:absolute; right:14px; top:14px; width:24px; height:24px; border-radius:50%; background:rgba(255,255,255,.16); color:#fff; display:flex; align-items:center; justify-content:center; font-size:15px; box-shadow:inset 0 1px 1px rgba(255,255,255,.4);}
+
+  /* === REAL LIQUID GLASS (SVG displacement) === */
+  .rglass{ position:relative; border-radius:18px; padding:15px 16px; overflow:hidden; isolation:isolate;
+           box-shadow:0 8px 22px rgba(0,0,0,.35); }
+  .rglass > .layer-distort{ position:absolute; inset:0; z-index:0; border-radius:18px;
+           backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px);
+           filter:url(#md-glass-distortion); }
+  .rglass > .layer-tint{ position:absolute; inset:0; z-index:1; border-radius:18px; background:rgba(255,255,255,.10); }
+  .rglass > .layer-edge{ position:absolute; inset:0; z-index:2; border-radius:18px; pointer-events:none;
+           box-shadow:inset 2px 2px 1px 0 rgba(255,255,255,.45), inset -1px -1px 1px 1px rgba(255,255,255,.30); }
+  .rglass > .content{ position:relative; z-index:3; }
+
+  /* === LIQUID METAL BUTTONS (CSS, no WebGL) === */
+  .btns{ display:flex; flex-direction:column; gap:18px; align-items:center; }
+  .metal{ position:relative; border:none; cursor:pointer; border-radius:100px; padding:14px 30px; font-size:14px; font-weight:600;
+          color:#fff; letter-spacing:.01em; overflow:hidden; isolation:isolate;
+          box-shadow:0px 0px 0px 1px rgba(0,0,0,.4), 0px 12px 18px rgba(0,0,0,.35), 0px 2px 5px rgba(0,0,0,.3);
+          transition:transform .15s cubic-bezier(.34,1.56,.64,1), box-shadow .2s ease; }
+  .metal:active{ transform:translateY(1px) scale(.98); box-shadow:inset 0 2px 6px rgba(0,0,0,.5); }
+  /* animated metallic sheen sweep */
+  .metal::before{ content:""; position:absolute; inset:0; z-index:-1; background-size:200% 100%;
+                  animation:sheen 4s linear infinite; }
+  .metal::after{ content:""; position:absolute; inset:0; border-radius:100px; pointer-events:none;
+                 box-shadow:inset 0 1px 1px rgba(255,255,255,.5), inset 0 -6px 12px rgba(0,0,0,.35); }
+  @keyframes sheen{ 0%{ background-position:0% 0 } 100%{ background-position:-200% 0 } }
+
+  .metal-black::before{ background:linear-gradient(110deg,#0a0a0a 0%,#2c2c2e 18%,#6b6b70 30%,#2c2c2e 42%,#0a0a0a 60%,#2c2c2e 78%,#6b6b70 90%,#0a0a0a 100%); }
+  .metal-red::before{ background:linear-gradient(110deg,#5e0606 0%,#a30c0c 16%,#ff5b4d 30%,#F20F0F 44%,#7a0808 60%,#F20F0F 76%,#ff5b4d 90%,#5e0606 100%); }
+  .metal .ic{ display:inline-flex; vertical-align:middle; margin-left:8px; }
+
+  .col-cap{ color:#fff; text-align:center; font-size:12px; opacity:.7; margin-top:14px; }
+  .panel{ background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:24px; padding:26px 30px; }
+  .panel h3{ color:#fff; margin:0 0 18px; font-size:15px; text-align:center; }
+</style>
+
+<div class="lr-wrap">
+
+  <!-- LEFT: real glass in the accordion -->
+  <div>
+    <div class="phone">
+      <div class="hd">Servicios · cristal real</div>
+      <div class="stack">
+        <div class="rglass">
+          <div class="layer-distort"></div><div class="layer-tint"></div><div class="layer-edge"></div>
+          <div class="content">
+            <span class="plus">−</span>
+            <p class="lbl">01</p><p class="tt">Piezas para eventos</p>
+            <div class="thumb"></div>
+            <p class="ds">Flyers, posters y visuales para conciertos.</p>
+          </div>
+        </div>
+        <div class="rglass" style="padding:13px 16px;">
+          <div class="layer-distort"></div><div class="layer-tint"></div><div class="layer-edge"></div>
+          <div class="content"><span class="plus">+</span><p class="lbl">02</p><p class="tt">Redes sociales</p></div>
+        </div>
+        <div class="rglass" style="padding:13px 16px;">
+          <div class="layer-distort"></div><div class="layer-tint"></div><div class="layer-edge"></div>
+          <div class="content"><span class="plus">+</span><p class="lbl">03</p><p class="tt">Animaciones & motion</p></div>
+        </div>
+      </div>
+    </div>
+    <p class="col-cap">Cristal Apple real: el fondo se <b>refracta/distorsiona</b> en los bordes (filtro SVG).</p>
+  </div>
+
+  <!-- RIGHT: liquid metal buttons -->
+  <div class="panel">
+    <h3>Botones Liquid Metal (CSS)</h3>
+    <div class="btns">
+      <button class="metal metal-black">Ver proyectos <span class="ic">↗</span></button>
+      <button class="metal metal-black">Cotizar ahora <span class="ic">↗</span></button>
+      <div style="height:6px"></div>
+      <button class="metal metal-red">Elegir plan <span class="ic">↗</span></button>
+      <button class="metal metal-red">Contáctanos <span class="ic">↗</span></button>
+      <div style="height:6px"></div>
+      <button class="metal metal-black" style="width:46px;height:46px;padding:0;border-radius:50%;">↗</button>
+    </div>
+    <p class="col-cap" style="margin-top:22px;">Sheen metálico animado · negro (default) y rojo (CTA principal).<br>Pasa el mouse / haz clic para ver el press 3D.</p>
+  </div>
+
+</div>
+
+<div class="options" style="margin-top:30px;">
+  <div class="option" data-choice="approve-css" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content"><h3>Aprobar: cristal SVG + botones metal CSS</h3><p>Ligero, sin WebGL, funciona en todo. Recomendado.</p></div>
+  </div>
+  <div class="option" data-choice="webgl-hero" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content"><h3>Igual, pero shader WebGL real en el CTA del hero</h3><p>Un canvas extra solo en el botón principal del inicio.</p></div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<h2>Dirección visual — Glassmorphism</h2>
+<p class="subtitle">Mismos colores (rojo #F20F0F, oscuro #1F2A2E). Elige el ambiente base. Haz clic en la que prefieras.</p>
+
+<style>
+  .vd-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:10px; }
+  @media(max-width:900px){ .vd-grid{ grid-template-columns:1fr; } }
+  .vd-card { border-radius:18px; overflow:hidden; cursor:pointer; border:3px solid transparent; transition:.2s; }
+  .vd-card:hover{ transform:translateY(-4px); }
+  .vd-card.selected{ border-color:#F20F0F; }
+  .vd-stage { height:300px; padding:20px; position:relative; display:flex; flex-direction:column; justify-content:flex-end; gap:12px; }
+  .glass { backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-radius:14px; padding:14px 16px; }
+  .pill { display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; padding:5px 12px; border-radius:999px; background:#F20F0F; color:#fff; width:fit-content; }
+  .vd-h { font-size:26px; font-weight:800; line-height:1; margin:0; }
+  .vd-p { font-size:12px; margin:0; opacity:.8; }
+  .vd-cap { padding:14px 16px; background:#1b1b1f; }
+  .vd-cap h3{ margin:0 0 4px; font-size:15px; }
+  .vd-cap p{ margin:0; font-size:12px; opacity:.7; }
+  .mini-btn{ font-size:11px; font-weight:700; padding:8px 14px; border-radius:999px; background:#F20F0F; color:#fff; width:fit-content; }
+</style>
+
+<div class="vd-grid">
+  <!-- A: Dark glass -->
+  <div class="vd-card selected" data-choice="dark-glass" onclick="toggleSelect(this)">
+    <div class="vd-stage" style="background:linear-gradient(135deg,#1F2A2E 0%,#0d1416 100%);">
+      <div style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,#F20F0F66,transparent 70%);"></div>
+      <span class="pill">Visual Design & Motion</span>
+      <div class="glass" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#fff;">
+        <p class="vd-h">Motion Dreams</p>
+        <p class="vd-p">Diseño y motion que impacta.</p>
+      </div>
+      <span class="mini-btn">Ver proyectos ↗</span>
+    </div>
+    <div class="vd-cap"><h3>A · Glass oscuro</h3><p>Paneles esmerilados sobre fondo oscuro, glow rojo. Sobrio, premium, cinematográfico.</p></div>
+  </div>
+
+  <!-- B: Light glass -->
+  <div class="vd-card" data-choice="light-glass" onclick="toggleSelect(this)">
+    <div class="vd-stage" style="background:linear-gradient(135deg,#f2f3f5 0%,#e7e9ec 100%);">
+      <div style="position:absolute;top:-30px;left:-30px;width:180px;height:180px;background:radial-gradient(circle,#F20F0F44,transparent 70%);"></div>
+      <span class="pill">Visual Design & Motion</span>
+      <div class="glass" style="background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.8);color:#1F2A2E;box-shadow:0 8px 30px rgba(0,0,0,.08);">
+        <p class="vd-h">Motion Dreams</p>
+        <p class="vd-p" style="color:#1F2A2E;">Diseño y motion que impacta.</p>
+      </div>
+      <span class="mini-btn">Ver proyectos ↗</span>
+    </div>
+    <div class="vd-cap"><h3>B · Glass claro</h3><p>Base clara, tarjetas blancas translúcidas, acentos rojos. Limpio, fresco, luminoso.</p></div>
+  </div>
+
+  <!-- C: Hybrid -->
+  <div class="vd-card" data-choice="hybrid" onclick="toggleSelect(this)">
+    <div class="vd-stage" style="background:linear-gradient(180deg,#1F2A2E 0%,#1F2A2E 55%,#eef0f2 55%,#eef0f2 100%);">
+      <span class="pill" style="margin-bottom:auto;">Visual Design & Motion</span>
+      <div class="glass" style="background:rgba(255,255,255,.6);border:1px solid #fff;color:#1F2A2E;box-shadow:0 10px 30px rgba(0,0,0,.15);">
+        <p class="vd-h">Motion Dreams</p>
+        <p class="vd-p" style="color:#1F2A2E;">Hero oscuro → secciones claras.</p>
+      </div>
+      <span class="mini-btn">Ver proyectos ↗</span>
+    </div>
+    <div class="vd-cap"><h3>C · Híbrido</h3><p>Hero oscuro cinematográfico y secciones claras con glass. Contraste dinámico, menos lineal.</p></div>
+  </div>
+</div>

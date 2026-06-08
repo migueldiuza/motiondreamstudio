@@ -1,0 +1,114 @@
+<h2>Estilo de cristal — Liquid Glass (Apple)</h2>
+<p class="subtitle">Mismo acordeón A, dos acabados de cristal más elaborados. Fondo con color para ver la refracción. Elige el acabado.</p>
+
+<style>
+  :root{ --red:#F20F0F; }
+  .lg-stage{ display:flex; gap:30px; flex-wrap:wrap; justify-content:center; margin-top:8px; }
+  .pick{ cursor:pointer; border:3px solid transparent; border-radius:30px; transition:.2s; padding:8px; }
+  .pick:hover{ transform:translateY(-5px); }
+  .pick.selected{ border-color:var(--red); }
+
+  .phone{ width:280px; border-radius:34px; padding:16px 14px 22px; position:relative; overflow:hidden;
+          background:#07090a; box-shadow:0 30px 70px rgba(0,0,0,.55); }
+  /* vivid colorful backdrop so glass refraction is visible */
+  .phone::before{ content:""; position:absolute; inset:0; z-index:0;
+    background:
+      radial-gradient(40% 30% at 15% 12%, rgba(242,15,15,.85), transparent 60%),
+      radial-gradient(45% 35% at 90% 25%, rgba(255,120,30,.6), transparent 60%),
+      radial-gradient(50% 40% at 70% 95%, rgba(60,120,255,.55), transparent 60%),
+      radial-gradient(40% 40% at 10% 90%, rgba(180,40,255,.5), transparent 60%),
+      linear-gradient(160deg,#16202a,#06080a);
+    filter:saturate(120%);
+  }
+  .stack{ position:relative; z-index:1; display:flex; flex-direction:column; gap:12px; }
+  .hd{ position:relative; z-index:1; font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:#fff; font-weight:800; margin:4px 4px 14px; opacity:.85;}
+
+  .lbl{ font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#fff; font-weight:800; opacity:.55; }
+  .tt{ color:#fff; font-weight:700; font-size:15px; margin:3px 0 0; letter-spacing:-.01em;}
+  .ds{ color:rgba(255,255,255,.78); font-size:11px; margin:6px 0 0; line-height:1.45; }
+  .thumb{ height:84px; border-radius:12px; margin:11px 0; background:linear-gradient(135deg,#3a4a52,#10171a); }
+  .chip{ display:inline-flex; align-items:center; gap:6px; font-size:9px; font-weight:700; color:#fff;
+         background:var(--red); padding:6px 12px; border-radius:99px; box-shadow:0 4px 12px rgba(242,15,15,.5);}
+  .plus{ position:absolute; right:14px; top:14px; width:24px; height:24px; border-radius:50%;
+         background:rgba(255,255,255,.14); color:#fff; display:flex; align-items:center; justify-content:center; font-size:15px;
+         box-shadow:inset 0 1px 1px rgba(255,255,255,.4);}
+  .cap{ text-align:center; color:#fff; margin-top:14px; }
+  .cap h3{ margin:0 0 4px; font-size:16px; } .cap p{ margin:0; font-size:11px; opacity:.65; max-width:240px; }
+
+  /* ===== OPTION 1: LIQUID LENS ===== */
+  .lens{ position:relative; border-radius:18px; padding:15px 16px; isolation:isolate;
+    background:linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
+    backdrop-filter:blur(8px) saturate(180%) brightness(1.12);
+    -webkit-backdrop-filter:blur(8px) saturate(180%) brightness(1.12);
+    box-shadow:
+      inset 0 1px 1px rgba(255,255,255,.65),
+      inset 0 0 0 1px rgba(255,255,255,.10),
+      inset 0 -8px 18px rgba(0,0,0,.25),
+      0 10px 28px rgba(0,0,0,.45);
+  }
+  /* bright specular rim that bends light at the top edge (liquid look) */
+  .lens::before{ content:""; position:absolute; inset:0; border-radius:18px; padding:1px; pointer-events:none;
+    background:linear-gradient(135deg, rgba(255,255,255,.9), rgba(255,255,255,.15) 30%, transparent 55%, rgba(255,255,255,.25));
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude; }
+  /* soft moving highlight blob */
+  .lens::after{ content:""; position:absolute; top:-30%; left:-10%; width:60%; height:80%; border-radius:50%; pointer-events:none;
+    background:radial-gradient(closest-side, rgba(255,255,255,.35), transparent 70%); filter:blur(6px); }
+
+  /* ===== OPTION 2: FROSTED PRO ===== */
+  .frost{ position:relative; border-radius:16px; padding:15px 16px;
+    background:rgba(255,255,255,.07);
+    backdrop-filter:blur(22px) saturate(130%);
+    -webkit-backdrop-filter:blur(22px) saturate(130%);
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.35),
+      0 12px 30px rgba(0,0,0,.5);
+  }
+  .frost::after{ content:""; position:absolute; inset:0; border-radius:16px; pointer-events:none;
+    background:linear-gradient(180deg, rgba(255,255,255,.10), transparent 22%); }
+</style>
+
+<div class="lg-stage">
+
+  <!-- OPTION 1 -->
+  <div class="pick selected" data-choice="liquid-lens" onclick="toggleSelect(this)">
+    <div class="phone">
+      <div class="hd">Servicios</div>
+      <div class="stack">
+        <div class="lens">
+          <span class="plus">−</span>
+          <p class="lbl">01</p><p class="tt">Piezas para eventos</p>
+          <div class="thumb"></div>
+          <p class="ds">Flyers, posters y visuales para conciertos.</p>
+          <div style="margin-top:11px;"><span class="chip">Ver proyectos ↗</span></div>
+        </div>
+        <div class="lens" style="padding:13px 16px;"><span class="plus">+</span><p class="lbl">02</p><p class="tt">Redes sociales</p></div>
+        <div class="lens" style="padding:13px 16px;"><span class="plus">+</span><p class="lbl">03</p><p class="tt">Animaciones & motion</p></div>
+        <div class="lens" style="padding:13px 16px;"><span class="plus">+</span><p class="lbl">04</p><p class="tt">Marca & identidad</p></div>
+      </div>
+    </div>
+    <div class="cap"><h3>1 · Liquid Lens</h3><p>Rim de luz especular brillante, refracción tipo lente, esquinas 18px. El look "iOS 26".</p></div>
+  </div>
+
+  <!-- OPTION 2 -->
+  <div class="pick" data-choice="frosted-pro" onclick="toggleSelect(this)">
+    <div class="phone">
+      <div class="hd">Servicios</div>
+      <div class="stack">
+        <div class="frost">
+          <span class="plus">−</span>
+          <p class="lbl">01</p><p class="tt">Piezas para eventos</p>
+          <div class="thumb"></div>
+          <p class="ds">Flyers, posters y visuales para conciertos.</p>
+          <div style="margin-top:11px;"><span class="chip">Ver proyectos ↗</span></div>
+        </div>
+        <div class="frost" style="padding:13px 16px;"><span class="plus">+</span><p class="lbl">02</p><p class="tt">Redes sociales</p></div>
+        <div class="frost" style="padding:13px 16px;"><span class="plus">+</span><p class="lbl">03</p><p class="tt">Animaciones & motion</p></div>
+        <div class="frost" style="padding:13px 16px;"><span class="plus">+</span><p class="lbl">04</p><p class="tt">Marca & identidad</p></div>
+      </div>
+    </div>
+    <div class="cap"><h3>2 · Frosted Pro</h3><p>Más esmerilado y mate, borde fino limpio, esquinas 16px. Sobrio y elegante.</p></div>
+  </div>
+
+</div>
