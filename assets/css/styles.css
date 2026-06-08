@@ -20373,8 +20373,15 @@ body { background: var(--md-ink); color: var(--md-text); }
 .banner-section .btn:hover { background: rgba(15,18,20,.7); }
 .banner-section .btn-primary { background: rgba(242,15,15,.85); }
 .banner-section .btn-primary:hover { background: rgba(242,15,15,.95); }
-/* Círculo del ícono (flecha): blanco con flecha oscura, como acento */
-.page-wrapper .btn .btn-icon { background: #fff !important; color: var(--md-dark) !important; }
+/* Círculo del ícono (flecha): cristal blanco translúcido con flecha blanca */
+.page-wrapper .btn .btn-icon {
+  background: rgba(255,255,255,.22) !important;
+  -webkit-backdrop-filter: blur(6px) saturate(150%);
+  backdrop-filter: blur(6px) saturate(150%);
+  border: 1px solid rgba(255,255,255,.5);
+  color: #fff !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.4);
+}
 /* Botones sociales (contacto) */
 .page-wrapper .btn-social { justify-content: space-between; }
 
@@ -20504,17 +20511,17 @@ body {
   content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
   background:
     radial-gradient(40% 50% at 8% 0%, rgba(242,15,15,.20), transparent 60%),
-    radial-gradient(35% 45% at 100% 100%, rgba(255,43,214,.10), transparent 60%);
+    radial-gradient(35% 45% at 100% 100%, rgba(242,15,15,.10), transparent 60%);
 }
 .page-wrapper .services > .container,
 .page-wrapper .pricing-section > .container,
 .page-wrapper .featured-projects > * { position: relative; z-index: 1; }
 
 /* Detalles neón magenta */
-.page-wrapper .badge.text-bg-dark { box-shadow: 0 0 0 1px rgba(255,43,214,.35), 0 0 14px rgba(255,43,214,.25); }
-.page-wrapper .nav-tabs .nav-link.active { text-shadow: 0 0 18px rgba(255,43,214,.5); }
-.md-seg .md-cur-btn.on { box-shadow: 0 5px 14px rgba(242,15,15,.45), 0 0 18px rgba(255,43,214,.3); }
-.page-wrapper .featured-projects { box-shadow: 0 -1px 0 rgba(255,43,214,.25); }
+.page-wrapper .badge.text-bg-dark { box-shadow: 0 0 0 1px rgba(242,15,15,.35), 0 0 14px rgba(242,15,15,.25); }
+.page-wrapper .nav-tabs .nav-link.active { text-shadow: 0 0 18px rgba(242,15,15,.5); }
+.md-seg .md-cur-btn.on { box-shadow: 0 5px 14px rgba(242,15,15,.45), 0 0 18px rgba(242,15,15,.3); }
+.page-wrapper .featured-projects { box-shadow: 0 -1px 0 rgba(242,15,15,.25); }
 
 /* Productos destacados: 2 por fila completos en mobile (sin cortes) */
 @media (max-width: 991px){
@@ -20569,7 +20576,7 @@ body {
 .md-gallery-filters .md-chip:hover { background: rgba(255,255,255,.12); }
 .md-gallery-filters .md-chip.on {
   background: var(--md-red); border-color: transparent;
-  box-shadow: 0 6px 16px rgba(242,15,15,.4), 0 0 16px rgba(255,43,214,.25);
+  box-shadow: 0 6px 16px rgba(242,15,15,.4), 0 0 16px rgba(242,15,15,.25);
 }
 .md-gallery-grid { column-count: 4; column-gap: 14px; }
 @media (max-width: 1199px){ .md-gallery-grid { column-count: 3; } }
@@ -20609,6 +20616,17 @@ body {
 /* Menos espacio entre la sección de logos y "Planes a tu medida" (inicio) */
 .md-home .client-logos { padding-top: 2rem; padding-bottom: 1rem; }
 .md-home .pricing-section { padding-top: 2.5rem !important; }
+
+/* Formulario: ocultar placeholder en floating (evita texto duplicado con el label) */
+.page-wrapper .form-floating > .form-control::placeholder { color: transparent !important; }
+
+/* Quitar el caret extra de Bootstrap en el selector de productos (deja solo el chevron) */
+#productTypeDropdown.dropdown-toggle::after { display: none !important; }
+
+/* "Últimos Lanzamientos": más aire arriba e imágenes redondeadas */
+.page-wrapper .Recent-news { padding-top: 3.5rem !important; }
+.page-wrapper .Recent-news img { border-radius: var(--r-card); }
+.page-wrapper .Recent-news .blog-img, .page-wrapper .Recent-news .blog-card-img { border-radius: var(--r-card); overflow: hidden; }
 
 /* Preloader desactivado por completo (evita bloqueos al cambiar de página) */
 #preloader { display: none !important; }

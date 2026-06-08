@@ -85,6 +85,15 @@ $(function () {
     };
 
 
+    // Precios en mobile: animar desde los lados (no desde abajo)
+    window.mdPricingAnim = function () {
+        if (window.innerWidth > 575) return;
+        document.querySelectorAll('.pricing-section .card[data-aos]').forEach(function (c, i) {
+            c.setAttribute('data-aos', (i % 2) ? 'fade-left' : 'fade-right');
+        });
+    };
+    window.mdPricingAnim();
+
     // Aos
     AOS.init({
         once: true,
