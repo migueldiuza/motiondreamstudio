@@ -20556,3 +20556,34 @@ body {
   .pricing-category .card ul.list-unstyled li .round-32 iconify-icon { font-size: .7rem; }
   .pricing-category .card .btn { min-height: 44px; }
 }
+
+/* ===================================================================
+   === MD REDESIGN — Galería "Ver todos" ===
+   =================================================================== */
+.md-gallery-filters { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.md-gallery-filters .md-chip {
+  border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06); color: #fff;
+  font-weight: 600; font-size: .85rem; padding: 8px 16px; border-radius: 999px; cursor: pointer;
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: .2s;
+}
+.md-gallery-filters .md-chip:hover { background: rgba(255,255,255,.12); }
+.md-gallery-filters .md-chip.on {
+  background: var(--md-red); border-color: transparent;
+  box-shadow: 0 6px 16px rgba(242,15,15,.4), 0 0 16px rgba(255,43,214,.25);
+}
+.md-gallery-grid { column-count: 4; column-gap: 14px; }
+@media (max-width: 1199px){ .md-gallery-grid { column-count: 3; } }
+@media (max-width: 767px){ .md-gallery-grid { column-count: 2; } }
+@media (max-width: 420px){ .md-gallery-grid { column-count: 1; } }
+.md-gal-item {
+  break-inside: avoid; margin-bottom: 14px; border-radius: var(--r-card); overflow: hidden;
+  position: relative; cursor: pointer; border: 1px solid rgba(255,255,255,.1);
+}
+.md-gal-item img, .md-gal-item video { width: 100%; display: block; border-radius: var(--r-card); }
+.md-gal-item .vov {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,.25); color: #fff; font-size: 2rem; opacity: 0; transition: .2s;
+}
+.md-gal-item:hover .vov { opacity: 1; }
+.md-gal-item.hide { display: none; }
+.md-gal-soon { break-inside: avoid; margin-bottom: 14px; }
