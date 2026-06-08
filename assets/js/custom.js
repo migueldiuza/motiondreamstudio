@@ -10,7 +10,10 @@ $(function () {
     });
 
 
-    // Featured Owl Carousel
+    // Featured Owl Carousel — en mobile NO se inicializa (se muestra como grid, todo visible)
+    if (window.innerWidth < 992) {
+        $('.featured-projects-slider').addClass('md-no-carousel');
+    } else
     $('.featured-projects-slider .owl-carousel').owlCarousel({
         center: true,
         loop: true,

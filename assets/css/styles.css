@@ -20336,3 +20336,72 @@ body { background: var(--md-ink); color: var(--md-text); }
 /* Nav-tabs de servicios sobre oscuro */
 .page-wrapper .nav-tabs .nav-link { color: var(--md-text); }
 .page-wrapper .nav-tabs .nav-link.active { color: var(--md-red); }
+
+/* ---- Fondos de sección a oscuro (solo secciones, no accents) ---- */
+.page-wrapper .bg-light-gray { background: var(--md-surface) !important; }
+.client-logos.bg-white { background: var(--md-ink) !important; }
+.banner-section, .banner-inner-section { background-color: var(--md-ink); }
+
+/* ===================================================================
+   === MD REDESIGN — Botones glass (todos), logos, redondeo, mobile ===
+   =================================================================== */
+
+/* Todos los botones del template → cristal frost uniforme */
+.page-wrapper .btn {
+  position: relative;
+  border-radius: var(--r-btn) !important;
+  min-height: 46px;
+  background: rgba(255,255,255,.06);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
+  backdrop-filter: blur(12px) saturate(130%);
+  border: 1px solid rgba(255,255,255,.14);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18), var(--md-shadow);
+  transition: transform .15s cubic-bezier(.34,1.56,.64,1), background .2s ease;
+}
+.page-wrapper .btn:hover { transform: translateY(-2px); color: #fff; background: rgba(255,255,255,.10); }
+.page-wrapper .btn:active { transform: translateY(1px) scale(.99); }
+.page-wrapper .btn:focus-visible { outline: 2px solid var(--md-red); outline-offset: 3px; }
+.page-wrapper .btn .btn-text { color: #fff !important; }
+/* Variante roja */
+.page-wrapper .btn-primary { background: rgba(242,15,15,.5); border-color: rgba(255,255,255,.18); }
+.page-wrapper .btn-primary:hover { background: rgba(242,15,15,.66); }
+/* Círculo del ícono (flecha): blanco con flecha oscura, como acento */
+.page-wrapper .btn .btn-icon { background: #fff !important; color: var(--md-dark) !important; }
+/* Botones sociales (contacto) */
+.page-wrapper .btn-social { justify-content: space-between; }
+
+/* Logos del marquee: visibles (claros) sobre fondo oscuro */
+.page-wrapper .gray-logo {
+  filter: brightness(0) invert(1) !important;
+  opacity: .65 !important;
+}
+.page-wrapper .gray-logo:hover, .page-wrapper .gray-logo:active {
+  filter: brightness(0) saturate(100%) invert(13%) sepia(91%) saturate(7401%) hue-rotate(359deg) brightness(97%) contrast(114%) !important;
+  opacity: 1 !important;
+}
+
+/* Redondeo macOS en medios y separadores (nada recto) */
+.page-wrapper .portfolio-img { border-radius: var(--r-card); overflow: hidden; }
+.page-wrapper .portfolio-img img { border-radius: var(--r-card); }
+.page-wrapper .services-tab .tab-content img { border-radius: var(--r-card); }
+.page-wrapper .about-img img, .page-wrapper .meet-team-img,
+.page-wrapper .meet-team-img img { border-radius: var(--r-card); overflow: hidden; }
+.page-wrapper .banner-inner-section { border-radius: 0 0 var(--r-card) var(--r-card); overflow: hidden; }
+.page-wrapper hr.border-line.bg-white { background: rgba(255,255,255,.22) !important; border: 0; height: 1px; border-radius: 2px; }
+.page-wrapper hr.border-line { border-radius: 2px; }
+
+/* Inicio mobile: el carrusel de Productos Destacados se vuelve grid (todo visible) */
+@media (max-width: 991px) {
+  .featured-projects-slider.md-no-carousel .owl-carousel {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .featured-projects-slider.md-no-carousel .owl-carousel .item { width: 100% !important; }
+}
+
+/* Espaciado/tipografía estilo referencia (más aire, títulos potentes) */
+.page-wrapper h1, .page-wrapper h2 { letter-spacing: -.02em; }
+.md-fluid-h1, .md-fluid-h2 { font-weight: 800; }
