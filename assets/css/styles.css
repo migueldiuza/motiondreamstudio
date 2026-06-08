@@ -20281,3 +20281,58 @@ body { background: var(--md-ink); color: var(--md-text); }
 /* ---- Ayudas de superficie oscura para overrides de Bootstrap ---- */
 .md-dark .text-dark { color: #fff !important; }
 .md-dark .border, .md-dark .border-top, .md-dark .border-bottom { border-color: rgba(255,255,255,.12) !important; }
+
+/* ===================================================================
+   === MD REDESIGN — Remapeo de tema oscuro global (page-wrapper) ===
+   =================================================================== */
+/* El template usaba .text-dark como color de texto principal sobre fondos
+   claros. Ahora el sitio es oscuro: invertimos a claro por defecto y
+   re-protegemos los elementos que viven sobre superficies claras/sólidas. */
+.page-wrapper .text-dark { color: var(--md-text) !important; }
+.page-wrapper .bg-white .text-dark,
+.page-wrapper .bg-white.text-dark,
+.page-wrapper .bg-primary .text-dark,
+.page-wrapper .bg-primary.text-dark,
+.page-wrapper .badge.bg-white .text-dark { color: var(--md-dark) !important; }
+
+/* Bordes/divisores claros sobre fondo oscuro */
+.page-wrapper .border,
+.page-wrapper .border-top,
+.page-wrapper .border-bottom { border-color: rgba(255,255,255,.12) !important; }
+.page-wrapper hr.border-line { border-color: rgba(255,255,255,.18); opacity: 1; }
+
+/* Tarjetas → cristal frost (glass-lite) en todo el sitio, sin cirugía HTML */
+.page-wrapper .card {
+  position: relative;
+  background: rgba(255,255,255,.05);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  backdrop-filter: blur(14px) saturate(130%);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: var(--r-card);
+  color: var(--md-text);
+  box-shadow: var(--md-shadow);
+}
+.page-wrapper .card .text-dark,
+.page-wrapper .card h1, .page-wrapper .card h2, .page-wrapper .card h3,
+.page-wrapper .card h4, .page-wrapper .card h5, .page-wrapper .card h6,
+.page-wrapper .card p { color: var(--md-text); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .page-wrapper .card { background: var(--md-surface-2); }
+}
+
+/* Badges contorneados (tags) sobre tarjetas oscuras */
+.page-wrapper .badge.text-dark.border { color: var(--md-text) !important; border-color: rgba(255,255,255,.25) !important; }
+
+/* Formularios sobre fondo oscuro */
+.page-wrapper .form-control {
+  background: transparent; color: #fff; border-color: rgba(255,255,255,.2);
+}
+.page-wrapper .form-control::placeholder { color: rgba(255,255,255,.4); }
+.page-wrapper .form-control:focus {
+  background: transparent; color: #fff; box-shadow: none; border-color: var(--md-red);
+}
+.page-wrapper .form-floating > label { color: rgba(255,255,255,.5); }
+
+/* Nav-tabs de servicios sobre oscuro */
+.page-wrapper .nav-tabs .nav-link { color: var(--md-text); }
+.page-wrapper .nav-tabs .nav-link.active { color: var(--md-red); }
