@@ -20602,6 +20602,7 @@ body {
   transition: color .2s ease;
 }
 .md-vertodos-link:hover { color: #fff; text-decoration: underline; }
+@media (min-width: 768px) { .gallery-row-head { padding-right: 1.5rem; } }
 
 /* Menos espacio vertical entre secciones de galería en mobile */
 @media (max-width: 767px){

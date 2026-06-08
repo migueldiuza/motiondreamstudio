@@ -5,10 +5,11 @@ window.MD_GALLERY = {
     subtitle: 'Eventos, conciertos, urbanos, corporativos y más.',
     groups: [
       { title: 'Conciertos y Festivales', items: ['assets/images/flyers/flyerconcierto.jpg', 'assets/images/flyers/flyerconcierto2.jpg', 'assets/images/flyers/flyerconcierto3.jpeg', 'assets/images/flyers/flyer concierto4.jpeg', 'assets/images/flyers/flyer concierto5.jpeg', 'assets/images/flyers/conciertoLanzamiento.png', 'assets/images/flyers/flyerEvent.jpg'] },
-      { title: 'Flyers Urbanos', items: ['assets/images/flyers/flyerUrbano.jpeg', 'assets/images/flyers/flyerUrbano2.jpeg', 'assets/images/flyers/flyerUrbano3.jpeg', 'assets/images/flyers/flyerUrbano4.jpeg', 'assets/images/flyers/flyerUrbano5.jpg'] },
-      { title: 'Flyers Night clubs', items: ['assets/images/flyers/nigth1.jpeg', 'assets/images/flyers/nigth2.jpeg', 'assets/images/flyers/night3.jpeg', 'assets/images/flyers/nigth4.jpeg', 'assets/images/flyers/night5.jpeg'] },
-      { title: 'Flyer de Cantina', items: ['assets/images/flyers/cantina1.jpeg', 'assets/images/flyers/cantina2.jpeg', 'assets/images/flyers/cantina3.jpeg', 'assets/images/flyers/cantina4.jpeg', 'assets/images/flyers/cantina5.jpeg'] },
-      { title: 'Flyer Party', items: ['assets/images/flyers/flyerParty.png', 'assets/images/flyers/flyerParty2.jpeg', 'assets/images/flyers/flyerParty3.jpeg', 'assets/images/flyers/flyerParty4.jpeg'] },
+      { title: 'Flyers Urbanos', items: ['assets/images/flyers/flyerUrbano.jpeg', 'assets/images/flyers/flyerUrbano2.jpeg', 'assets/images/flyers/flyerUrbano3.jpeg', 'assets/images/flyers/flyerUrbano4.jpeg', 'assets/images/flyers/flyerUrbano5.jpg', 'assets/images/flyers/urbano1.jpeg'] },
+      { title: 'Flyers Night clubs', items: ['assets/images/flyers/nigth1.jpeg', 'assets/images/flyers/nigth2.jpeg', 'assets/images/flyers/night3.jpeg', 'assets/images/flyers/nigth4.jpeg', 'assets/images/flyers/night5.jpeg', 'assets/images/flyers/nightClub1.jpeg', 'assets/images/flyers/nightClub2.jpeg', 'assets/images/flyers/nightClub3.jpeg', 'assets/images/flyers/nightClub4.jpeg', 'assets/images/flyers/nightClub5.jpeg'] },
+      { title: 'Flyer de Cantina', items: ['assets/images/flyers/cantina1.jpeg', 'assets/images/flyers/cantina2.jpeg', 'assets/images/flyers/cantina3.jpeg', 'assets/images/flyers/cantina4.jpeg', 'assets/images/flyers/cantina5.jpeg', 'assets/images/flyers/cantina6.jpeg', 'assets/images/flyers/cantina7.jpeg'] },
+      { title: 'Eventos', items: ['assets/images/flyers/evento1.jpeg', 'assets/images/flyers/evento2.jpeg', 'assets/images/flyers/evento3.jpeg', 'assets/images/flyers/evento4.jpeg', 'assets/images/flyers/evento5.jpeg', 'assets/images/flyers/evento6.jpeg', 'assets/images/flyers/evento7.jpeg'] },
+      { title: 'Flyer Party', items: ['assets/images/flyers/flyerParty.png', 'assets/images/flyers/flyerParty2.jpeg', 'assets/images/flyers/flyerParty3.jpeg', 'assets/images/flyers/flyerParty4.jpeg', 'assets/images/flyers/party.jpeg', 'assets/images/flyers/party2.jpeg'] },
       { title: 'Flyer Deportivo', items: ['assets/images/flyers/flyerDeportivo.jpeg', 'assets/images/flyers/flyerDeportivo2.jpeg', 'assets/images/flyers/flyerDeportivo3.jpeg', 'assets/images/flyers/flyerDeportivo4.jpeg'] },
       { title: 'Flyer Corporativos', items: ['assets/images/flyers/flyerpersonalizado1.jpeg', 'assets/images/flyers/flyerpersonalizado2.jpeg', 'assets/images/flyers/empresa.jpg', 'assets/images/flyers/empresa2.jpg'] },
       { title: 'Flyers Animados', items: ['assets/images/flyers/motionBasic1.mp4', 'assets/images/flyers/motionProfesional1.mp4', 'assets/images/flyers/motionProfesional2.mp4', 'assets/images/flyers/motionPremium1.mp4'] }
@@ -21,7 +22,7 @@ window.MD_GALLERY = {
       { title: 'Flyers Animados', items: ['assets/images/flyers/motionProfesional1.mp4', 'assets/images/flyers/motionProfesional2.mp4', 'assets/images/flyers/motionProfesional3.mp4', 'assets/images/flyers/motionProfesional4.mp4'] },
       { title: 'Spots con Locución', items: ['assets/images/flyers/motionPremium1.mp4', 'assets/images/flyers/motionPremium2.mp4', 'assets/images/flyers/motiomPremium3.mp4', 'assets/images/flyers/motionPremiun4.mp4', 'assets/images/flyers/motionPremiun5.mp4'] },
       { title: 'Motion Esencial', items: ['assets/images/flyers/motionBasic1.mp4', 'assets/images/flyers/motionBasic2.mp4', 'assets/images/flyers/motionBasic3.mp4', 'assets/images/flyers/motionBasic4.mp4'] },
-      { title: 'Branding en Movimiento', items: [], soon: true },
+      { title: 'Branding en Movimiento', items: ['assets/images/flyers/motionflyer.mp4', 'assets/images/flyers/motion2.mp4', 'assets/images/flyers/motionBasic.mp4'] },
       { title: 'Comerciales / Ads', items: [], soon: true },
       { title: 'Motion Corporativo', items: [], soon: true },
       { title: 'Visuales para Eventos (VJ)', items: [], soon: true }
