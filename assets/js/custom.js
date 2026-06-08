@@ -416,8 +416,32 @@ $(function () {
 })();
 
 // 2) Toggle de monedas (default USD, recordado en localStorage)
-(function currencyToggle() {
+//    COP fijo; USD/EUR ~ +20% redondeado; 1€ = 1$ (mismo número).
+window.mdCurrency = (function () {
     var KEY = 'md-currency';
+    var MAP = {
+        '$60k':  { usd: '$19',  eur: '€19' },
+        '$100k': { usd: '$32',  eur: '€32' },
+        '$150k': { usd: '$48',  eur: '€48' },
+        '$200k': { usd: '$63',  eur: '€63' },
+        '$350k': { usd: '$110', eur: '€110' },
+        '$450k': { usd: '$143', eur: '€143' },
+        '$480k': { usd: '$152', eur: '€152' },
+        '$850k': { usd: '$270', eur: '€270' },
+        '$1.5M': { usd: '$475', eur: '€475' }
+    };
+    function seed() {
+        document.querySelectorAll('.card h3.mb-0').forEach(function (h) {
+            if (h.hasAttribute('data-usd')) return;
+            var cop = h.textContent.trim();
+            var m = MAP[cop];
+            if (m) {
+                h.setAttribute('data-cop', cop);
+                h.setAttribute('data-usd', m.usd);
+                h.setAttribute('data-eur', m.eur);
+            }
+        });
+    }
     function apply(cur) {
         document.querySelectorAll('[data-usd]').forEach(function (n) {
             var v = n.getAttribute('data-' + cur);
@@ -427,19 +451,20 @@ $(function () {
             b.classList.toggle('on', b.getAttribute('data-cur') === cur);
         });
     }
-    document.addEventListener('DOMContentLoaded', function () {
-        if (!document.querySelector('.md-cur-btn')) return;
-        var saved = localStorage.getItem(KEY) || 'usd';
-        apply(saved);
-        document.querySelectorAll('.md-cur-btn').forEach(function (b) {
-            b.addEventListener('click', function () {
-                var cur = b.getAttribute('data-cur');
-                localStorage.setItem(KEY, cur);
-                apply(cur);
-            });
+    function get() { return localStorage.getItem(KEY) || 'usd'; }
+    return {
+        refresh: function () { seed(); apply(get()); },
+        set: function (cur) { localStorage.setItem(KEY, cur); apply(cur); }
+    };
+})();
+document.addEventListener('DOMContentLoaded', function () {
+    window.mdCurrency.refresh();
+    document.querySelectorAll('.md-cur-btn').forEach(function (b) {
+        b.addEventListener('click', function () {
+            window.mdCurrency.set(b.getAttribute('data-cur'));
         });
     });
-})();
+});
 
 // 3) Acordeón de servicios (mobile)
 (function servicesAccordion() {

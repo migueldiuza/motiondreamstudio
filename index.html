@@ -539,7 +539,67 @@
               </div>
             </div>
           </div>
-          <div class="services-tab">
+          <!-- Acordeón de servicios (mobile): los 4 visibles, sin carrusel -->
+          <div class="md-acc d-lg-none">
+            <div class="md-acc-item md-glass open">
+              <span class="mg-distort"></span><span class="mg-tint"></span><span class="mg-edge"></span>
+              <div class="mg-content">
+                <button class="md-acc-head" type="button"><span><small>01</small>Piezas para eventos</span><i class="md-acc-ico">+</i></button>
+                <div class="md-acc-body">
+                  <img src="assets/images/flyers/bannerEventos.jpg" alt="Piezas para eventos">
+                  <p class="text-white text-opacity-70 mb-0">Flyers, posters y visuales para conciertos.</p>
+                  <a href="projects-detail.html?project=flyers" class="md-btn md-glass md-glass--btn md-glass--red">
+                    <span class="mg-distort"></span><span class="mg-tint"></span><span class="mg-edge"></span>
+                    <span class="mg-content">Ver proyectos <iconify-icon icon="lucide:arrow-up-right" class="md-btn-ico"></iconify-icon></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="md-acc-item md-glass">
+              <span class="mg-distort"></span><span class="mg-tint"></span><span class="mg-edge"></span>
+              <div class="mg-content">
+                <button class="md-acc-head" type="button"><span><small>02</small>Redes sociales</span><i class="md-acc-ico">+</i></button>
+                <div class="md-acc-body">
+                  <img src="assets/images/flyers/bannerSocialMedia.jpg" alt="Redes sociales">
+                  <p class="text-white text-opacity-70 mb-0">Posts, stories y carruseles que conectan.</p>
+                  <a href="projects-detail.html?project=social-media" class="md-btn md-glass md-glass--btn md-glass--red">
+                    <span class="mg-distort"></span><span class="mg-tint"></span><span class="mg-edge"></span>
+                    <span class="mg-content">Ver proyectos <iconify-icon icon="lucide:arrow-up-right" class="md-btn-ico"></iconify-icon></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="md-acc-item md-glass">
+              <span class="mg-distort"></span><span class="mg-tint"></span><span class="mg-edge"></span>
+              <div class="mg-content">
+                <button class="md-acc-head" type="button"><span><small>03</small>Animaciones &amp; motion</span><i class="md-acc-ico">+</i></button>
+                <div class="md-acc-body">
+                  <img src="assets/images/flyers/bannerFlyerAnim.jpg" alt="Animaciones y motion">
+                  <p class="text-white text-opacity-70 mb-0">Animaciones promocionales, reels y ads.</p>
+                  <a href="projects-detail.html?project=animaciones" class="md-btn md-glass md-glass--btn md-glass--red">
+                    <span class="mg-distort"></span><span class="mg-tint"></span><span class="mg-edge"></span>
+                    <span class="mg-content">Ver proyectos <iconify-icon icon="lucide:arrow-up-right" class="md-btn-ico"></iconify-icon></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="md-acc-item md-glass">
+              <span class="mg-distort"></span><span class="mg-tint"></span><span class="mg-edge"></span>
+              <div class="mg-content">
+                <button class="md-acc-head" type="button"><span><small>04</small>Marca &amp; identidad</span><i class="md-acc-ico">+</i></button>
+                <div class="md-acc-body">
+                  <img src="assets/images/flyers/bannersocialMarca.jpg" alt="Marca e identidad">
+                  <p class="text-white text-opacity-70 mb-0">Logos, cartelería y tarjetas de presentación.</p>
+                  <a href="projects-detail.html?project=diseno-marca" class="md-btn md-glass md-glass--btn md-glass--red">
+                    <span class="mg-distort"></span><span class="mg-tint"></span><span class="mg-edge"></span>
+                    <span class="mg-content">Ver proyectos <iconify-icon icon="lucide:arrow-up-right" class="md-btn-ico"></iconify-icon></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="services-tab d-none d-lg-block">
             <div class="row gap-5 gap-xl-0">
               <div class="col-xl-4">
                 <div class="tab-content" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1000">
@@ -620,7 +680,7 @@
                         <div class="col-lg-6 col-xxl-5">
                           <button class="nav-link fs-10 fw-bold py-1 px-0 border-0 rounded-0 flex-shrink-0"
                             id="three-tab" data-bs-toggle="tab" data-bs-target="#three" type="button" role="tab"
-                            aria-controls="three" aria-selected="false">Flyers animados & motion</button>
+                            aria-controls="three" aria-selected="false">Animaciones & motion</button>
                         </div>
                         <div class="col-lg-6 col-xxl-7">
                           <p class="text-white text-opacity-70 mb-0">
@@ -793,6 +853,21 @@
               </div>
             </div>
 
+            <!-- Currency toggle -->
+            <div class="row justify-content-center mb-4" data-aos="fade-up" data-aos-delay="150"
+              data-aos-duration="1000">
+              <div class="col-auto">
+                <div class="md-seg md-glass md-glass--ctrl mx-auto">
+                  <span class="mg-distort"></span><span class="mg-tint"></span><span class="mg-edge"></span>
+                  <div class="mg-content d-flex gap-1">
+                    <button type="button" class="md-cur-btn on" data-cur="usd">USD&nbsp;$</button>
+                    <button type="button" class="md-cur-btn" data-cur="cop">COP&nbsp;$</button>
+                    <button type="button" class="md-cur-btn" data-cur="eur">EUR&nbsp;€</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <!-- Product Type Selector -->
             <div class="row justify-content-center mb-3" style="position: relative; z-index: 10;" data-aos="fade-up"
               data-aos-delay="200" data-aos-duration="1000">
@@ -818,7 +893,7 @@
                         data-product="flyers-animados">
                         <div class="d-flex align-items-center gap-3">
                           <iconify-icon icon="lucide:film" class="fs-5 text-primary"></iconify-icon>
-                          <span class="fw-bold">Flyers Animados</span>
+                          <span class="fw-bold">Animaciones</span>
                         </div>
                       </a></li>
                     <li><a class="dropdown-item p-3 rounded product-type-option" href="#" data-product="diseno-marca">
