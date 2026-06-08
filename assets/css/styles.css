@@ -20645,3 +20645,21 @@ body {
   .about-section .col-4 h2.fs-14 { font-size: 1.35rem; letter-spacing: -.02em; }
   .about-section .col-4 p { font-size: .68rem; line-height: 1.2; }
 }
+
+/* ===================================================================
+   === MD REDESIGN — Táctil: un solo toque (sin doble tap por :hover) ===
+   =================================================================== */
+@media (hover: none) {
+  /* Overlays de proyectos: visibles por defecto (su enlace funciona al primer toque) */
+  .portfolio-img .portfolio-overlay {
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    background-color: transparent !important;
+  }
+  /* Evitar estados hover "pegados" que desplazan elementos en táctil */
+  .page-wrapper .btn:hover,
+  .page-wrapper .card:hover,
+  .page-wrapper .gray-logo:hover,
+  .md-gal-item:hover,
+  .resources-img:hover { transform: none !important; }
+}
