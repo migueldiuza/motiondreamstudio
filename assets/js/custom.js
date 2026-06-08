@@ -346,46 +346,33 @@ $(function () {
             });
     });
 
-    // Handle Preloader Hiding
+    // Handle Preloader Hiding (oculta del todo, no bloquea la página)
     function hidePreloader() {
-        const preloader = $('#preloader');
-        if (preloader.length && !preloader.hasClass('fade-out')) {
-            preloader.addClass('fade-out');
-            // Refresh AOS animations after the preloader is gone
-            if (typeof AOS !== 'undefined') {
-                setTimeout(() => AOS.refresh(), 100);
-            }
-        }
+        const preloader = document.getElementById('preloader');
+        if (!preloader || preloader.classList.contains('fade-out')) return;
+        preloader.classList.add('fade-out');
+        preloader.style.pointerEvents = 'none';
+        setTimeout(function () { preloader.style.display = 'none'; }, 600);
+        if (typeof AOS !== 'undefined') setTimeout(function () { AOS.refresh(); }, 100);
     }
 
-    // Wait for hero video or window load
+    // Reproducir el video del hero (best-effort, mobile)
     const heroVideo = $('.banner-section video')[0];
     if (heroVideo) {
-        // Force play for mobile devices (iOS/Android)
-        const startVideo = () => {
-            heroVideo.play().catch(error => {
-                console.log("Autoplay prevented:", error);
-                // On some mobiles, we might need a tap, but muted should work
-            });
-        };
+        const startVideo = function () { heroVideo.play().catch(function () {}); };
+        if (heroVideo.readyState >= 2) startVideo();
+        else heroVideo.addEventListener('canplay', startVideo, { once: true });
+    }
 
-        // If already ready or cached
-        if (heroVideo.readyState >= 3) {
-            startVideo();
-            setTimeout(hidePreloader, 800);
-        } else {
-            heroVideo.oncanplaythrough = function () {
-                startVideo();
-                setTimeout(hidePreloader, 500);
-            };
-            // Fallback: 5 seconds max wait
-            setTimeout(hidePreloader, 5000);
-        }
+    // Preloader: SOLO en la primera carga de la sesión.
+    // Al navegar entre páginas se oculta al instante (no reaparece).
+    if (sessionStorage.getItem('md-loaded')) {
+        hidePreloader();
     } else {
-        // If not on index.html or no video
-        $(window).on('load', function () {
-            setTimeout(hidePreloader, 500);
-        });
+        sessionStorage.setItem('md-loaded', '1');
+        $(window).on('load', function () { setTimeout(hidePreloader, 400); });
+        // Cierre garantizado pase lo que pase con los recursos
+        setTimeout(hidePreloader, 2500);
     }
 
 });
