@@ -20346,27 +20346,33 @@ body { background: var(--md-ink); color: var(--md-text); }
    === MD REDESIGN — Botones glass (todos), logos, redondeo, mobile ===
    =================================================================== */
 
-/* Todos los botones del template → cristal frost uniforme */
+/* Todos los botones del template → mantienen su FORMA original (pill + círculo)
+   pero con efecto glass frost uniforme y suficiente opacidad */
 .page-wrapper .btn {
   position: relative;
-  border-radius: var(--r-btn) !important;
-  min-height: 46px;
-  background: rgba(255,255,255,.06);
-  -webkit-backdrop-filter: blur(12px) saturate(130%);
-  backdrop-filter: blur(12px) saturate(130%);
-  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 100px;
+  min-height: 48px;
+  background: rgba(255,255,255,.12);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(255,255,255,.18);
   color: #fff;
   font-weight: 700;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.18), var(--md-shadow);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25), var(--md-shadow);
   transition: transform .15s cubic-bezier(.34,1.56,.64,1), background .2s ease;
 }
-.page-wrapper .btn:hover { transform: translateY(-2px); color: #fff; background: rgba(255,255,255,.10); }
+.page-wrapper .btn:hover { transform: translateY(-2px); color: #fff; background: rgba(255,255,255,.18); }
 .page-wrapper .btn:active { transform: translateY(1px) scale(.99); }
 .page-wrapper .btn:focus-visible { outline: 2px solid var(--md-red); outline-offset: 3px; }
 .page-wrapper .btn .btn-text { color: #fff !important; }
 /* Variante roja */
-.page-wrapper .btn-primary { background: rgba(242,15,15,.5); border-color: rgba(255,255,255,.18); }
-.page-wrapper .btn-primary:hover { background: rgba(242,15,15,.66); }
+.page-wrapper .btn-primary { background: rgba(242,15,15,.62); border-color: rgba(255,120,120,.4); }
+.page-wrapper .btn-primary:hover { background: rgba(242,15,15,.78); }
+/* Botones del hero sobre el video: más opacos para no perderse */
+.banner-section .btn { background: rgba(15,18,20,.55); border-color: rgba(255,255,255,.22); }
+.banner-section .btn:hover { background: rgba(15,18,20,.7); }
+.banner-section .btn-primary { background: rgba(242,15,15,.85); }
+.banner-section .btn-primary:hover { background: rgba(242,15,15,.95); }
 /* Círculo del ícono (flecha): blanco con flecha oscura, como acento */
 .page-wrapper .btn .btn-icon { background: #fff !important; color: var(--md-dark) !important; }
 /* Botones sociales (contacto) */
@@ -20396,12 +20402,76 @@ body { background: var(--md-ink); color: var(--md-text); }
 @media (max-width: 991px) {
   .featured-projects-slider.md-no-carousel .owl-carousel {
     display: grid !important;
-    grid-template-columns: 1fr;
-    gap: 18px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    padding: 0 12px;
   }
   .featured-projects-slider.md-no-carousel .owl-carousel .item { width: 100% !important; }
+  .featured-projects-slider.md-no-carousel .portfolio { gap: 12px !important; }
+  .featured-projects-slider.md-no-carousel .portfolio-details h3 { font-size: 1rem; }
 }
 
 /* Espaciado/tipografía estilo referencia (más aire, títulos potentes) */
 .page-wrapper h1, .page-wrapper h2 { letter-spacing: -.02em; }
 .md-fluid-h1, .md-fluid-h2 { font-weight: 800; }
+
+/* ===================================================================
+   === MD REDESIGN v2 — tipografía display, títulos claros, luz, capas ===
+   =================================================================== */
+
+/* Tipografía display (Space Grotesk inyectada por custom.js) en titulares */
+h1, h2, h3, .md-fluid-h1, .md-fluid-h2,
+.banner-section h1, .pricing-section h2, .services h2, .about-section h2,
+.nav-tabs .nav-link, .md-acc-head, .price .num, .num {
+  font-family: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+}
+.md-fluid-h1 { font-weight: 700; letter-spacing: -.03em; }
+
+/* Títulos SIEMPRE claros sobre fondo oscuro (mata los grises sobre negro) */
+.page-wrapper h1, .page-wrapper h2, .page-wrapper h3,
+.page-wrapper h4, .page-wrapper h5, .page-wrapper h6 { color: var(--md-text) !important; }
+
+/* Fondo con iluminación/textura tipo referencia */
+body {
+  background:
+    radial-gradient(70% 55% at 50% -8%, rgba(242,15,15,.16), transparent 60%),
+    radial-gradient(50% 40% at 100% 30%, rgba(242,15,15,.07), transparent 60%),
+    var(--md-ink);
+  background-attachment: fixed;
+}
+
+/* Sección clara reutilizable (p.ej. "Sobre nosotros") */
+.page-wrapper .md-light {
+  background: #f3f3f4 !important;
+  color: var(--md-dark);
+  border-radius: 32px;
+  position: relative;
+  z-index: 2;
+}
+.page-wrapper .md-light h1, .page-wrapper .md-light h2, .page-wrapper .md-light h3,
+.page-wrapper .md-light h4, .page-wrapper .md-light h5, .page-wrapper .md-light h6,
+.page-wrapper .md-light p, .page-wrapper .md-light .text-dark,
+.page-wrapper .md-light .text-white { color: var(--md-dark) !important; }
+.page-wrapper .md-light .text-opacity-70, .page-wrapper .md-light .text-white.text-opacity-70 { color: rgba(31,42,46,.7) !important; }
+.page-wrapper .md-light .border, .page-wrapper .md-light .border-top,
+.page-wrapper .md-light .border-bottom { border-color: rgba(0,0,0,.12) !important; }
+/* En sección clara, botones vuelven a oscuro-glass para contraste */
+.page-wrapper .md-light .btn { background: rgba(20,20,24,.9); color: #fff; border-color: rgba(0,0,0,.15); }
+.page-wrapper .md-light .btn .btn-text { color: #fff !important; }
+.page-wrapper .md-light .btn .btn-icon { background: var(--md-red) !important; color: #fff !important; }
+
+/* Sección bajo el hero: borde superior redondeado que solapa levemente el hero */
+.page-wrapper .featured-projects {
+  position: relative;
+  z-index: 3;
+  margin-top: -42px;
+  border-radius: 34px 34px 0 0;
+  background: var(--md-surface);
+}
+/* Las secciones grandes oscuras adoptan esquinas suaves arriba (nada recto) */
+.page-wrapper .pricing-section,
+.page-wrapper .services { border-radius: 34px 34px 0 0; }
+
+/* Tarjetas: hover lift y esquina coherente */
+.page-wrapper .card { transition: transform .25s ease, box-shadow .25s ease; }
+.page-wrapper .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,.5); }

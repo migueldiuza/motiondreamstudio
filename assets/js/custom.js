@@ -394,6 +394,16 @@ $(function () {
    === MD REDESIGN — filtro SVG glass + toggle monedas + acordeón ===
    =================================================================== */
 
+// 0) Inyectar tipografía display (Space Grotesk) una sola vez
+(function injectFont() {
+    if (document.getElementById('md-font')) return;
+    var pre1 = document.createElement('link'); pre1.rel = 'preconnect'; pre1.href = 'https://fonts.googleapis.com';
+    var pre2 = document.createElement('link'); pre2.rel = 'preconnect'; pre2.href = 'https://fonts.gstatic.com'; pre2.crossOrigin = 'anonymous';
+    var l = document.createElement('link'); l.id = 'md-font'; l.rel = 'stylesheet';
+    l.href = 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap';
+    document.head.appendChild(pre1); document.head.appendChild(pre2); document.head.appendChild(l);
+})();
+
 // 1) Inyectar el filtro SVG de refracción una sola vez
 (function injectGlassFilter() {
     function inject() {
