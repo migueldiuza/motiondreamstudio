@@ -20486,7 +20486,8 @@ body {
 .page-wrapper > .client-logos     { order: 4; }
 .page-wrapper > .pricing-section  { order: 5; }
 .page-wrapper > .services         { order: 6; }
-.page-wrapper > .get-in-touch     { order: 7; }
+.page-wrapper > .Recent-news      { order: 7; }
+.page-wrapper > .get-in-touch     { order: 8; }
 
 /* Hero: subir contenido (más aire abajo) */
 .banner-section .pb-8 { padding-bottom: 5.5rem !important; }
@@ -20517,8 +20518,21 @@ body {
 
 /* Productos destacados: 2 por fila completos en mobile (sin cortes) */
 @media (max-width: 991px){
-  .featured-projects-slider.md-no-carousel { overflow: visible !important; padding: 0; }
-  .featured-projects-slider.md-no-carousel .owl-carousel { padding: 0 16px; }
+  .featured-projects-slider.md-no-carousel { overflow: hidden !important; padding: 0; }
+  .featured-projects-slider.md-no-carousel .owl-carousel {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    padding: 0 16px;
+    max-width: 100%;
+  }
+  .featured-projects-slider.md-no-carousel .owl-carousel .item { min-width: 0; width: auto !important; }
+  .featured-projects-slider.md-no-carousel .portfolio { gap: 10px !important; }
+  .featured-projects-slider.md-no-carousel .portfolio-img img { width: 100%; height: 100%; object-fit: cover; }
+  .featured-projects-slider.md-no-carousel .portfolio-details h3 { font-size: .95rem; }
+  /* Badges que envuelven y no desbordan */
+  .featured-projects-slider.md-no-carousel .portfolio-details .hstack { flex-wrap: wrap; gap: 6px !important; }
+  .featured-projects-slider.md-no-carousel .portfolio-details .badge { font-size: .62rem; padding: 4px 8px; }
 }
 
 /* Precios en mobile: tarjetas anchas y bajas (estilo referencia) */
