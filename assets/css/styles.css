@@ -20573,8 +20573,7 @@ body {
 }
 .md-gallery-grid { column-count: 4; column-gap: 14px; }
 @media (max-width: 1199px){ .md-gallery-grid { column-count: 3; } }
-@media (max-width: 767px){ .md-gallery-grid { column-count: 2; } }
-@media (max-width: 420px){ .md-gallery-grid { column-count: 1; } }
+@media (max-width: 767px){ .md-gallery-grid { column-count: 2; column-gap: 10px; } }
 .md-gal-item {
   break-inside: avoid; margin-bottom: 14px; border-radius: var(--r-card); overflow: hidden;
   position: relative; cursor: pointer; border: 1px solid rgba(255,255,255,.1);
@@ -20587,6 +20586,15 @@ body {
 .md-gal-item:hover .vov { opacity: 1; }
 .md-gal-item.hide { display: none; }
 .md-gal-soon { break-inside: avoid; margin-bottom: 14px; }
+
+/* Enlace "Ver todos" por sección (texto subrayado, no botón) */
+.gallery-row-head { margin-bottom: 1rem; }
+.md-vertodos-link {
+  color: var(--md-red); font-weight: 600; font-size: .9rem;
+  text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; cursor: pointer;
+  transition: color .2s ease;
+}
+.md-vertodos-link:hover { color: #fff; text-decoration: underline; }
 
 /* Preloader desactivado por completo (evita bloqueos al cambiar de página) */
 #preloader { display: none !important; }

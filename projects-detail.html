@@ -1198,6 +1198,7 @@
     })();
 
     var PROJECT_ALIASES = { 'flyer-eventos': 'flyers', 'flyers-animados': 'animaciones' };
+    function mdSlug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, '-'); }
 
     function loadProject() {
       const urlParams = new URLSearchParams(window.location.search);
@@ -1228,13 +1229,23 @@
         rowDiv.setAttribute('data-aos', 'fade-up');
         rowDiv.setAttribute('data-aos-delay', rowIndex * 100);
 
+        const head = document.createElement('div');
+        head.className = 'gallery-row-head d-flex align-items-center justify-content-between gap-3';
         const title = document.createElement('h3');
-        title.classList.add('gallery-row-title');
+        title.classList.add('gallery-row-title', 'mb-0');
         title.innerText = row.title;
+        head.appendChild(title);
+        if (!row.soon && row.items && row.items.length) {
+          const vt = document.createElement('a');
+          vt.className = 'md-vertodos-link';
+          vt.href = `gallery.html?cat=${projectId}&group=${mdSlug(row.title)}`;
+          vt.textContent = 'Ver todos';
+          head.appendChild(vt);
+        }
 
         // Grupos "Próximamente" (categorías sin material aún)
         if (row.soon || !row.items || !row.items.length) {
-          rowDiv.appendChild(title);
+          rowDiv.appendChild(head);
           const soon = document.createElement('div');
           soon.className = 'md-soon';
           soon.style.cssText = 'background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)';
@@ -1280,7 +1291,7 @@
           carouselDiv.appendChild(itemWrapper);
         });
 
-        rowDiv.appendChild(title);
+        rowDiv.appendChild(head);
         rowDiv.appendChild(carouselDiv);
         galleryContainer.appendChild(rowDiv);
 
@@ -1316,15 +1327,6 @@
           }
         });
       });
-
-      // Botón "Ver todos" → galería completa de la categoría
-      const verTodos = document.createElement('div');
-      verTodos.className = 'text-center pt-3';
-      verTodos.innerHTML = `<a href="gallery.html?cat=${projectId}" class="btn btn-primary">
-        <span class="btn-text">Ver todos</span>
-        <iconify-icon icon="lucide:arrow-up-right" class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
-      </a>`;
-      galleryContainer.appendChild(verTodos);
 
       // Update Pricing
       document.getElementById('pricing-container').innerHTML = data.pricing;

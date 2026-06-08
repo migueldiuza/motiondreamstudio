@@ -209,7 +209,7 @@
       var gridHtml = '';
 
       data.groups.forEach(function (g, i) {
-        var gid = 'g' + i + '-' + slug(g.title);
+        var gid = slug(g.title);
         chipsHtml += '<button class="md-chip" data-filter="' + gid + '">' + g.title + '</button>';
         if (g.soon || !g.items || !g.items.length) {
           gridHtml += '<div class="md-gal-soon md-gal-item-wrap" data-group="' + gid + '">'
@@ -238,6 +238,13 @@
           it.classList.toggle('hide', f !== 'all' && it.getAttribute('data-group') !== f);
         });
       });
+
+      // Pre-seleccionar subcategoría si viene ?group=
+      var preGroup = params.get('group');
+      if (preGroup) {
+        var chip = filters.querySelector('.md-chip[data-filter="' + preGroup + '"]');
+        if (chip) chip.click();
+      }
 
       if (window.AOS) AOS.init({ duration: 800, once: true });
     })();
