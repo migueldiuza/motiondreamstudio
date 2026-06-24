@@ -470,14 +470,16 @@ window.mdCurrency = (function () {
         set: function (cur) { localStorage.setItem(KEY, cur); apply(cur); }
     };
 })();
-document.addEventListener('DOMContentLoaded', function () {
-    window.mdCurrency.refresh();
-    document.querySelectorAll('.md-cur-btn').forEach(function (b) {
-        b.addEventListener('click', function () {
-            window.mdCurrency.set(b.getAttribute('data-cur'));
-        });
+(function wireCurrency() {
+    function init() { window.mdCurrency.refresh(); }
+    if (document.readyState !== 'loading') init();
+    else document.addEventListener('DOMContentLoaded', init);
+    // Delegación en document: funciona con botones estáticos o inyectados, sin importar el timing
+    document.addEventListener('click', function (e) {
+        var b = e.target.closest && e.target.closest('.md-cur-btn');
+        if (b) { e.preventDefault(); window.mdCurrency.set(b.getAttribute('data-cur')); }
     });
-});
+})();
 
 // 3) Acordeón de servicios (mobile)
 (function servicesAccordion() {
