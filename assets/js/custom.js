@@ -441,7 +441,8 @@ window.mdCurrency = (function () {
         '$400k': { usd: '$127', eur: '€127' },
         '$1M':   { usd: '$317', eur: '€317' },
         '$180k': { usd: '$57',  eur: '€57' },
-        '$250k': { usd: '$79',  eur: '€79' }
+        '$250k': { usd: '$79',  eur: '€79' },
+        '$500k': { usd: '$158', eur: '€158' }
     };
     function seed() {
         document.querySelectorAll('.card h3.mb-0').forEach(function (h) {
