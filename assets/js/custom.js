@@ -434,7 +434,12 @@ window.mdCurrency = (function () {
         '$450k': { usd: '$143', eur: '€143' },
         '$480k': { usd: '$152', eur: '€152' },
         '$850k': { usd: '$270', eur: '€270' },
-        '$1.5M': { usd: '$475', eur: '€475' }
+        '$1.5M': { usd: '$475', eur: '€475' },
+        '$120k': { usd: '$38',  eur: '€38' },
+        '$240k': { usd: '$76',  eur: '€76' },
+        '$300k': { usd: '$95',  eur: '€95' },
+        '$400k': { usd: '$127', eur: '€127' },
+        '$1M':   { usd: '$317', eur: '€317' }
     };
     function seed() {
         document.querySelectorAll('.card h3.mb-0').forEach(function (h) {
